@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF4576D8144E0D3000C765B4"
-               BuildableName = "ps"
+               BuildableName = "psx"
                BlueprintName = "psx"
                ReferencedContainer = "container:paulstretch.xcodeproj">
             </BuildableReference>
@@ -40,7 +40,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF4576D8144E0D3000C765B4"
-            BuildableName = "ps"
+            BuildableName = "psx"
             BlueprintName = "psx"
             ReferencedContainer = "container:paulstretch.xcodeproj">
          </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF4576D8144E0D3000C765B4"
-            BuildableName = "ps"
+            BuildableName = "psx"
             BlueprintName = "psx"
             ReferencedContainer = "container:paulstretch.xcodeproj">
          </BuildableReference>

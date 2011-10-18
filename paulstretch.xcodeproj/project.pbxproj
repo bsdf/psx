@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF198135144E2D5200FAB12E /* AInputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45775E144E274700C765B4 /* AInputS.cpp */; };
+		FF198136144E2D7400FAB12E /* MP3InputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457761144E274700C765B4 /* MP3InputS.cpp */; };
+		FF198137144E2D7400FAB12E /* VorbisInputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457763144E274700C765B4 /* VorbisInputS.cpp */; };
+		FF198138144E2D8C00FAB12E /* AOutputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457769144E275A00C765B4 /* AOutputS.cpp */; };
+		FF198139144E2D8C00FAB12E /* VorbisOutputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45776B144E275A00C765B4 /* VorbisOutputS.cpp */; };
 		FF4576E5144E0D4200C765B4 /* libvorbis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576E4144E0D4200C765B4 /* libvorbis.dylib */; };
 		FF4576E7144E0D4900C765B4 /* libogg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576E6144E0D4900C765B4 /* libogg.dylib */; };
 		FF4576E9144E0D4F00C765B4 /* libmad.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576E8144E0D4F00C765B4 /* libmad.dylib */; };
@@ -36,11 +41,6 @@
 		FF457737144E1F6600C765B4 /* libportaudio.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457735144E1F5700C765B4 /* libportaudio.2.0.0.dylib */; };
 		FF45773A144E215900C765B4 /* GUI.cxx in Sources */ = {isa = PBXBuildFile; fileRef = FF457738144E215900C765B4 /* GUI.cxx */; };
 		FF45773D144E216100C765B4 /* FreeEditUI.cxx in Sources */ = {isa = PBXBuildFile; fileRef = FF45773B144E216100C765B4 /* FreeEditUI.cxx */; };
-		FF45774C144E22AB00C765B4 /* AInputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45774B144E22AB00C765B4 /* AInputS.cpp */; };
-		FF45774E144E22B200C765B4 /* MP3InputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45774D144E22B200C765B4 /* MP3InputS.cpp */; };
-		FF457750144E22BE00C765B4 /* VorbisInputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45774F144E22BE00C765B4 /* VorbisInputS.cpp */; };
-		FF457753144E22DE00C765B4 /* AOutputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457751144E22DE00C765B4 /* AOutputS.cpp */; };
-		FF457754144E22DE00C765B4 /* VorbisOutputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457752144E22DE00C765B4 /* VorbisOutputS.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -85,7 +85,7 @@
 		FF4576D2144E0C0200C765B4 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		FF4576D3144E0C0200C765B4 /* XMLwrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = XMLwrapper.cpp; sourceTree = "<group>"; };
 		FF4576D4144E0C0200C765B4 /* XMLwrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMLwrapper.h; sourceTree = "<group>"; };
-		FF4576D9144E0D3000C765B4 /* ps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ps; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4576D9144E0D3000C765B4 /* ps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = ps; path = psx; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4576E4144E0D4200C765B4 /* libvorbis.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbis.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libvorbis.dylib; sourceTree = DEVELOPER_DIR; };
 		FF4576E6144E0D4900C765B4 /* libogg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libogg.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libogg.dylib; sourceTree = DEVELOPER_DIR; };
 		FF4576E8144E0D4F00C765B4 /* libmad.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmad.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libmad.dylib; sourceTree = DEVELOPER_DIR; };
@@ -109,11 +109,6 @@
 		FF457739144E215900C765B4 /* GUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUI.h; sourceTree = "<group>"; };
 		FF45773B144E216100C765B4 /* FreeEditUI.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FreeEditUI.cxx; sourceTree = "<group>"; };
 		FF45773C144E216100C765B4 /* FreeEditUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeEditUI.h; sourceTree = "<group>"; };
-		FF45774B144E22AB00C765B4 /* AInputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AInputS.cpp; path = Input/AInputS.cpp; sourceTree = "<group>"; };
-		FF45774D144E22B200C765B4 /* MP3InputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MP3InputS.cpp; path = Input/MP3InputS.cpp; sourceTree = "<group>"; };
-		FF45774F144E22BE00C765B4 /* VorbisInputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VorbisInputS.cpp; path = Input/VorbisInputS.cpp; sourceTree = "<group>"; };
-		FF457751144E22DE00C765B4 /* AOutputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AOutputS.cpp; path = Output/AOutputS.cpp; sourceTree = "<group>"; };
-		FF457752144E22DE00C765B4 /* VorbisOutputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VorbisOutputS.cpp; path = Output/VorbisOutputS.cpp; sourceTree = "<group>"; };
 		FF457755144E271D00C765B4 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _kiss_fft_guts.h; path = contrib/_kiss_fft_guts.h; sourceTree = "<group>"; };
 		FF457756144E271D00C765B4 /* COPYING_kiss_fft.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = COPYING_kiss_fft.txt; path = contrib/COPYING_kiss_fft.txt; sourceTree = "<group>"; };
 		FF457757144E271D00C765B4 /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = kiss_fft.c; path = contrib/kiss_fft.c; sourceTree = "<group>"; };
@@ -245,12 +240,7 @@
 				FF45775D144E272200C765B4 /* contrib */,
 				FF4576B1144E0C0200C765B4 /* BinauralBeats.cpp */,
 				FF4576B2144E0C0200C765B4 /* BinauralBeats.h */,
-				FF45774D144E22B200C765B4 /* MP3InputS.cpp */,
-				FF45774B144E22AB00C765B4 /* AInputS.cpp */,
-				FF457751144E22DE00C765B4 /* AOutputS.cpp */,
-				FF457752144E22DE00C765B4 /* VorbisOutputS.cpp */,
 				FF4576B8144E0C0200C765B4 /* Control.cpp */,
-				FF45774F144E22BE00C765B4 /* VorbisInputS.cpp */,
 				FF4576B9144E0C0200C765B4 /* Control.h */,
 				FF457703144E175100C765B4 /* kiss_fft.c */,
 				FF457704144E175100C765B4 /* kiss_fftr.c */,
@@ -346,18 +336,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF198135144E2D5200FAB12E /* AInputS.cpp in Sources */,
+				FF198136144E2D7400FAB12E /* MP3InputS.cpp in Sources */,
+				FF198137144E2D7400FAB12E /* VorbisInputS.cpp in Sources */,
+				FF198138144E2D8C00FAB12E /* AOutputS.cpp in Sources */,
+				FF198139144E2D8C00FAB12E /* VorbisOutputS.cpp in Sources */,
 				FF4576F2144E130C00C765B4 /* BinauralBeats.cpp in Sources */,
 				FF4576F3144E130C00C765B4 /* Control.cpp in Sources */,
 				FF4576F4144E130C00C765B4 /* FreeEdit.cpp in Sources */,
 				FF4576F5144E130C00C765B4 /* globals.cpp in Sources */,
 				FF4576F6144E130C00C765B4 /* JAaudiooutput.cpp in Sources */,
 				FF4576F7144E130C00C765B4 /* Mutex.cpp in Sources */,
-				FF45774E144E22B200C765B4 /* MP3InputS.cpp in Sources */,
-				FF45774C144E22AB00C765B4 /* AInputS.cpp in Sources */,
-				FF457753144E22DE00C765B4 /* AOutputS.cpp in Sources */,
-				FF457754144E22DE00C765B4 /* VorbisOutputS.cpp in Sources */,
 				FF4576F8144E130C00C765B4 /* PAaudiooutput.cpp in Sources */,
-				FF457750144E22BE00C765B4 /* VorbisInputS.cpp in Sources */,
 				FF4576F9144E130C00C765B4 /* Player.cpp in Sources */,
 				FF4576FA144E130C00C765B4 /* ProcessedStretch.cpp in Sources */,
 				FF4576FB144E130C00C765B4 /* Stretch.cpp in Sources */,
@@ -471,6 +461,7 @@
 				FF4576E3144E0D3000C765B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

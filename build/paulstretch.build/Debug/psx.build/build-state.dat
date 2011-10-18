@@ -2,25 +2,25 @@ Tpsx
 v3
 r1
 cCheck dependencies
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/BinauralBeats.o /Users/dsemke/paulstretch/BinauralBeats.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/globals.o /Users/dsemke/paulstretch/globals.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/FreeEdit.o /Users/dsemke/paulstretch/FreeEdit.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/JAaudiooutput.o /Users/dsemke/paulstretch/JAaudiooutput.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Control.o /Users/dsemke/paulstretch/Control.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/MP3InputS.o /Users/dsemke/paulstretch/Input/MP3InputS.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Mutex.o /Users/dsemke/paulstretch/Mutex.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/AInputS.o /Users/dsemke/paulstretch/Input/AInputS.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/AOutputS.o /Users/dsemke/paulstretch/Output/AOutputS.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/VorbisOutputS.o /Users/dsemke/paulstretch/Output/VorbisOutputS.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/PAaudiooutput.o /Users/dsemke/paulstretch/PAaudiooutput.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/AInputS.o /Users/dsemke/paulstretch/Input/AInputS.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/MP3InputS.o /Users/dsemke/paulstretch/Input/MP3InputS.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/FreeEdit.o /Users/dsemke/paulstretch/FreeEdit.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/VorbisInputS.o /Users/dsemke/paulstretch/Input/VorbisInputS.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Player.o /Users/dsemke/paulstretch/Player.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/BinauralBeats.o /Users/dsemke/paulstretch/BinauralBeats.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/VorbisOutputS.o /Users/dsemke/paulstretch/Output/VorbisOutputS.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Control.o /Users/dsemke/paulstretch/Control.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Mutex.o /Users/dsemke/paulstretch/Mutex.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/globals.o /Users/dsemke/paulstretch/globals.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/JAaudiooutput.o /Users/dsemke/paulstretch/JAaudiooutput.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/ProcessedStretch.o /Users/dsemke/paulstretch/ProcessedStretch.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Stretch.o /Users/dsemke/paulstretch/Stretch.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Thread.o /Users/dsemke/paulstretch/Thread.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/XMLwrapper.o /Users/dsemke/paulstretch/XMLwrapper.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/GUI.o /Users/dsemke/paulstretch/GUI.cxx normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Stretch.o /Users/dsemke/paulstretch/Stretch.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Player.o /Users/dsemke/paulstretch/Player.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/PAaudiooutput.o /Users/dsemke/paulstretch/PAaudiooutput.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/FreeEditUI.o /Users/dsemke/paulstretch/FreeEditUI.cxx normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/GUI.o /Users/dsemke/paulstretch/GUI.cxx normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/XMLwrapper.o /Users/dsemke/paulstretch/XMLwrapper.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cLd /Users/dsemke/paulstretch/build/Debug/psx normal x86_64
 
 N/Developer/SDKs/MacOSX10.6.sdk
@@ -647,88 +647,88 @@ i<mxml.h>
 i"globals.h"
 
 N/Users/dsemke/paulstretch/build/Debug/psx
-t2
-s0
+t1318974989
+s1075532
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/AInputS.o
-t2
-s0
+t1318973897
+s23848
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/AOutputS.o
-t2
-s0
+t1318973897
+s18508
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/BinauralBeats.o
-t2
-s0
+t1318973897
+s22208
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Control.o
-t2
-s0
+t1318973897
+s95700
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/FreeEdit.o
-t2
-s0
+t1318973897
+s30124
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/FreeEditUI.o
-t2
-s0
+t1318973898
+s157528
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/GUI.o
-t2
-s0
+t1318973898
+s270248
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/JAaudiooutput.o
-t2
-s0
+t1318973897
+s184
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/MP3InputS.o
-t2
-s0
+t1318973897
+s30440
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Mutex.o
-t2
-s0
+t1318973897
+s4408
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/PAaudiooutput.o
-t2
-s0
+t1318973897
+s36772
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Player.o
-t2
-s0
+t1318973897
+s64812
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/ProcessedStretch.o
-t2
-s0
+t1318973897
+s49200
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Stretch.o
-t2
-s0
+t1318973897
+s26256
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/Thread.o
-t2
-s0
+t1318973897
+s6296
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/VorbisInputS.o
-t2
-s0
+t1318973897
+s29716
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/VorbisOutputS.o
-t2
-s0
+t1318973897
+s24624
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/XMLwrapper.o
-t2
-s0
+t1318973897
+s34548
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/globals.o
-t2
-s0
+t1318973897
+s2172
 
 N/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/psx.LinkFileList
-c000000004E9DF1C9000000000000076E
-t1318973897
+c000000004E9DF60D000000000000076E
+t1318974989
 s1902
 
 N/Users/dsemke/paulstretch/contrib/kiss_fft.h
@@ -842,7 +842,7 @@ r0
 
 CCheck dependencies
 r0
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies37a84949294eb441^c7bd6149294eb441^---0#1#0#--18"Check dependencies
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies9c5030912d4eb441^edb831912d4eb441^---0#1#0#--18"Check dependencies
 
 CCompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/AInputS.o /Users/dsemke/paulstretch/Input/AInputS.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 s340666697.390374
@@ -1234,12 +1234,12 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection45"Compile /Users/dsemke/paulstretch/globals.cpp50e26349294eb441^eb726e49294eb441^---0#0#0#-19%DVTDocumentLocation2@53"file://localhost/Users/dsemke/paulstretch/globals.cpp0000000000000000^1587"CompileC build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/globals.o globals.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/dsemke/paulstretch    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wshorten-64-to-32 -DDEBUG=1 -isysroot /Developer/SDKs/MacOSX10.6.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility-inlines-hidden -iquote /Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/psx-generated-files.hmap -I/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/psx-own-target-headers.hmap -I/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/psx-all-target-headers.hmap -iquote /Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/psx-project-headers.hmap -I/Users/dsemke/paulstretch/build/Debug/include -I/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/DerivedSources/x86_64 -I/Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/DerivedSources -F/Users/dsemke/paulstretch/build/Debug -F/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks -c /Users/dsemke/paulstretch/globals.cpp -o /Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/globals.o
 
 CLd /Users/dsemke/paulstretch/build/Debug/psx normal x86_64
-s340666698.142512
-e340666698.259726
+s340667789.375498
+e340667789.475002
 r1
 xLd
 x/Users/dsemke/paulstretch/build/Debug/psx
 xnormal
 xx86_64
-lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection46"Link /Users/dsemke/paulstretch/build/Debug/psxad8a244a294eb441^cc7d424a294eb441^---0#0#0#--860"Ld build/Debug/psx normal x86_64    cd /Users/dsemke/paulstretch    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/clang++ -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/Users/dsemke/paulstretch/build/Debug -L/usr/local/Cellar/fltk/1.3.0/lib -L/usr/local/Cellar/mxml/2.6/lib -L/usr/local/Cellar/portaudio/19.20071207/lib -F/Users/dsemke/paulstretch/build/Debug -F/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks -filelist /Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/psx.LinkFileList -mmacosx-version-min=10.6 -framework Cocoa -framework Quartz -framework ApplicationServices -lportaudio.2.0.0 -lvorbisenc -lvorbisfile -lfftw3f -lz -lmxml -lfftw3 -lfltk -laudiofile -lmad -logg -lvorbis -o /Users/dsemke/paulstretch/build/Debug/psx
+lSLF03#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection46"Link /Users/dsemke/paulstretch/build/Debug/psx3b38608d2d4eb441^9a99798d2d4eb441^---0#0#0#--860"Ld build/Debug/psx normal x86_64    cd /Users/dsemke/paulstretch    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/clang++ -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/Users/dsemke/paulstretch/build/Debug -L/usr/local/Cellar/fltk/1.3.0/lib -L/usr/local/Cellar/mxml/2.6/lib -L/usr/local/Cellar/portaudio/19.20071207/lib -F/Users/dsemke/paulstretch/build/Debug -F/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks -filelist /Users/dsemke/paulstretch/build/paulstretch.build/Debug/psx.build/Objects-normal/x86_64/psx.LinkFileList -mmacosx-version-min=10.6 -framework Cocoa -framework Quartz -framework ApplicationServices -lportaudio.2.0.0 -lvorbisenc -lvorbisfile -lfftw3f -lz -lmxml -lfftw3 -lfltk -laudiofile -lmad -logg -lvorbis -o /Users/dsemke/paulstretch/build/Debug/psx
 
