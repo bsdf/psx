@@ -13,8 +13,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF4576D8144E0D3000C765B4"
-               BuildableName = "psx"
+               BlueprintIdentifier = "FF1F28D3144E2E4400860684"
+               BuildableName = "psx.app"
                BlueprintName = "psx"
                ReferencedContainer = "container:paulstretch.xcodeproj">
             </BuildableReference>
