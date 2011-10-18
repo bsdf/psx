@@ -1,0 +1,478 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF4576E5144E0D4200C765B4 /* libvorbis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576E4144E0D4200C765B4 /* libvorbis.dylib */; };
+		FF4576E7144E0D4900C765B4 /* libogg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576E6144E0D4900C765B4 /* libogg.dylib */; };
+		FF4576E9144E0D4F00C765B4 /* libmad.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576E8144E0D4F00C765B4 /* libmad.dylib */; };
+		FF4576EB144E0D5500C765B4 /* libaudiofile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576EA144E0D5500C765B4 /* libaudiofile.dylib */; };
+		FF4576ED144E0DA600C765B4 /* libfltk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576EC144E0DA600C765B4 /* libfltk.a */; };
+		FF4576F1144E0E0100C765B4 /* libfftw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576EF144E0DF400C765B4 /* libfftw3.dylib */; };
+		FF4576F2144E130C00C765B4 /* BinauralBeats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576B1144E0C0200C765B4 /* BinauralBeats.cpp */; };
+		FF4576F3144E130C00C765B4 /* Control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576B8144E0C0200C765B4 /* Control.cpp */; };
+		FF4576F4144E130C00C765B4 /* FreeEdit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576BB144E0C0200C765B4 /* FreeEdit.cpp */; };
+		FF4576F5144E130C00C765B4 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576BE144E0C0200C765B4 /* globals.cpp */; };
+		FF4576F6144E130C00C765B4 /* JAaudiooutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576C2144E0C0200C765B4 /* JAaudiooutput.cpp */; };
+		FF4576F7144E130C00C765B4 /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576C4144E0C0200C765B4 /* Mutex.cpp */; };
+		FF4576F8144E130C00C765B4 /* PAaudiooutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576C7144E0C0200C765B4 /* PAaudiooutput.cpp */; };
+		FF4576F9144E130C00C765B4 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576C9144E0C0200C765B4 /* Player.cpp */; };
+		FF4576FA144E130C00C765B4 /* ProcessedStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576CB144E0C0200C765B4 /* ProcessedStretch.cpp */; };
+		FF4576FB144E130C00C765B4 /* Stretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576CE144E0C0200C765B4 /* Stretch.cpp */; };
+		FF4576FC144E130C00C765B4 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576D0144E0C0200C765B4 /* Thread.cpp */; };
+		FF4576FE144E173900C765B4 /* XMLwrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576D3144E0C0200C765B4 /* XMLwrapper.cpp */; };
+		FF457707144E1B9F00C765B4 /* libmxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457705144E1B8900C765B4 /* libmxml.a */; };
+		FF457712144E1D0F00C765B4 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF45770F144E1CD300C765B4 /* ApplicationServices.framework */; };
+		FF457713144E1D1300C765B4 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457708144E1C0400C765B4 /* Quartz.framework */; };
+		FF457718144E1D3D00C765B4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457716144E1D2B00C765B4 /* Cocoa.framework */; };
+		FF45771B144E1D7000C765B4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457719144E1D6600C765B4 /* libz.dylib */; };
+		FF45771E144E1DAA00C765B4 /* libfftw3f.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF45771C144E1D9E00C765B4 /* libfftw3f.dylib */; };
+		FF45772F144E1EAC00C765B4 /* libvorbisfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF45772D144E1E9C00C765B4 /* libvorbisfile.dylib */; };
+		FF457732144E1EC900C765B4 /* libvorbisenc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457730144E1EB700C765B4 /* libvorbisenc.dylib */; };
+		FF457737144E1F6600C765B4 /* libportaudio.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457735144E1F5700C765B4 /* libportaudio.2.0.0.dylib */; };
+		FF45773A144E215900C765B4 /* GUI.cxx in Sources */ = {isa = PBXBuildFile; fileRef = FF457738144E215900C765B4 /* GUI.cxx */; };
+		FF45773D144E216100C765B4 /* FreeEditUI.cxx in Sources */ = {isa = PBXBuildFile; fileRef = FF45773B144E216100C765B4 /* FreeEditUI.cxx */; };
+		FF45774C144E22AB00C765B4 /* AInputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45774B144E22AB00C765B4 /* AInputS.cpp */; };
+		FF45774E144E22B200C765B4 /* MP3InputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45774D144E22B200C765B4 /* MP3InputS.cpp */; };
+		FF457750144E22BE00C765B4 /* VorbisInputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45774F144E22BE00C765B4 /* VorbisInputS.cpp */; };
+		FF457753144E22DE00C765B4 /* AOutputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457751144E22DE00C765B4 /* AOutputS.cpp */; };
+		FF457754144E22DE00C765B4 /* VorbisOutputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457752144E22DE00C765B4 /* VorbisOutputS.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FF4576D7144E0D3000C765B4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FF4576B1144E0C0200C765B4 /* BinauralBeats.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinauralBeats.cpp; sourceTree = "<group>"; };
+		FF4576B2144E0C0200C765B4 /* BinauralBeats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinauralBeats.h; sourceTree = "<group>"; };
+		FF4576B8144E0C0200C765B4 /* Control.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Control.cpp; sourceTree = "<group>"; };
+		FF4576B9144E0C0200C765B4 /* Control.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Control.h; sourceTree = "<group>"; };
+		FF4576BA144E0C0200C765B4 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		FF4576BB144E0C0200C765B4 /* FreeEdit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FreeEdit.cpp; sourceTree = "<group>"; };
+		FF4576BC144E0C0200C765B4 /* FreeEdit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeEdit.h; sourceTree = "<group>"; };
+		FF4576BD144E0C0200C765B4 /* FreeEditUI.fl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FreeEditUI.fl; sourceTree = "<group>"; };
+		FF4576BE144E0C0200C765B4 /* globals.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = globals.cpp; sourceTree = "<group>"; };
+		FF4576BF144E0C0200C765B4 /* globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
+		FF4576C0144E0C0200C765B4 /* GUI.fl */ = {isa = PBXFileReference; lastKnownFileType = text; path = GUI.fl; sourceTree = "<group>"; };
+		FF4576C2144E0C0200C765B4 /* JAaudiooutput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = JAaudiooutput.cpp; sourceTree = "<group>"; };
+		FF4576C3144E0C0200C765B4 /* JAaudiooutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JAaudiooutput.h; sourceTree = "<group>"; };
+		FF4576C4144E0C0200C765B4 /* Mutex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mutex.cpp; sourceTree = "<group>"; };
+		FF4576C5144E0C0200C765B4 /* Mutex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mutex.h; sourceTree = "<group>"; };
+		FF4576C7144E0C0200C765B4 /* PAaudiooutput.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PAaudiooutput.cpp; sourceTree = "<group>"; };
+		FF4576C8144E0C0200C765B4 /* PAaudiooutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAaudiooutput.h; sourceTree = "<group>"; };
+		FF4576C9144E0C0200C765B4 /* Player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		FF4576CA144E0C0200C765B4 /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		FF4576CB144E0C0200C765B4 /* ProcessedStretch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ProcessedStretch.cpp; sourceTree = "<group>"; };
+		FF4576CC144E0C0200C765B4 /* ProcessedStretch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessedStretch.h; sourceTree = "<group>"; };
+		FF4576CD144E0C0200C765B4 /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		FF4576CE144E0C0200C765B4 /* Stretch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Stretch.cpp; sourceTree = "<group>"; };
+		FF4576CF144E0C0200C765B4 /* Stretch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stretch.h; sourceTree = "<group>"; };
+		FF4576D0144E0C0200C765B4 /* Thread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
+		FF4576D1144E0C0200C765B4 /* Thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
+		FF4576D2144E0C0200C765B4 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		FF4576D3144E0C0200C765B4 /* XMLwrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = XMLwrapper.cpp; sourceTree = "<group>"; };
+		FF4576D4144E0C0200C765B4 /* XMLwrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMLwrapper.h; sourceTree = "<group>"; };
+		FF4576D9144E0D3000C765B4 /* ps */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ps; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF4576E4144E0D4200C765B4 /* libvorbis.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbis.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libvorbis.dylib; sourceTree = DEVELOPER_DIR; };
+		FF4576E6144E0D4900C765B4 /* libogg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libogg.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libogg.dylib; sourceTree = DEVELOPER_DIR; };
+		FF4576E8144E0D4F00C765B4 /* libmad.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmad.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libmad.dylib; sourceTree = DEVELOPER_DIR; };
+		FF4576EA144E0D5500C765B4 /* libaudiofile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaudiofile.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libaudiofile.dylib; sourceTree = DEVELOPER_DIR; };
+		FF4576EC144E0DA600C765B4 /* libfltk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfltk.a; path = /usr/local/Cellar/fltk/1.3.0/lib/libfltk.a; sourceTree = "<absolute>"; };
+		FF4576EF144E0DF400C765B4 /* libfftw3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfftw3.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libfftw3.dylib; sourceTree = DEVELOPER_DIR; };
+		FF4576FF144E174A00C765B4 /* kiss_fft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = kiss_fft.c; path = contrib/kiss_fft.c; sourceTree = "<group>"; };
+		FF457700144E174A00C765B4 /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = kiss_fftr.c; path = contrib/kiss_fftr.c; sourceTree = "<group>"; };
+		FF457703144E175100C765B4 /* kiss_fft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = kiss_fft.c; path = contrib/kiss_fft.c; sourceTree = "<group>"; };
+		FF457704144E175100C765B4 /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = kiss_fftr.c; path = contrib/kiss_fftr.c; sourceTree = "<group>"; };
+		FF457705144E1B8900C765B4 /* libmxml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmxml.a; path = /usr/local/Cellar/mxml/2.6/lib/libmxml.a; sourceTree = "<absolute>"; };
+		FF457708144E1C0400C765B4 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Quartz.framework; sourceTree = DEVELOPER_DIR; };
+		FF45770F144E1CD300C765B4 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework; sourceTree = DEVELOPER_DIR; };
+		FF457716144E1D2B00C765B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		FF457719144E1D6600C765B4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = SDKs/MacOSX10.6.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		FF45771C144E1D9E00C765B4 /* libfftw3f.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfftw3f.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libfftw3f.dylib; sourceTree = DEVELOPER_DIR; };
+		FF45772D144E1E9C00C765B4 /* libvorbisfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisfile.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libvorbisfile.dylib; sourceTree = DEVELOPER_DIR; };
+		FF457730144E1EB700C765B4 /* libvorbisenc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisenc.dylib; path = SDKs/MacOSX10.6.sdk/usr/local/lib/libvorbisenc.dylib; sourceTree = DEVELOPER_DIR; };
+		FF457735144E1F5700C765B4 /* libportaudio.2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libportaudio.2.0.0.dylib; path = /usr/local/Cellar/portaudio/19.20071207/lib/libportaudio.2.0.0.dylib; sourceTree = "<absolute>"; };
+		FF457738144E215900C765B4 /* GUI.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUI.cxx; sourceTree = "<group>"; };
+		FF457739144E215900C765B4 /* GUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUI.h; sourceTree = "<group>"; };
+		FF45773B144E216100C765B4 /* FreeEditUI.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FreeEditUI.cxx; sourceTree = "<group>"; };
+		FF45773C144E216100C765B4 /* FreeEditUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeEditUI.h; sourceTree = "<group>"; };
+		FF45774B144E22AB00C765B4 /* AInputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AInputS.cpp; path = Input/AInputS.cpp; sourceTree = "<group>"; };
+		FF45774D144E22B200C765B4 /* MP3InputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MP3InputS.cpp; path = Input/MP3InputS.cpp; sourceTree = "<group>"; };
+		FF45774F144E22BE00C765B4 /* VorbisInputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VorbisInputS.cpp; path = Input/VorbisInputS.cpp; sourceTree = "<group>"; };
+		FF457751144E22DE00C765B4 /* AOutputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AOutputS.cpp; path = Output/AOutputS.cpp; sourceTree = "<group>"; };
+		FF457752144E22DE00C765B4 /* VorbisOutputS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VorbisOutputS.cpp; path = Output/VorbisOutputS.cpp; sourceTree = "<group>"; };
+		FF457755144E271D00C765B4 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _kiss_fft_guts.h; path = contrib/_kiss_fft_guts.h; sourceTree = "<group>"; };
+		FF457756144E271D00C765B4 /* COPYING_kiss_fft.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = COPYING_kiss_fft.txt; path = contrib/COPYING_kiss_fft.txt; sourceTree = "<group>"; };
+		FF457757144E271D00C765B4 /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = kiss_fft.c; path = contrib/kiss_fft.c; sourceTree = "<group>"; };
+		FF457758144E271D00C765B4 /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kiss_fft.h; path = contrib/kiss_fft.h; sourceTree = "<group>"; };
+		FF457759144E271D00C765B4 /* kiss_fftr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = kiss_fftr.c; path = contrib/kiss_fftr.c; sourceTree = "<group>"; };
+		FF45775A144E271D00C765B4 /* kiss_fftr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kiss_fftr.h; path = contrib/kiss_fftr.h; sourceTree = "<group>"; };
+		FF45775E144E274700C765B4 /* AInputS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AInputS.cpp; path = Input/AInputS.cpp; sourceTree = "<group>"; };
+		FF45775F144E274700C765B4 /* AInputS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AInputS.h; path = Input/AInputS.h; sourceTree = "<group>"; };
+		FF457760144E274700C765B4 /* InputS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputS.h; path = Input/InputS.h; sourceTree = "<group>"; };
+		FF457761144E274700C765B4 /* MP3InputS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MP3InputS.cpp; path = Input/MP3InputS.cpp; sourceTree = "<group>"; };
+		FF457762144E274700C765B4 /* MP3InputS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MP3InputS.h; path = Input/MP3InputS.h; sourceTree = "<group>"; };
+		FF457763144E274700C765B4 /* VorbisInputS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VorbisInputS.cpp; path = Input/VorbisInputS.cpp; sourceTree = "<group>"; };
+		FF457764144E274700C765B4 /* VorbisInputS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VorbisInputS.h; path = Input/VorbisInputS.h; sourceTree = "<group>"; };
+		FF457769144E275A00C765B4 /* AOutputS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AOutputS.cpp; path = Output/AOutputS.cpp; sourceTree = "<group>"; };
+		FF45776A144E275A00C765B4 /* AOutputS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AOutputS.h; path = Output/AOutputS.h; sourceTree = "<group>"; };
+		FF45776B144E275A00C765B4 /* VorbisOutputS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VorbisOutputS.cpp; path = Output/VorbisOutputS.cpp; sourceTree = "<group>"; };
+		FF45776C144E275A00C765B4 /* VorbisOutputS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VorbisOutputS.h; path = Output/VorbisOutputS.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF4576D6144E0D3000C765B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF457718144E1D3D00C765B4 /* Cocoa.framework in Frameworks */,
+				FF457713144E1D1300C765B4 /* Quartz.framework in Frameworks */,
+				FF457712144E1D0F00C765B4 /* ApplicationServices.framework in Frameworks */,
+				FF457737144E1F6600C765B4 /* libportaudio.2.0.0.dylib in Frameworks */,
+				FF457732144E1EC900C765B4 /* libvorbisenc.dylib in Frameworks */,
+				FF45772F144E1EAC00C765B4 /* libvorbisfile.dylib in Frameworks */,
+				FF45771E144E1DAA00C765B4 /* libfftw3f.dylib in Frameworks */,
+				FF45771B144E1D7000C765B4 /* libz.dylib in Frameworks */,
+				FF457707144E1B9F00C765B4 /* libmxml.a in Frameworks */,
+				FF4576F1144E0E0100C765B4 /* libfftw3.dylib in Frameworks */,
+				FF4576ED144E0DA600C765B4 /* libfltk.a in Frameworks */,
+				FF4576EB144E0D5500C765B4 /* libaudiofile.dylib in Frameworks */,
+				FF4576E9144E0D4F00C765B4 /* libmad.dylib in Frameworks */,
+				FF4576E7144E0D4900C765B4 /* libogg.dylib in Frameworks */,
+				FF4576E5144E0D4200C765B4 /* libvorbis.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF4576A8144E08C800C765B4 = {
+			isa = PBXGroup;
+			children = (
+				FF457770144E27A700C765B4 /* psx */,
+				FF457771144E28DB00C765B4 /* Resources */,
+				FF4576DA144E0D3000C765B4 /* Products */,
+				FF4576EE144E0DBD00C765B4 /* lib */,
+			);
+			sourceTree = "<group>";
+		};
+		FF4576DA144E0D3000C765B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF4576D9144E0D3000C765B4 /* ps */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF4576EE144E0DBD00C765B4 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				FF45770F144E1CD300C765B4 /* ApplicationServices.framework */,
+				FF457716144E1D2B00C765B4 /* Cocoa.framework */,
+				FF457708144E1C0400C765B4 /* Quartz.framework */,
+				FF457705144E1B8900C765B4 /* libmxml.a */,
+				FF4576EF144E0DF400C765B4 /* libfftw3.dylib */,
+				FF45771C144E1D9E00C765B4 /* libfftw3f.dylib */,
+				FF4576EC144E0DA600C765B4 /* libfltk.a */,
+				FF4576EA144E0D5500C765B4 /* libaudiofile.dylib */,
+				FF4576E8144E0D4F00C765B4 /* libmad.dylib */,
+				FF4576E6144E0D4900C765B4 /* libogg.dylib */,
+				FF457735144E1F5700C765B4 /* libportaudio.2.0.0.dylib */,
+				FF4576E4144E0D4200C765B4 /* libvorbis.dylib */,
+				FF457730144E1EB700C765B4 /* libvorbisenc.dylib */,
+				FF45772D144E1E9C00C765B4 /* libvorbisfile.dylib */,
+				FF457719144E1D6600C765B4 /* libz.dylib */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		FF45775D144E272200C765B4 /* contrib */ = {
+			isa = PBXGroup;
+			children = (
+				FF457756144E271D00C765B4 /* COPYING_kiss_fft.txt */,
+				FF457757144E271D00C765B4 /* kiss_fft.c */,
+				FF457758144E271D00C765B4 /* kiss_fft.h */,
+				FF457759144E271D00C765B4 /* kiss_fftr.c */,
+				FF45775A144E271D00C765B4 /* kiss_fftr.h */,
+				FF457755144E271D00C765B4 /* _kiss_fft_guts.h */,
+			);
+			name = contrib;
+			sourceTree = "<group>";
+		};
+		FF457768144E274C00C765B4 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				FF45775E144E274700C765B4 /* AInputS.cpp */,
+				FF45775F144E274700C765B4 /* AInputS.h */,
+				FF457760144E274700C765B4 /* InputS.h */,
+				FF457761144E274700C765B4 /* MP3InputS.cpp */,
+				FF457762144E274700C765B4 /* MP3InputS.h */,
+				FF457763144E274700C765B4 /* VorbisInputS.cpp */,
+				FF457764144E274700C765B4 /* VorbisInputS.h */,
+			);
+			name = Input;
+			sourceTree = "<group>";
+		};
+		FF45776F144E275E00C765B4 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				FF457769144E275A00C765B4 /* AOutputS.cpp */,
+				FF45776A144E275A00C765B4 /* AOutputS.h */,
+				FF45776B144E275A00C765B4 /* VorbisOutputS.cpp */,
+				FF45776C144E275A00C765B4 /* VorbisOutputS.h */,
+			);
+			name = Output;
+			sourceTree = "<group>";
+		};
+		FF457770144E27A700C765B4 /* psx */ = {
+			isa = PBXGroup;
+			children = (
+				FF457768144E274C00C765B4 /* Input */,
+				FF45776F144E275E00C765B4 /* Output */,
+				FF45775D144E272200C765B4 /* contrib */,
+				FF4576B1144E0C0200C765B4 /* BinauralBeats.cpp */,
+				FF4576B2144E0C0200C765B4 /* BinauralBeats.h */,
+				FF45774D144E22B200C765B4 /* MP3InputS.cpp */,
+				FF45774B144E22AB00C765B4 /* AInputS.cpp */,
+				FF457751144E22DE00C765B4 /* AOutputS.cpp */,
+				FF457752144E22DE00C765B4 /* VorbisOutputS.cpp */,
+				FF4576B8144E0C0200C765B4 /* Control.cpp */,
+				FF45774F144E22BE00C765B4 /* VorbisInputS.cpp */,
+				FF4576B9144E0C0200C765B4 /* Control.h */,
+				FF457703144E175100C765B4 /* kiss_fft.c */,
+				FF457704144E175100C765B4 /* kiss_fftr.c */,
+				FF4576FF144E174A00C765B4 /* kiss_fft.c */,
+				FF457700144E174A00C765B4 /* kiss_fftr.c */,
+				FF4576BB144E0C0200C765B4 /* FreeEdit.cpp */,
+				FF4576BC144E0C0200C765B4 /* FreeEdit.h */,
+				FF4576BD144E0C0200C765B4 /* FreeEditUI.fl */,
+				FF45773B144E216100C765B4 /* FreeEditUI.cxx */,
+				FF45773C144E216100C765B4 /* FreeEditUI.h */,
+				FF4576BE144E0C0200C765B4 /* globals.cpp */,
+				FF4576BF144E0C0200C765B4 /* globals.h */,
+				FF457738144E215900C765B4 /* GUI.cxx */,
+				FF457739144E215900C765B4 /* GUI.h */,
+				FF4576C0144E0C0200C765B4 /* GUI.fl */,
+				FF4576C2144E0C0200C765B4 /* JAaudiooutput.cpp */,
+				FF4576C3144E0C0200C765B4 /* JAaudiooutput.h */,
+				FF4576C4144E0C0200C765B4 /* Mutex.cpp */,
+				FF4576C5144E0C0200C765B4 /* Mutex.h */,
+				FF4576C7144E0C0200C765B4 /* PAaudiooutput.cpp */,
+				FF4576C8144E0C0200C765B4 /* PAaudiooutput.h */,
+				FF4576C9144E0C0200C765B4 /* Player.cpp */,
+				FF4576CA144E0C0200C765B4 /* Player.h */,
+				FF4576CB144E0C0200C765B4 /* ProcessedStretch.cpp */,
+				FF4576CC144E0C0200C765B4 /* ProcessedStretch.h */,
+				FF4576CD144E0C0200C765B4 /* readme.txt */,
+				FF4576CE144E0C0200C765B4 /* Stretch.cpp */,
+				FF4576CF144E0C0200C765B4 /* Stretch.h */,
+				FF4576D0144E0C0200C765B4 /* Thread.cpp */,
+				FF4576D1144E0C0200C765B4 /* Thread.h */,
+				FF4576D2144E0C0200C765B4 /* version.h */,
+				FF4576D3144E0C0200C765B4 /* XMLwrapper.cpp */,
+				FF4576D4144E0C0200C765B4 /* XMLwrapper.h */,
+			);
+			name = psx;
+			sourceTree = "<group>";
+		};
+		FF457771144E28DB00C765B4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF4576BA144E0C0200C765B4 /* COPYING */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF4576D8144E0D3000C765B4 /* psx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF4576E1144E0D3000C765B4 /* Build configuration list for PBXNativeTarget "psx" */;
+			buildPhases = (
+				FF4576D5144E0D3000C765B4 /* Sources */,
+				FF4576D6144E0D3000C765B4 /* Frameworks */,
+				FF4576D7144E0D3000C765B4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = psx;
+			productName = ps;
+			productReference = FF4576D9144E0D3000C765B4 /* ps */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF4576AA144E08C800C765B4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = FF4576AD144E08C800C765B4 /* Build configuration list for PBXProject "paulstretch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FF4576A8144E08C800C765B4;
+			productRefGroup = FF4576DA144E0D3000C765B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF4576D8144E0D3000C765B4 /* psx */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF4576D5144E0D3000C765B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4576F2144E130C00C765B4 /* BinauralBeats.cpp in Sources */,
+				FF4576F3144E130C00C765B4 /* Control.cpp in Sources */,
+				FF4576F4144E130C00C765B4 /* FreeEdit.cpp in Sources */,
+				FF4576F5144E130C00C765B4 /* globals.cpp in Sources */,
+				FF4576F6144E130C00C765B4 /* JAaudiooutput.cpp in Sources */,
+				FF4576F7144E130C00C765B4 /* Mutex.cpp in Sources */,
+				FF45774E144E22B200C765B4 /* MP3InputS.cpp in Sources */,
+				FF45774C144E22AB00C765B4 /* AInputS.cpp in Sources */,
+				FF457753144E22DE00C765B4 /* AOutputS.cpp in Sources */,
+				FF457754144E22DE00C765B4 /* VorbisOutputS.cpp in Sources */,
+				FF4576F8144E130C00C765B4 /* PAaudiooutput.cpp in Sources */,
+				FF457750144E22BE00C765B4 /* VorbisInputS.cpp in Sources */,
+				FF4576F9144E130C00C765B4 /* Player.cpp in Sources */,
+				FF4576FA144E130C00C765B4 /* ProcessedStretch.cpp in Sources */,
+				FF4576FB144E130C00C765B4 /* Stretch.cpp in Sources */,
+				FF4576FC144E130C00C765B4 /* Thread.cpp in Sources */,
+				FF4576FE144E173900C765B4 /* XMLwrapper.cpp in Sources */,
+				FF45773A144E215900C765B4 /* GUI.cxx in Sources */,
+				FF45773D144E216100C765B4 /* FreeEditUI.cxx in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FF4576AF144E08CA00C765B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+			};
+			name = Debug;
+		};
+		FF4576B0144E08CA00C765B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+			};
+			name = Release;
+		};
+		FF4576E2144E0D3000C765B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/ApplicationServices.framework/Versions/A/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/fltk/1.3.0/lib,
+					/usr/local/Cellar/mxml/2.6/lib,
+					/usr/local/Cellar/portaudio/19.20071207/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FF4576E3144E0D3000C765B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/Frameworks/ApplicationServices.framework/Versions/A/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/fltk/1.3.0/lib,
+					/usr/local/Cellar/mxml/2.6/lib,
+					/usr/local/Cellar/portaudio/19.20071207/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF4576AD144E08C800C765B4 /* Build configuration list for PBXProject "paulstretch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4576AF144E08CA00C765B4 /* Debug */,
+				FF4576B0144E08CA00C765B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF4576E1144E0D3000C765B4 /* Build configuration list for PBXNativeTarget "psx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF4576E2144E0D3000C765B4 /* Debug */,
+				FF4576E3144E0D3000C765B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF4576AA144E08C800C765B4 /* Project object */;
+}
