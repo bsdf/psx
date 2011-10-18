@@ -1,0 +1,4 @@
+install homebrew
+> cd ~/psx/
+> cp mxml.rb `brew --prefix`/Library/Formula/
+> brew install mxml fltk libmad libvorbis libogg audiofile fftw portaudio
