@@ -18,10 +18,10 @@ std::string unescape(std::string s);
 
 class DDBox : public Fl_Box {
 public:
-  DDBox(int x, int y, int w, int h, const char *label = 0);
-  int handle(int event);
-  std::string drag_file; 
-  bool new_drag_file; 
+    DDBox(int x, int y, int w, int h, const char *label = 0);
+    int handle(int event);
+    std::string drag_file; 
+    bool new_drag_file; 
 };
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Menu_Bar.H>
@@ -38,284 +38,284 @@ public:
 #include <FL/Fl_Value_Output.H>
 
 class GUI {
-  enum Mode {STOP,PLAY,PAUSE,FREEZE}; 
+    enum Mode {STOP,PLAY,PAUSE,FREEZE}; 
 public:
-  GUI();
-  ~GUI();
-  void open_input_file(const char *filename);
-  void render();
+    GUI();
+    ~GUI();
+    void open_input_file(const char *filename);
+    void render();
 private:
-  Fl_Double_Window* make_window();
+    Fl_Double_Window* make_window();
 public:
-  Fl_Double_Window *window;
-  static Fl_Menu_Item menu_[];
+    Fl_Double_Window *window;
+    static Fl_Menu_Item menu_[];
 private:
-  void cb_Open_i(Fl_Menu_*, void*);
-  static void cb_Open(Fl_Menu_*, void*);
+    void cb_Open_i(Fl_Menu_*, void*);
+    static void cb_Open(Fl_Menu_*, void*);
 public:
-  static Fl_Menu_Item *render_menu;
+    static Fl_Menu_Item *render_menu;
 private:
-  void cb_render_menu_i(Fl_Menu_*, void*);
-  static void cb_render_menu(Fl_Menu_*, void*);
-  void cb_Open1_i(Fl_Menu_*, void*);
-  static void cb_Open1(Fl_Menu_*, void*);
-  void cb_Save_i(Fl_Menu_*, void*);
-  static void cb_Save(Fl_Menu_*, void*);
-  void cb_Exit_i(Fl_Menu_*, void*);
-  static void cb_Exit(Fl_Menu_*, void*);
-  void cb_About_i(Fl_Menu_*, void*);
-  static void cb_About(Fl_Menu_*, void*);
+    void cb_render_menu_i(Fl_Menu_*, void*);
+    static void cb_render_menu(Fl_Menu_*, void*);
+    void cb_Open1_i(Fl_Menu_*, void*);
+    static void cb_Open1(Fl_Menu_*, void*);
+    void cb_Save_i(Fl_Menu_*, void*);
+    static void cb_Save(Fl_Menu_*, void*);
+    void cb_Exit_i(Fl_Menu_*, void*);
+    static void cb_Exit(Fl_Menu_*, void*);
+    void cb_About_i(Fl_Menu_*, void*);
+    static void cb_About(Fl_Menu_*, void*);
 public:
-  Fl_Tabs *tabs_widget;
-  Fl_Slider *stretch_slider;
+    Fl_Tabs *tabs_widget;
+    Fl_Slider *stretch_slider;
 private:
-  void cb_stretch_slider_i(Fl_Slider*, void*);
-  static void cb_stretch_slider(Fl_Slider*, void*);
+    void cb_stretch_slider_i(Fl_Slider*, void*);
+    static void cb_stretch_slider(Fl_Slider*, void*);
 public:
-  Fl_Slider *fftsize_slider;
+    Fl_Slider *fftsize_slider;
 private:
-  void cb_fftsize_slider_i(Fl_Slider*, void*);
-  static void cb_fftsize_slider(Fl_Slider*, void*);
+    void cb_fftsize_slider_i(Fl_Slider*, void*);
+    static void cb_fftsize_slider(Fl_Slider*, void*);
 public:
-  Fl_Choice *mode_choice;
+    Fl_Choice *mode_choice;
 private:
-  void cb_mode_choice_i(Fl_Choice*, void*);
-  static void cb_mode_choice(Fl_Choice*, void*);
-  static Fl_Menu_Item menu_mode_choice[];
+    void cb_mode_choice_i(Fl_Choice*, void*);
+    static void cb_mode_choice(Fl_Choice*, void*);
+    static Fl_Menu_Item menu_mode_choice[];
 public:
-  Fl_Choice *window_choice;
+    Fl_Choice *window_choice;
 private:
-  void cb_window_choice_i(Fl_Choice*, void*);
-  static void cb_window_choice(Fl_Choice*, void*);
-  static Fl_Menu_Item menu_window_choice[];
-  void cb_S_i(Fl_Button*, void*);
-  static void cb_S(Fl_Button*, void*);
+    void cb_window_choice_i(Fl_Choice*, void*);
+    static void cb_window_choice(Fl_Choice*, void*);
+    static Fl_Menu_Item menu_window_choice[];
+    void cb_S_i(Fl_Button*, void*);
+    static void cb_S(Fl_Button*, void*);
 public:
-  Fl_Box *resolution_box;
-  FreeEditUI *stretch_free_edit;
-  FreeEditControls *stretch_multiplier_control;
-  Fl_Slider *onset_slider;
+    Fl_Box *resolution_box;
+    FreeEditUI *stretch_free_edit;
+    FreeEditControls *stretch_multiplier_control;
+    Fl_Slider *onset_slider;
 private:
-  void cb_onset_slider_i(Fl_Slider*, void*);
-  static void cb_onset_slider(Fl_Slider*, void*);
+    void cb_onset_slider_i(Fl_Slider*, void*);
+    static void cb_onset_slider(Fl_Slider*, void*);
 public:
-  Fl_Check_Button *pitch_shift_enabled;
+    Fl_Check_Button *pitch_shift_enabled;
 private:
-  void cb_pitch_shift_enabled_i(Fl_Check_Button*, void*);
-  static void cb_pitch_shift_enabled(Fl_Check_Button*, void*);
+    void cb_pitch_shift_enabled_i(Fl_Check_Button*, void*);
+    static void cb_pitch_shift_enabled(Fl_Check_Button*, void*);
 public:
-  Fl_Counter *pitch_shift_cents;
+    Fl_Counter *pitch_shift_cents;
 private:
-  void cb_pitch_shift_cents_i(Fl_Counter*, void*);
-  static void cb_pitch_shift_cents(Fl_Counter*, void*);
+    void cb_pitch_shift_cents_i(Fl_Counter*, void*);
+    static void cb_pitch_shift_cents(Fl_Counter*, void*);
 public:
-  Fl_Check_Button *octave_enabled;
+    Fl_Check_Button *octave_enabled;
 private:
-  void cb_octave_enabled_i(Fl_Check_Button*, void*);
-  static void cb_octave_enabled(Fl_Check_Button*, void*);
+    void cb_octave_enabled_i(Fl_Check_Button*, void*);
+    static void cb_octave_enabled(Fl_Check_Button*, void*);
 public:
-  Fl_Slider *octave_om2;
+    Fl_Slider *octave_om2;
 private:
-  void cb_octave_om2_i(Fl_Slider*, void*);
-  static void cb_octave_om2(Fl_Slider*, void*);
+    void cb_octave_om2_i(Fl_Slider*, void*);
+    static void cb_octave_om2(Fl_Slider*, void*);
 public:
-  Fl_Slider *octave_om1;
+    Fl_Slider *octave_om1;
 private:
-  void cb_octave_om1_i(Fl_Slider*, void*);
-  static void cb_octave_om1(Fl_Slider*, void*);
+    void cb_octave_om1_i(Fl_Slider*, void*);
+    static void cb_octave_om1(Fl_Slider*, void*);
 public:
-  Fl_Slider *octave_o0;
+    Fl_Slider *octave_o0;
 private:
-  void cb_octave_o0_i(Fl_Slider*, void*);
-  static void cb_octave_o0(Fl_Slider*, void*);
+    void cb_octave_o0_i(Fl_Slider*, void*);
+    static void cb_octave_o0(Fl_Slider*, void*);
 public:
-  Fl_Slider *octave_o1;
+    Fl_Slider *octave_o1;
 private:
-  void cb_octave_o1_i(Fl_Slider*, void*);
-  static void cb_octave_o1(Fl_Slider*, void*);
+    void cb_octave_o1_i(Fl_Slider*, void*);
+    static void cb_octave_o1(Fl_Slider*, void*);
 public:
-  Fl_Slider *octave_o15;
+    Fl_Slider *octave_o15;
 private:
-  void cb_octave_o15_i(Fl_Slider*, void*);
-  static void cb_octave_o15(Fl_Slider*, void*);
+    void cb_octave_o15_i(Fl_Slider*, void*);
+    static void cb_octave_o15(Fl_Slider*, void*);
 public:
-  Fl_Slider *octave_o2;
+    Fl_Slider *octave_o2;
 private:
-  void cb_octave_o2_i(Fl_Slider*, void*);
-  static void cb_octave_o2(Fl_Slider*, void*);
+    void cb_octave_o2_i(Fl_Slider*, void*);
+    static void cb_octave_o2(Fl_Slider*, void*);
 public:
-  Fl_Check_Button *freq_shift_enabled;
+    Fl_Check_Button *freq_shift_enabled;
 private:
-  void cb_freq_shift_enabled_i(Fl_Check_Button*, void*);
-  static void cb_freq_shift_enabled(Fl_Check_Button*, void*);
+    void cb_freq_shift_enabled_i(Fl_Check_Button*, void*);
+    static void cb_freq_shift_enabled(Fl_Check_Button*, void*);
 public:
-  Fl_Counter *freq_shift_Hz;
+    Fl_Counter *freq_shift_Hz;
 private:
-  void cb_freq_shift_Hz_i(Fl_Counter*, void*);
-  static void cb_freq_shift_Hz(Fl_Counter*, void*);
+    void cb_freq_shift_Hz_i(Fl_Counter*, void*);
+    static void cb_freq_shift_Hz(Fl_Counter*, void*);
 public:
-  Fl_Check_Button *compressor_enabled;
+    Fl_Check_Button *compressor_enabled;
 private:
-  void cb_compressor_enabled_i(Fl_Check_Button*, void*);
-  static void cb_compressor_enabled(Fl_Check_Button*, void*);
+    void cb_compressor_enabled_i(Fl_Check_Button*, void*);
+    static void cb_compressor_enabled(Fl_Check_Button*, void*);
 public:
-  Fl_Slider *compressor_power;
+    Fl_Slider *compressor_power;
 private:
-  void cb_compressor_power_i(Fl_Slider*, void*);
-  static void cb_compressor_power(Fl_Slider*, void*);
-  void cb_Volume_i(Fl_Slider*, void*);
-  static void cb_Volume(Fl_Slider*, void*);
+    void cb_compressor_power_i(Fl_Slider*, void*);
+    static void cb_compressor_power(Fl_Slider*, void*);
+    void cb_Volume_i(Fl_Slider*, void*);
+    static void cb_Volume(Fl_Slider*, void*);
 public:
-  Fl_Check_Button *filter_enabled;
+    Fl_Check_Button *filter_enabled;
 private:
-  void cb_filter_enabled_i(Fl_Check_Button*, void*);
-  static void cb_filter_enabled(Fl_Check_Button*, void*);
+    void cb_filter_enabled_i(Fl_Check_Button*, void*);
+    static void cb_filter_enabled(Fl_Check_Button*, void*);
 public:
-  Fl_Value_Input *filter_low;
+    Fl_Value_Input *filter_low;
 private:
-  void cb_filter_low_i(Fl_Value_Input*, void*);
-  static void cb_filter_low(Fl_Value_Input*, void*);
+    void cb_filter_low_i(Fl_Value_Input*, void*);
+    static void cb_filter_low(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *filter_high;
+    Fl_Value_Input *filter_high;
 private:
-  void cb_filter_high_i(Fl_Value_Input*, void*);
-  static void cb_filter_high(Fl_Value_Input*, void*);
+    void cb_filter_high_i(Fl_Value_Input*, void*);
+    static void cb_filter_high(Fl_Value_Input*, void*);
 public:
-  Fl_Check_Button *filter_stop;
+    Fl_Check_Button *filter_stop;
 private:
-  void cb_filter_stop_i(Fl_Check_Button*, void*);
-  static void cb_filter_stop(Fl_Check_Button*, void*);
+    void cb_filter_stop_i(Fl_Check_Button*, void*);
+    static void cb_filter_stop(Fl_Check_Button*, void*);
 public:
-  Fl_Slider *filter_hdamp;
+    Fl_Slider *filter_hdamp;
 private:
-  void cb_filter_hdamp_i(Fl_Slider*, void*);
-  static void cb_filter_hdamp(Fl_Slider*, void*);
+    void cb_filter_hdamp_i(Fl_Slider*, void*);
+    static void cb_filter_hdamp(Fl_Slider*, void*);
 public:
-  Fl_Check_Button *harmonics_enabled;
+    Fl_Check_Button *harmonics_enabled;
 private:
-  void cb_harmonics_enabled_i(Fl_Check_Button*, void*);
-  static void cb_harmonics_enabled(Fl_Check_Button*, void*);
+    void cb_harmonics_enabled_i(Fl_Check_Button*, void*);
+    static void cb_harmonics_enabled(Fl_Check_Button*, void*);
 public:
-  Fl_Value_Input *harmonics_freq;
+    Fl_Value_Input *harmonics_freq;
 private:
-  void cb_harmonics_freq_i(Fl_Value_Input*, void*);
-  static void cb_harmonics_freq(Fl_Value_Input*, void*);
+    void cb_harmonics_freq_i(Fl_Value_Input*, void*);
+    static void cb_harmonics_freq(Fl_Value_Input*, void*);
 public:
-  Fl_Value_Input *harmonics_bandwidth;
+    Fl_Value_Input *harmonics_bandwidth;
 private:
-  void cb_harmonics_bandwidth_i(Fl_Value_Input*, void*);
-  static void cb_harmonics_bandwidth(Fl_Value_Input*, void*);
+    void cb_harmonics_bandwidth_i(Fl_Value_Input*, void*);
+    static void cb_harmonics_bandwidth(Fl_Value_Input*, void*);
 public:
-  Fl_Check_Button *harmonics_gauss;
+    Fl_Check_Button *harmonics_gauss;
 private:
-  void cb_harmonics_gauss_i(Fl_Check_Button*, void*);
-  static void cb_harmonics_gauss(Fl_Check_Button*, void*);
+    void cb_harmonics_gauss_i(Fl_Check_Button*, void*);
+    static void cb_harmonics_gauss(Fl_Check_Button*, void*);
 public:
-  Fl_Counter *harmonics_nharmonics;
+    Fl_Counter *harmonics_nharmonics;
 private:
-  void cb_harmonics_nharmonics_i(Fl_Counter*, void*);
-  static void cb_harmonics_nharmonics(Fl_Counter*, void*);
+    void cb_harmonics_nharmonics_i(Fl_Counter*, void*);
+    static void cb_harmonics_nharmonics(Fl_Counter*, void*);
 public:
-  Fl_Check_Button *spread_enabled;
+    Fl_Check_Button *spread_enabled;
 private:
-  void cb_spread_enabled_i(Fl_Check_Button*, void*);
-  static void cb_spread_enabled(Fl_Check_Button*, void*);
+    void cb_spread_enabled_i(Fl_Check_Button*, void*);
+    static void cb_spread_enabled(Fl_Check_Button*, void*);
 public:
-  Fl_Slider *spread_bandwidth;
+    Fl_Slider *spread_bandwidth;
 private:
-  void cb_spread_bandwidth_i(Fl_Slider*, void*);
-  static void cb_spread_bandwidth(Fl_Slider*, void*);
+    void cb_spread_bandwidth_i(Fl_Slider*, void*);
+    static void cb_spread_bandwidth(Fl_Slider*, void*);
 public:
-  FreeEditUI *filter_free_edit;
-  FreeEditControls *arbitrary_filter_control;
-  Fl_Check_Button *tonal_vs_noise_enabled;
+    FreeEditUI *filter_free_edit;
+    FreeEditControls *arbitrary_filter_control;
+    Fl_Check_Button *tonal_vs_noise_enabled;
 private:
-  void cb_tonal_vs_noise_enabled_i(Fl_Check_Button*, void*);
-  static void cb_tonal_vs_noise_enabled(Fl_Check_Button*, void*);
+    void cb_tonal_vs_noise_enabled_i(Fl_Check_Button*, void*);
+    static void cb_tonal_vs_noise_enabled(Fl_Check_Button*, void*);
 public:
-  Fl_Slider *tonal_vs_noise_bandwidth;
+    Fl_Slider *tonal_vs_noise_bandwidth;
 private:
-  void cb_tonal_vs_noise_bandwidth_i(Fl_Slider*, void*);
-  static void cb_tonal_vs_noise_bandwidth(Fl_Slider*, void*);
+    void cb_tonal_vs_noise_bandwidth_i(Fl_Slider*, void*);
+    static void cb_tonal_vs_noise_bandwidth(Fl_Slider*, void*);
 public:
-  Fl_Slider *tonal_vs_noise_preserve;
+    Fl_Slider *tonal_vs_noise_preserve;
 private:
-  void cb_tonal_vs_noise_preserve_i(Fl_Slider*, void*);
-  static void cb_tonal_vs_noise_preserve(Fl_Slider*, void*);
+    void cb_tonal_vs_noise_preserve_i(Fl_Slider*, void*);
+    static void cb_tonal_vs_noise_preserve(Fl_Slider*, void*);
 public:
-  FreeEditUI *binaural_free_edit;
-  Fl_Slider *bbpar_mono;
+    FreeEditUI *binaural_free_edit;
+    Fl_Slider *bbpar_mono;
 private:
-  void cb_bbpar_mono_i(Fl_Slider*, void*);
-  static void cb_bbpar_mono(Fl_Slider*, void*);
+    void cb_bbpar_mono_i(Fl_Slider*, void*);
+    static void cb_bbpar_mono(Fl_Slider*, void*);
 public:
-  FreeEditControls *binaural_beats_control;
-  Fl_Choice *bbpar_stereo_mode;
+    FreeEditControls *binaural_beats_control;
+    Fl_Choice *bbpar_stereo_mode;
 private:
-  void cb_bbpar_stereo_mode_i(Fl_Choice*, void*);
-  static void cb_bbpar_stereo_mode(Fl_Choice*, void*);
-  static Fl_Menu_Item menu_bbpar_stereo_mode[];
+    void cb_bbpar_stereo_mode_i(Fl_Choice*, void*);
+    static void cb_bbpar_stereo_mode(Fl_Choice*, void*);
+    static Fl_Menu_Item menu_bbpar_stereo_mode[];
 public:
-  Fl_Group *write_to_file_group;
-  Fl_Button *render_button;
+    Fl_Group *write_to_file_group;
+    Fl_Button *render_button;
 private:
-  void cb_render_button_i(Fl_Button*, void*);
-  static void cb_render_button(Fl_Button*, void*);
+    void cb_render_button_i(Fl_Button*, void*);
+    static void cb_render_button(Fl_Button*, void*);
 public:
-  Fl_Value_Slider *render_percent_slider;
-  Fl_Button *cancel_render_button;
+    Fl_Value_Slider *render_percent_slider;
+    Fl_Button *cancel_render_button;
 private:
-  void cb_cancel_render_button_i(Fl_Button*, void*);
-  static void cb_cancel_render_button(Fl_Button*, void*);
-  void cb_selection_i(Fl_Button*, void*);
-  static void cb_selection(Fl_Button*, void*);
-  void cb_selection1_i(Fl_Button*, void*);
-  static void cb_selection1(Fl_Button*, void*);
-  void cb_select_i(Fl_Button*, void*);
-  static void cb_select(Fl_Button*, void*);
+    void cb_cancel_render_button_i(Fl_Button*, void*);
+    static void cb_cancel_render_button(Fl_Button*, void*);
+    void cb_selection_i(Fl_Button*, void*);
+    static void cb_selection(Fl_Button*, void*);
+    void cb_selection1_i(Fl_Button*, void*);
+    static void cb_selection1(Fl_Button*, void*);
+    void cb_select_i(Fl_Button*, void*);
+    static void cb_select(Fl_Button*, void*);
 public:
-  Fl_Value_Output *selection_pos1;
-  Fl_Value_Output *selection_pos2;
+    Fl_Value_Output *selection_pos1;
+    Fl_Value_Output *selection_pos2;
 private:
-  void cb_32bit_i(Fl_Check_Button*, void*);
-  static void cb_32bit(Fl_Check_Button*, void*);
+    void cb_32bit_i(Fl_Check_Button*, void*);
+    static void cb_32bit(Fl_Check_Button*, void*);
 public:
-  DDBox *infilename_output;
-  Fl_Button *play_button;
+    DDBox *infilename_output;
+    Fl_Button *play_button;
 private:
-  void cb_play_button_i(Fl_Button*, void*);
-  static void cb_play_button(Fl_Button*, void*);
+    void cb_play_button_i(Fl_Button*, void*);
+    static void cb_play_button(Fl_Button*, void*);
 public:
-  Fl_Button *freeze_button;
+    Fl_Button *freeze_button;
 private:
-  void cb_freeze_button_i(Fl_Button*, void*);
-  static void cb_freeze_button(Fl_Button*, void*);
-  void cb__i(Fl_Button*, void*);
-  static void cb_(Fl_Button*, void*);
-  void cb_square_i(Fl_Button*, void*);
-  static void cb_square(Fl_Button*, void*);
+    void cb_freeze_button_i(Fl_Button*, void*);
+    static void cb_freeze_button(Fl_Button*, void*);
+    void cb__i(Fl_Button*, void*);
+    static void cb_(Fl_Button*, void*);
+    void cb_square_i(Fl_Button*, void*);
+    static void cb_square(Fl_Button*, void*);
 public:
-  Fl_Value_Slider *seek_slider;
+    Fl_Value_Slider *seek_slider;
 private:
-  void cb_seek_slider_i(Fl_Value_Slider*, void*);
-  static void cb_seek_slider(Fl_Value_Slider*, void*);
+    void cb_seek_slider_i(Fl_Value_Slider*, void*);
+    static void cb_seek_slider(Fl_Value_Slider*, void*);
 public:
-  Fl_Double_Window *aboutwindow;
+    Fl_Double_Window *aboutwindow;
 private:
-  void cb_OK_i(Fl_Button*, void*);
-  static void cb_OK(Fl_Button*, void*);
-  void set_mode(Mode mode);
+    void cb_OK_i(Fl_Button*, void*);
+    static void cb_OK(Fl_Button*, void*);
+    void set_mode(Mode mode);
 public:
-  void refresh();
-  void refreshgui();
-  void tickrefresh();
-  static void tickdraw(GUI *o);
-  static void tick(void *v);
+    void refresh();
+    void refreshgui();
+    void tickrefresh();
+    static void tickdraw(GUI *o);
+    static void tick(void *v);
 private:
-  Control control; 
-  bool playing_for_button; 
-  bool rendering; 
-  bool eof_for_button; 
+    Control control; 
+    bool playing_for_button; 
+    bool rendering; 
+    bool eof_for_button; 
 };
 bool file_exists(const char *filename);
 int main(int argc, char *argv[]);

@@ -8,1345 +8,1345 @@
 #include <math.h>
 
 int hex4n(char c) {
-  if (c>96) c-=32;
-if ((c>='0')||(c<='9')) return (c-'0');
-if ((c>='A')||(c<='F')) return (c-'A')+10;
-
-return 0;
+    if (c>96) c-=32;
+    if ((c>='0')||(c<='9')) return (c-'0');
+    if ((c>='A')||(c<='F')) return (c-'A')+10;
+    
+    return 0;
 }
 
 std::string unescape(std::string s) {
-  std::string result;
-int slen=s.size();
-s+="    ";
-int sk=0;
-while (sk<slen){
-	char c=s[sk];
-	if (c=='%'){
-		char c1=s[++sk];
-		char c2=s[++sk];
-		result+=(char)(16*hex4n(c1)+hex4n(c2));
-		sk++;
-	}else{
-		result+=c;
-		sk++;
-	};
-};
-
-
-//printf("%s\n%s\n",s.c_str(),result.c_str());
-return result;
+    std::string result;
+    int slen=s.size();
+    s+="    ";
+    int sk=0;
+    while (sk<slen){
+        char c=s[sk];
+        if (c=='%'){
+            char c1=s[++sk];
+            char c2=s[++sk];
+            result+=(char)(16*hex4n(c1)+hex4n(c2));
+            sk++;
+        }else{
+            result+=c;
+            sk++;
+        };
+    };
+    
+    
+    //printf("%s\n%s\n",s.c_str(),result.c_str());
+    return result;
 }
 
 DDBox::DDBox(int x, int y, int w, int h, const char *label ):Fl_Box(x,y,w,h,label) {
-  new_drag_file=false;
+    new_drag_file=false;
 }
 
 int DDBox::handle(int event) {
-  if ((event==FL_DND_ENTER)||(event==FL_DND_DRAG)||(event==FL_DND_RELEASE)) return 1;
-if (event==FL_PASTE){
-	const char *url=Fl::event_text();
-	if (strstr(url,"file://")!=url) return 0;//is not a file
-	std::string filename=url+7;
-	for (int i=0;i<filename.size();i++) if (filename[i]<32) filename[i]=0;
-	drag_file=unescape(filename);
-	new_drag_file=true;
-	return 1;
-};
-return Fl_Box::handle(event);
+    if ((event==FL_DND_ENTER)||(event==FL_DND_DRAG)||(event==FL_DND_RELEASE)) return 1;
+    if (event==FL_PASTE){
+        const char *url=Fl::event_text();
+        if (strstr(url,"file://")!=url) return 0;//is not a file
+        std::string filename=url+7;
+        for (int i=0;i<filename.size();i++) if (filename[i]<32) filename[i]=0;
+        drag_file=unescape(filename);
+        new_drag_file=true;
+        return 1;
+    };
+    return Fl_Box::handle(event);
 }
 
 void GUI::cb_Open_i(Fl_Menu_*, void*) {
-  char *newfile = fl_file_chooser("Open Audio(ogg,wav,mp3) File?", NULL, NULL);
-  if (newfile != NULL) {
-  	open_input_file(newfile);
-  	
-  };
-  selection_pos1->value(0.0);
-  selection_pos2->value(100.0);
-
-  refresh();
+    char *newfile = fl_file_chooser("Open Audio(ogg,wav,mp3) File?", NULL, NULL);
+    if (newfile != NULL) {
+        open_input_file(newfile);
+        
+    };
+    selection_pos1->value(0.0);
+    selection_pos2->value(100.0);
+    
+    refresh();
 }
 void GUI::cb_Open(Fl_Menu_* o, void* v) {
-  ((GUI*)(o->parent()->user_data()))->cb_Open_i(o,v);
+    ((GUI*)(o->parent()->user_data()))->cb_Open_i(o,v);
 }
 
 void GUI::cb_render_menu_i(Fl_Menu_*, void*) {
-  selection_pos1->value(0.0);
-selection_pos2->value(100.0);
-tabs_widget->value(write_to_file_group);
-render();
+    selection_pos1->value(0.0);
+    selection_pos2->value(100.0);
+    tabs_widget->value(write_to_file_group);
+    render();
 }
 void GUI::cb_render_menu(Fl_Menu_* o, void* v) {
-  ((GUI*)(o->parent()->user_data()))->cb_render_menu_i(o,v);
+    ((GUI*)(o->parent()->user_data()))->cb_render_menu_i(o,v);
 }
 
 void GUI::cb_Open1_i(Fl_Menu_*, void*) {
-  char *newfile = fl_file_chooser("Open Parameter File?", "PaulStretch XML (*.psx)\tAll Files (*)", NULL);
-  if (newfile != NULL) {
-	set_mode(STOP);
-	control.stopplay();
- 
-  	if (!control.load_parameters(newfile)){
-  		fl_alert("Error: Could not load parameter file:\n%s",newfile);
-  	};
-  };
-  refreshgui();
-  refresh();
+    char *newfile = fl_file_chooser("Open Parameter File?", "PaulStretch XML (*.psx)\tAll Files (*)", NULL);
+    if (newfile != NULL) {
+        set_mode(STOP);
+        control.stopplay();
+        
+        if (!control.load_parameters(newfile)){
+            fl_alert("Error: Could not load parameter file:\n%s",newfile);
+        };
+    };
+    refreshgui();
+    refresh();
 }
 void GUI::cb_Open1(Fl_Menu_* o, void* v) {
-  ((GUI*)(o->parent()->user_data()))->cb_Open1_i(o,v);
+    ((GUI*)(o->parent()->user_data()))->cb_Open1_i(o,v);
 }
 
 void GUI::cb_Save_i(Fl_Menu_*, void*) {
-  char *newfile = fl_file_chooser("Save Parameters(paulstretch) File?", "PaulStretch XML (*.psx)\tAll Files (*)", NULL);
-  if (newfile != NULL) {
-  	if (file_exists(newfile)){
-  		if (!fl_choice("The file exists. \nOverwrite it?","No","Yes",NULL)) return;
-  	};
-  	control.save_parameters(newfile);
-  };
-  refresh();
+    char *newfile = fl_file_chooser("Save Parameters(paulstretch) File?", "PaulStretch XML (*.psx)\tAll Files (*)", NULL);
+    if (newfile != NULL) {
+        if (file_exists(newfile)){
+            if (!fl_choice("The file exists. \nOverwrite it?","No","Yes",NULL)) return;
+        };
+        control.save_parameters(newfile);
+    };
+    refresh();
 }
 void GUI::cb_Save(Fl_Menu_* o, void* v) {
-  ((GUI*)(o->parent()->user_data()))->cb_Save_i(o,v);
+    ((GUI*)(o->parent()->user_data()))->cb_Save_i(o,v);
 }
 
 void GUI::cb_Exit_i(Fl_Menu_*, void*) {
-  window->hide();
+    window->hide();
 }
 void GUI::cb_Exit(Fl_Menu_* o, void* v) {
-  ((GUI*)(o->parent()->user_data()))->cb_Exit_i(o,v);
+    ((GUI*)(o->parent()->user_data()))->cb_Exit_i(o,v);
 }
 
 void GUI::cb_About_i(Fl_Menu_*, void*) {
-  aboutwindow->show();
+    aboutwindow->show();
 }
 void GUI::cb_About(Fl_Menu_* o, void* v) {
-  ((GUI*)(o->parent()->user_data()))->cb_About_i(o,v);
+    ((GUI*)(o->parent()->user_data()))->cb_About_i(o,v);
 }
 
 Fl_Menu_Item GUI::menu_[] = {
- {"File", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
- {"Open audio file...", 0,  (Fl_Callback*)GUI::cb_Open, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Render and save audio file...", 0,  (Fl_Callback*)GUI::cb_render_menu, 0, 129, FL_NORMAL_LABEL, 0, 14, 0},
- {"Open Parameters...", 0,  (Fl_Callback*)GUI::cb_Open1, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Save Parameters...", 0,  (Fl_Callback*)GUI::cb_Save, 0, 128, FL_NORMAL_LABEL, 0, 14, 0},
- {"Exit", 0,  (Fl_Callback*)GUI::cb_Exit, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {0,0,0,0,0,0,0,0,0},
- {"About", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
- {"About...", 0,  (Fl_Callback*)GUI::cb_About, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {0,0,0,0,0,0,0,0,0},
- {0,0,0,0,0,0,0,0,0}
+    {"File", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
+    {"Open audio file...", 0,  (Fl_Callback*)GUI::cb_Open, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {"Render and save audio file...", 0,  (Fl_Callback*)GUI::cb_render_menu, 0, 129, FL_NORMAL_LABEL, 0, 14, 0},
+    {"Open Parameters...", 0,  (Fl_Callback*)GUI::cb_Open1, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {"Save Parameters...", 0,  (Fl_Callback*)GUI::cb_Save, 0, 128, FL_NORMAL_LABEL, 0, 14, 0},
+    {"Exit", 0,  (Fl_Callback*)GUI::cb_Exit, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {0,0,0,0,0,0,0,0,0},
+    {"About", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
+    {"About...", 0,  (Fl_Callback*)GUI::cb_About, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0}
 };
 Fl_Menu_Item* GUI::render_menu = GUI::menu_ + 2;
 
 void GUI::cb_stretch_slider_i(Fl_Slider*, void*) {
-  refresh();
-control.update_player_stretch();
+    refresh();
+    control.update_player_stretch();
 }
 void GUI::cb_stretch_slider(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_stretch_slider_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_stretch_slider_i(o,v);
 }
 
 void GUI::cb_fftsize_slider_i(Fl_Slider* o, void*) {
-  refresh();
-o->labelcolor(FL_BLUE);
+    refresh();
+    o->labelcolor(FL_BLUE);
 }
 void GUI::cb_fftsize_slider(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_fftsize_slider_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_fftsize_slider_i(o,v);
 }
 
 void GUI::cb_mode_choice_i(Fl_Choice*, void*) {
-  refresh();
-control.update_player_stretch();
+    refresh();
+    control.update_player_stretch();
 }
 void GUI::cb_mode_choice(Fl_Choice* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_mode_choice_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_mode_choice_i(o,v);
 }
 
 Fl_Menu_Item GUI::menu_mode_choice[] = {
- {"Stretch", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"HyperStretch", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Shorten", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {0,0,0,0,0,0,0,0,0}
+    {"Stretch", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {"HyperStretch", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {"Shorten", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {0,0,0,0,0,0,0,0,0}
 };
 
 void GUI::cb_window_choice_i(Fl_Choice* o, void*) {
-  FFTWindow w=W_RECTANGULAR;
-switch(o->value()){
-	case 0:
-	   w=W_RECTANGULAR;
-	   break;
-	case 1:
-	   w=W_HAMMING;
-	   break;
-	case 2:
-	   w=W_HANN;
-	   break;
-	case 3:
-	   w=W_BLACKMAN;
-	   break;
-	case 4:
-	   w=W_BLACKMAN_HARRIS;
-	   break;
-};
-
-control.set_window_type(w);
-refresh();
+    FFTWindow w=W_RECTANGULAR;
+    switch(o->value()){
+        case 0:
+            w=W_RECTANGULAR;
+            break;
+        case 1:
+            w=W_HAMMING;
+            break;
+        case 2:
+            w=W_HANN;
+            break;
+        case 3:
+            w=W_BLACKMAN;
+            break;
+        case 4:
+            w=W_BLACKMAN_HARRIS;
+            break;
+    };
+    
+    control.set_window_type(w);
+    refresh();
 }
 void GUI::cb_window_choice(Fl_Choice* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_window_choice_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_window_choice_i(o,v);
 }
 
 Fl_Menu_Item GUI::menu_window_choice[] = {
- {"Rectangular", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Hamming", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Hann", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Blackman", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"BlackmanHarris", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {0,0,0,0,0,0,0,0,0}
+    {"Rectangular", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {"Hamming", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {"Hann", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {"Blackman", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {"BlackmanHarris", 0,  0, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+    {0,0,0,0,0,0,0,0,0}
 };
 
 void GUI::cb_S_i(Fl_Button*, void*) {
-  char tmp[100];
-snprintf(tmp,100,"%g",control.get_stretch());
-const char *result=fl_input("Enter the stretch value",tmp);
-if (!result) return;
-
-double str=atof(result);
-if (str<1e-4) return;
-
-double stc=control.get_stretch_control(str,mode_choice->value());
-
-if ((stc<1e-4)||(stc>1.0)) return;
-stretch_slider->value(stc);
-stretch_slider->do_callback();
+    char tmp[100];
+    snprintf(tmp,100,"%g",control.get_stretch());
+    const char *result=fl_input("Enter the stretch value",tmp);
+    if (!result) return;
+    
+    double str=atof(result);
+    if (str<1e-4) return;
+    
+    double stc=control.get_stretch_control(str,mode_choice->value());
+    
+    if ((stc<1e-4)||(stc>1.0)) return;
+    stretch_slider->value(stc);
+    stretch_slider->do_callback();
 }
 void GUI::cb_S(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_S_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_S_i(o,v);
 }
 
 void GUI::cb_onset_slider_i(Fl_Slider*, void*) {
-  refresh();
-control.update_player_stretch();
+    refresh();
+    control.update_player_stretch();
 }
 void GUI::cb_onset_slider(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_onset_slider_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_onset_slider_i(o,v);
 }
 
 void GUI::cb_pitch_shift_enabled_i(Fl_Check_Button* o, void*) {
-  control.ppar.pitch_shift.enabled=o->value();
-control.update_process_parameters();
+    control.ppar.pitch_shift.enabled=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_pitch_shift_enabled(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_pitch_shift_enabled_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_pitch_shift_enabled_i(o,v);
 }
 
 void GUI::cb_pitch_shift_cents_i(Fl_Counter* o, void*) {
-  control.ppar.pitch_shift.cents=(int)o->value();
-control.update_process_parameters();
+    control.ppar.pitch_shift.cents=(int)o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_pitch_shift_cents(Fl_Counter* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_pitch_shift_cents_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_pitch_shift_cents_i(o,v);
 }
 
 void GUI::cb_octave_enabled_i(Fl_Check_Button* o, void*) {
-  control.ppar.octave.enabled=o->value();
-control.update_process_parameters();
+    control.ppar.octave.enabled=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_octave_enabled(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_enabled_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_enabled_i(o,v);
 }
 
 void GUI::cb_octave_om2_i(Fl_Slider* o, void*) {
-  control.ppar.octave.om2=pow(o->value(),2.0);
-control.update_process_parameters();
+    control.ppar.octave.om2=pow(o->value(),2.0);
+    control.update_process_parameters();
 }
 void GUI::cb_octave_om2(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_om2_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_om2_i(o,v);
 }
 
 void GUI::cb_octave_om1_i(Fl_Slider* o, void*) {
-  control.ppar.octave.om1=pow(o->value(),2.0);
-control.update_process_parameters();
+    control.ppar.octave.om1=pow(o->value(),2.0);
+    control.update_process_parameters();
 }
 void GUI::cb_octave_om1(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_om1_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_om1_i(o,v);
 }
 
 void GUI::cb_octave_o0_i(Fl_Slider* o, void*) {
-  control.ppar.octave.o0=pow(o->value(),2.0);
-control.update_process_parameters();
+    control.ppar.octave.o0=pow(o->value(),2.0);
+    control.update_process_parameters();
 }
 void GUI::cb_octave_o0(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_o0_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_o0_i(o,v);
 }
 
 void GUI::cb_octave_o1_i(Fl_Slider* o, void*) {
-  control.ppar.octave.o1=pow(o->value(),2.0);
-control.update_process_parameters();
+    control.ppar.octave.o1=pow(o->value(),2.0);
+    control.update_process_parameters();
 }
 void GUI::cb_octave_o1(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_o1_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_o1_i(o,v);
 }
 
 void GUI::cb_octave_o15_i(Fl_Slider* o, void*) {
-  control.ppar.octave.o15=pow(o->value(),2.0);
-control.update_process_parameters();
+    control.ppar.octave.o15=pow(o->value(),2.0);
+    control.update_process_parameters();
 }
 void GUI::cb_octave_o15(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_o15_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_o15_i(o,v);
 }
 
 void GUI::cb_octave_o2_i(Fl_Slider* o, void*) {
-  control.ppar.octave.o2=pow(o->value(),2.0);
-control.update_process_parameters();
+    control.ppar.octave.o2=pow(o->value(),2.0);
+    control.update_process_parameters();
 }
 void GUI::cb_octave_o2(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_o2_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_octave_o2_i(o,v);
 }
 
 void GUI::cb_freq_shift_enabled_i(Fl_Check_Button* o, void*) {
-  control.ppar.freq_shift.enabled=o->value();
-control.update_process_parameters();
+    control.ppar.freq_shift.enabled=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_freq_shift_enabled(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_freq_shift_enabled_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_freq_shift_enabled_i(o,v);
 }
 
 void GUI::cb_freq_shift_Hz_i(Fl_Counter* o, void*) {
-  control.ppar.freq_shift.Hz=(int)o->value();
-control.update_process_parameters();
+    control.ppar.freq_shift.Hz=(int)o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_freq_shift_Hz(Fl_Counter* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_freq_shift_Hz_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_freq_shift_Hz_i(o,v);
 }
 
 void GUI::cb_compressor_enabled_i(Fl_Check_Button* o, void*) {
-  control.ppar.compressor.enabled=o->value();
-control.update_process_parameters();
+    control.ppar.compressor.enabled=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_compressor_enabled(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_compressor_enabled_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_compressor_enabled_i(o,v);
 }
 
 void GUI::cb_compressor_power_i(Fl_Slider* o, void*) {
-  control.ppar.compressor.power=o->value();
-control.update_process_parameters();
+    control.ppar.compressor.power=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_compressor_power(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_compressor_power_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_compressor_power_i(o,v);
 }
 
 void GUI::cb_Volume_i(Fl_Slider* o, void*) {
-  REALTYPE x=o->value();
-x=pow(10.0,pow(x,1.5)-1.0)-0.1;
-control.set_volume(x);
+    REALTYPE x=o->value();
+    x=pow(10.0,pow(x,1.5)-1.0)-0.1;
+    control.set_volume(x);
 }
 void GUI::cb_Volume(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_Volume_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_Volume_i(o,v);
 }
 
 void GUI::cb_filter_enabled_i(Fl_Check_Button* o, void*) {
-  control.ppar.filter.enabled=o->value();
-control.update_process_parameters();
+    control.ppar.filter.enabled=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_filter_enabled(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_enabled_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_enabled_i(o,v);
 }
 
 void GUI::cb_filter_low_i(Fl_Value_Input* o, void*) {
-  control.ppar.filter.low=o->value();
-control.update_process_parameters();
+    control.ppar.filter.low=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_filter_low(Fl_Value_Input* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_low_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_low_i(o,v);
 }
 
 void GUI::cb_filter_high_i(Fl_Value_Input* o, void*) {
-  control.ppar.filter.high=o->value();
-control.update_process_parameters();
+    control.ppar.filter.high=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_filter_high(Fl_Value_Input* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_high_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_high_i(o,v);
 }
 
 void GUI::cb_filter_stop_i(Fl_Check_Button* o, void*) {
-  control.ppar.filter.stop=o->value();
-control.update_process_parameters();
+    control.ppar.filter.stop=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_filter_stop(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_stop_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_stop_i(o,v);
 }
 
 void GUI::cb_filter_hdamp_i(Fl_Slider* o, void*) {
-  control.ppar.filter.hdamp=o->value();
-control.update_process_parameters();
+    control.ppar.filter.hdamp=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_filter_hdamp(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_hdamp_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_filter_hdamp_i(o,v);
 }
 
 void GUI::cb_harmonics_enabled_i(Fl_Check_Button* o, void*) {
-  control.ppar.harmonics.enabled=o->value();
-control.update_process_parameters();
+    control.ppar.harmonics.enabled=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_harmonics_enabled(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_enabled_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_enabled_i(o,v);
 }
 
 void GUI::cb_harmonics_freq_i(Fl_Value_Input* o, void*) {
-  control.ppar.harmonics.freq=o->value();
-control.update_process_parameters();
+    control.ppar.harmonics.freq=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_harmonics_freq(Fl_Value_Input* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_freq_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_freq_i(o,v);
 }
 
 void GUI::cb_harmonics_bandwidth_i(Fl_Value_Input* o, void*) {
-  control.ppar.harmonics.bandwidth=o->value();
-control.update_process_parameters();
+    control.ppar.harmonics.bandwidth=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_harmonics_bandwidth(Fl_Value_Input* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_bandwidth_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_bandwidth_i(o,v);
 }
 
 void GUI::cb_harmonics_gauss_i(Fl_Check_Button* o, void*) {
-  control.ppar.harmonics.gauss=o->value();
-control.update_process_parameters();
+    control.ppar.harmonics.gauss=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_harmonics_gauss(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_gauss_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_gauss_i(o,v);
 }
 
 void GUI::cb_harmonics_nharmonics_i(Fl_Counter* o, void*) {
-  control.ppar.harmonics.nharmonics=(int)o->value();
-control.update_process_parameters();
+    control.ppar.harmonics.nharmonics=(int)o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_harmonics_nharmonics(Fl_Counter* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_nharmonics_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_harmonics_nharmonics_i(o,v);
 }
 
 void GUI::cb_spread_enabled_i(Fl_Check_Button* o, void*) {
-  control.ppar.spread.enabled=o->value();
-control.update_process_parameters();
+    control.ppar.spread.enabled=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_spread_enabled(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_spread_enabled_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_spread_enabled_i(o,v);
 }
 
 void GUI::cb_spread_bandwidth_i(Fl_Slider* o, void*) {
-  control.ppar.spread.bandwidth=o->value();
-control.update_process_parameters();
+    control.ppar.spread.bandwidth=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_spread_bandwidth(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_spread_bandwidth_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_spread_bandwidth_i(o,v);
 }
 
 void GUI::cb_tonal_vs_noise_enabled_i(Fl_Check_Button* o, void*) {
-  control.ppar.tonal_vs_noise.enabled=o->value();
-control.update_process_parameters();
+    control.ppar.tonal_vs_noise.enabled=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_tonal_vs_noise_enabled(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_tonal_vs_noise_enabled_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_tonal_vs_noise_enabled_i(o,v);
 }
 
 void GUI::cb_tonal_vs_noise_bandwidth_i(Fl_Slider* o, void*) {
-  control.ppar.tonal_vs_noise.bandwidth=o->value();
-control.update_process_parameters();
+    control.ppar.tonal_vs_noise.bandwidth=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_tonal_vs_noise_bandwidth(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_tonal_vs_noise_bandwidth_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_tonal_vs_noise_bandwidth_i(o,v);
 }
 
 void GUI::cb_tonal_vs_noise_preserve_i(Fl_Slider* o, void*) {
-  control.ppar.tonal_vs_noise.preserve=o->value();
-control.update_process_parameters();
+    control.ppar.tonal_vs_noise.preserve=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_tonal_vs_noise_preserve(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_tonal_vs_noise_preserve_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->parent()->user_data()))->cb_tonal_vs_noise_preserve_i(o,v);
 }
 
 void GUI::cb_bbpar_mono_i(Fl_Slider* o, void*) {
-  control.bbpar.mono=o->value();
-control.update_process_parameters();
+    control.bbpar.mono=o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_bbpar_mono(Fl_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_bbpar_mono_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_bbpar_mono_i(o,v);
 }
 
 void GUI::cb_bbpar_stereo_mode_i(Fl_Choice* o, void*) {
-  control.bbpar.stereo_mode=(BB_STEREO_MODE)o->value();
-control.update_process_parameters();
+    control.bbpar.stereo_mode=(BB_STEREO_MODE)o->value();
+    control.update_process_parameters();
 }
 void GUI::cb_bbpar_stereo_mode(Fl_Choice* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_bbpar_stereo_mode_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_bbpar_stereo_mode_i(o,v);
 }
 
 Fl_Menu_Item GUI::menu_bbpar_stereo_mode[] = {
- {"LeftRight", 0,  0, 0, 0, FL_NORMAL_LABEL, 1, 14, 0},
- {"RightLeft", 0,  0, 0, 0, FL_NORMAL_LABEL, 1, 14, 0},
- {"Symmetric", 0,  0, 0, 0, FL_NORMAL_LABEL, 1, 14, 0},
- {0,0,0,0,0,0,0,0,0}
+    {"LeftRight", 0,  0, 0, 0, FL_NORMAL_LABEL, 1, 14, 0},
+    {"RightLeft", 0,  0, 0, 0, FL_NORMAL_LABEL, 1, 14, 0},
+    {"Symmetric", 0,  0, 0, 0, FL_NORMAL_LABEL, 1, 14, 0},
+    {0,0,0,0,0,0,0,0,0}
 };
 
 void GUI::cb_render_button_i(Fl_Button*, void*) {
-  render();
+    render();
 }
 void GUI::cb_render_button(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_render_button_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_render_button_i(o,v);
 }
 
 void GUI::cb_cancel_render_button_i(Fl_Button*, void*) {
-  if (fl_choice("Cancel audio rendering?","No","Yes",NULL)) control.info.cancel_render=true;
+    if (fl_choice("Cancel audio rendering?","No","Yes",NULL)) control.info.cancel_render=true;
 }
 void GUI::cb_cancel_render_button(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_cancel_render_button_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_cancel_render_button_i(o,v);
 }
 
 void GUI::cb_selection_i(Fl_Button*, void*) {
-  selection_pos1->value(seek_slider->value());
+    selection_pos1->value(seek_slider->value());
 }
 void GUI::cb_selection(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_selection_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_selection_i(o,v);
 }
 
 void GUI::cb_selection1_i(Fl_Button*, void*) {
-  selection_pos2->value(seek_slider->value());
+    selection_pos2->value(seek_slider->value());
 }
 void GUI::cb_selection1(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_selection1_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_selection1_i(o,v);
 }
 
 void GUI::cb_select_i(Fl_Button*, void*) {
-  selection_pos1->value(0.0);
-selection_pos2->value(100.0);
+    selection_pos1->value(0.0);
+    selection_pos2->value(100.0);
 }
 void GUI::cb_select(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_select_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_select_i(o,v);
 }
 
 void GUI::cb_32bit_i(Fl_Check_Button* o, void*) {
-  control.wav32bit=o->value();
+    control.wav32bit=o->value();
 }
 void GUI::cb_32bit(Fl_Check_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_32bit_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_32bit_i(o,v);
 }
 
 void GUI::cb_play_button_i(Fl_Button*, void*) {
-  if (control.playing_eof()&&(seek_slider->value()>99.0)){
-	seek_slider->value(0.0);
-	seek_slider->do_callback();
-};
-set_mode(PLAY);
-playing_for_button=true;
-eof_for_button=true;
-
-bool bypass=false;
-if (Fl::event_button()==FL_RIGHT_MOUSE) bypass=true;
-
-control.startplay(bypass);
+    if (control.playing_eof()&&(seek_slider->value()>99.0)){
+        seek_slider->value(0.0);
+        seek_slider->do_callback();
+    };
+    set_mode(PLAY);
+    playing_for_button=true;
+    eof_for_button=true;
+    
+    bool bypass=false;
+    if (Fl::event_button()==FL_RIGHT_MOUSE) bypass=true;
+    
+    control.startplay(bypass);
 }
 void GUI::cb_play_button(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_play_button_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_play_button_i(o,v);
 }
 
 void GUI::cb_freeze_button_i(Fl_Button*, void*) {
-  control.freezeplay();
-set_mode(FREEZE);
+    control.freezeplay();
+    set_mode(FREEZE);
 }
 void GUI::cb_freeze_button(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_freeze_button_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_freeze_button_i(o,v);
 }
 
 void GUI::cb__i(Fl_Button*, void*) {
-  set_mode(PAUSE);
-control.pauseplay();
+    set_mode(PAUSE);
+    control.pauseplay();
 }
 void GUI::cb_(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb__i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb__i(o,v);
 }
 
 void GUI::cb_square_i(Fl_Button*, void*) {
-  set_mode(STOP);
-control.stopplay();
+    set_mode(STOP);
+    control.stopplay();
 }
 void GUI::cb_square(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_square_i(o,v);
+    ((GUI*)(o->parent()->parent()->parent()->user_data()))->cb_square_i(o,v);
 }
 
 void GUI::cb_seek_slider_i(Fl_Value_Slider* o, void*) {
-  control.set_seek_pos(o->value()/o->maximum());
+    control.set_seek_pos(o->value()/o->maximum());
 }
 void GUI::cb_seek_slider(Fl_Value_Slider* o, void* v) {
-  ((GUI*)(o->parent()->parent()->user_data()))->cb_seek_slider_i(o,v);
+    ((GUI*)(o->parent()->parent()->user_data()))->cb_seek_slider_i(o,v);
 }
 
 void GUI::cb_OK_i(Fl_Button*, void*) {
-  aboutwindow->hide();
+    aboutwindow->hide();
 }
 void GUI::cb_OK(Fl_Button* o, void* v) {
-  ((GUI*)(o->parent()->user_data()))->cb_OK_i(o,v);
+    ((GUI*)(o->parent()->user_data()))->cb_OK_i(o,v);
 }
 
 GUI::GUI() {
-  playing_for_button=false;
-eof_for_button=false;
-rendering=false;
-make_window();
-tick(this);
-refresh();
-set_mode(STOP);
+    playing_for_button=false;
+    eof_for_button=false;
+    rendering=false;
+    make_window();
+    tick(this);
+    refresh();
+    set_mode(STOP);
 }
 
 GUI::~GUI() {
-  Fl::remove_timeout(tick,this);
+    Fl::remove_timeout(tick,this);
 }
 
 void GUI::open_input_file(const char *filename) {
-  const char *ext=fl_filename_ext(filename);
-FILE_TYPE intype=FILE_WAV;
-if ((strcmp(ext,".ogg")==0)||(strcmp(ext,".OGG")==0)||(strcmp(ext,".Ogg")==0)) intype=FILE_VORBIS;
-if ((strcmp(ext,".mp3")==0)||(strcmp(ext,".MP3")==0)||(strcmp(ext,".Mp3")==0)) intype=FILE_MP3;
-bool result=control.set_input_filename(filename,intype);
-if (result) {
-	infilename_output->copy_label(control.get_input_filename_and_info().c_str());
-} else {
-	infilename_output->copy_label("");
-	fl_alert("Error: Could not open audio file:\n%s",filename);
-};
-refresh();
+    const char *ext=fl_filename_ext(filename);
+    FILE_TYPE intype=FILE_WAV;
+    if ((strcmp(ext,".ogg")==0)||(strcmp(ext,".OGG")==0)||(strcmp(ext,".Ogg")==0)) intype=FILE_VORBIS;
+    if ((strcmp(ext,".mp3")==0)||(strcmp(ext,".MP3")==0)||(strcmp(ext,".Mp3")==0)) intype=FILE_MP3;
+    bool result=control.set_input_filename(filename,intype);
+    if (result) {
+        infilename_output->copy_label(control.get_input_filename_and_info().c_str());
+    } else {
+        infilename_output->copy_label("");
+        fl_alert("Error: Could not open audio file:\n%s",filename);
+    };
+    refresh();
 }
 
 void GUI::render() {
-  render_button->deactivate();
-rendering=true;
-render_percent_slider->value(0);
-render_percent_slider->activate();
-cancel_render_button->activate();
-//char defaultfile[FL_PATH_MAX];
-//fl_filename_absolute(defaultfile,control.get_recommanded_output_filename().c_str());
-Fl_File_Chooser *fc=new Fl_File_Chooser(NULL,"Wave files (*.wav)\tOgg Vorbis (*.ogg)",Fl_File_Chooser::CREATE,"Render to audio file...");
-
-fc->preview(0);
-fc->filter_value(0);
-fc->ok_label("Render");
-fc->show();
-while (fc->visible()){
-	Fl::wait();
-};
-
-const char *newfile = fc->value();
-  if (newfile != NULL) {  	
-  	if (file_exists(newfile)){
-  		if (!fl_choice("The file exists. \nOverwrite it?","No","Yes",NULL)) return;
-  	};
-
-	FILE_TYPE type=FILE_WAV;
-	if (fc->filter_value()==1)  type=FILE_VORBIS;
-	const char *ext=fl_filename_ext(newfile);
-	std::string outfilename=newfile;
-	if (strlen(ext)==0){
-		if (type==FILE_VORBIS) outfilename+=".ogg";
+    render_button->deactivate();
+    rendering=true;
+    render_percent_slider->value(0);
+    render_percent_slider->activate();
+    cancel_render_button->activate();
+    //char defaultfile[FL_PATH_MAX];
+    //fl_filename_absolute(defaultfile,control.get_recommanded_output_filename().c_str());
+    Fl_File_Chooser *fc=new Fl_File_Chooser(NULL,"Wave files (*.wav)\tOgg Vorbis (*.ogg)",Fl_File_Chooser::CREATE,"Render to audio file...");
+    
+    fc->preview(0);
+    fc->filter_value(0);
+    fc->ok_label("Render");
+    fc->show();
+    while (fc->visible()){
+        Fl::wait();
+    };
+    
+    const char *newfile = fc->value();
+    if (newfile != NULL) {  	
+        if (file_exists(newfile)){
+            if (!fl_choice("The file exists. \nOverwrite it?","No","Yes",NULL)) return;
+        };
+        
+        FILE_TYPE type=FILE_WAV;
+        if (fc->filter_value()==1)  type=FILE_VORBIS;
+        const char *ext=fl_filename_ext(newfile);
+        std::string outfilename=newfile;
+        if (strlen(ext)==0){
+            if (type==FILE_VORBIS) outfilename+=".ogg";
 			else outfilename+=".wav";
-	};
-	render_percent_slider->copy_label(outfilename.c_str());
-	FILE_TYPE intype=FILE_WAV;
-	{
-		const char *ext=fl_filename_ext(control.get_input_filename().c_str());
- 		if ((strcmp(ext,".ogg")==0)||(strcmp(ext,".OGG")==0)||(strcmp(ext,".Ogg")==0)) intype=FILE_VORBIS;
- 		if ((strcmp(ext,".MP3")==0)||(strcmp(ext,".mp3")==0)||(strcmp(ext,".Mp3")==0)) intype=FILE_MP3;
-  	};
-	const char *outstr=control.Render(control.get_input_filename(),outfilename,type,intype,
-		selection_pos1->value()/100.0,selection_pos2->value()/100.0).c_str();
-	if (strlen(outstr)!=0) fl_alert("%s",outstr);
-  };
-
-delete fc;
-render_button->activate();
-render_percent_slider->value(0);
-render_percent_slider->deactivate();
-render_percent_slider->label("");
-cancel_render_button->deactivate();
-rendering=false;
+        };
+        render_percent_slider->copy_label(outfilename.c_str());
+        FILE_TYPE intype=FILE_WAV;
+        {
+            const char *ext=fl_filename_ext(control.get_input_filename().c_str());
+            if ((strcmp(ext,".ogg")==0)||(strcmp(ext,".OGG")==0)||(strcmp(ext,".Ogg")==0)) intype=FILE_VORBIS;
+            if ((strcmp(ext,".MP3")==0)||(strcmp(ext,".mp3")==0)||(strcmp(ext,".Mp3")==0)) intype=FILE_MP3;
+        };
+        const char *outstr=control.Render(control.get_input_filename(),outfilename,type,intype,
+                                          selection_pos1->value()/100.0,selection_pos2->value()/100.0).c_str();
+        if (strlen(outstr)!=0) fl_alert("%s",outstr);
+    };
+    
+    delete fc;
+    render_button->activate();
+    render_percent_slider->value(0);
+    render_percent_slider->deactivate();
+    render_percent_slider->label("");
+    cancel_render_button->deactivate();
+    rendering=false;
 }
 
 Fl_Double_Window* GUI::make_window() {
-  { Fl_Double_Window* o = window = new Fl_Double_Window(995, 550, "Paul\'s Extreme Sound Stretch");
-    window->user_data((void*)(this));
-    { Fl_Menu_Bar* o = new Fl_Menu_Bar(0, 0, 1015, 20);
-      o->menu(menu_);
-    } // Fl_Menu_Bar* o
-    { tabs_widget = new Fl_Tabs(5, 50, 985, 420);
-      tabs_widget->box(FL_BORDER_BOX);
-      { Fl_Group* o = new Fl_Group(5, 70, 985, 400, "Parameters");
-        { stretch_slider = new Fl_Slider(10, 89, 975, 15, "Stretch:");
-          stretch_slider->type(5);
-          stretch_slider->box(FL_FLAT_BOX);
-          stretch_slider->value(0.29);
-          stretch_slider->callback((Fl_Callback*)cb_stretch_slider);
-          stretch_slider->align(FL_ALIGN_BOTTOM_LEFT);
-        } // Fl_Slider* stretch_slider
-        { fftsize_slider = new Fl_Slider(10, 155, 975, 15, "Window Size:");
-          fftsize_slider->type(5);
-          fftsize_slider->box(FL_FLAT_BOX);
-          fftsize_slider->value(0.47);
-          fftsize_slider->callback((Fl_Callback*)cb_fftsize_slider);
-          fftsize_slider->align(FL_ALIGN_BOTTOM_LEFT);
-        } // Fl_Slider* fftsize_slider
-        { mode_choice = new Fl_Choice(850, 110, 135, 20, "Mode:");
-          mode_choice->down_box(FL_BORDER_BOX);
-          mode_choice->callback((Fl_Callback*)cb_mode_choice);
-          mode_choice->menu(menu_mode_choice);
-        } // Fl_Choice* mode_choice
-        { Fl_Choice* o = window_choice = new Fl_Choice(850, 185, 135, 20, "Type:");
-          window_choice->down_box(FL_BORDER_BOX);
-          window_choice->callback((Fl_Callback*)cb_window_choice);
-          window_choice->when(FL_WHEN_CHANGED);
-          window_choice->menu(menu_window_choice);
-          o->value(2);
-        } // Fl_Choice* window_choice
-        { Fl_Button* o = new Fl_Button(780, 110, 20, 20, "S");
-          o->tooltip("set the stretch to a value");
-          o->callback((Fl_Callback*)cb_S);
+    { Fl_Double_Window* o = window = new Fl_Double_Window(995, 550, "Paul\'s Extreme Sound Stretch");
+        window->user_data((void*)(this));
+        { Fl_Menu_Bar* o = new Fl_Menu_Bar(0, 0, 1015, 20);
+            o->menu(menu_);
+        } // Fl_Menu_Bar* o
+        { tabs_widget = new Fl_Tabs(5, 50, 985, 420);
+            tabs_widget->box(FL_BORDER_BOX);
+            { Fl_Group* o = new Fl_Group(5, 70, 985, 400, "Parameters");
+                { stretch_slider = new Fl_Slider(10, 89, 975, 15, "Stretch:");
+                    stretch_slider->type(5);
+                    stretch_slider->box(FL_FLAT_BOX);
+                    stretch_slider->value(0.29);
+                    stretch_slider->callback((Fl_Callback*)cb_stretch_slider);
+                    stretch_slider->align(FL_ALIGN_BOTTOM_LEFT);
+                } // Fl_Slider* stretch_slider
+                { fftsize_slider = new Fl_Slider(10, 155, 975, 15, "Window Size:");
+                    fftsize_slider->type(5);
+                    fftsize_slider->box(FL_FLAT_BOX);
+                    fftsize_slider->value(0.47);
+                    fftsize_slider->callback((Fl_Callback*)cb_fftsize_slider);
+                    fftsize_slider->align(FL_ALIGN_BOTTOM_LEFT);
+                } // Fl_Slider* fftsize_slider
+                { mode_choice = new Fl_Choice(850, 110, 135, 20, "Mode:");
+                    mode_choice->down_box(FL_BORDER_BOX);
+                    mode_choice->callback((Fl_Callback*)cb_mode_choice);
+                    mode_choice->menu(menu_mode_choice);
+                } // Fl_Choice* mode_choice
+                { Fl_Choice* o = window_choice = new Fl_Choice(850, 185, 135, 20, "Type:");
+                    window_choice->down_box(FL_BORDER_BOX);
+                    window_choice->callback((Fl_Callback*)cb_window_choice);
+                    window_choice->when(FL_WHEN_CHANGED);
+                    window_choice->menu(menu_window_choice);
+                    o->value(2);
+                } // Fl_Choice* window_choice
+                { Fl_Button* o = new Fl_Button(780, 110, 20, 20, "S");
+                    o->tooltip("set the stretch to a value");
+                    o->callback((Fl_Callback*)cb_S);
+                } // Fl_Button* o
+                { resolution_box = new Fl_Box(10, 187, 790, 18);
+                    resolution_box->box(FL_FLAT_BOX);
+                    resolution_box->color((Fl_Color)FL_LIGHT2);
+                    resolution_box->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+                } // Fl_Box* resolution_box
+                { Fl_Group* o = new Fl_Group(10, 245, 975, 220, "Stretch Multiplier");
+                    o->box(FL_THIN_UP_BOX);
+                    o->labeltype(FL_ENGRAVED_LABEL);
+                    { FreeEditUI* o = stretch_free_edit = new FreeEditUI(105, 250, 875, 210, "Graph");
+                        stretch_free_edit->box(FL_FLAT_BOX);
+                        stretch_free_edit->color((Fl_Color)17);
+                        stretch_free_edit->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
+                        stretch_free_edit->labeltype(FL_NORMAL_LABEL);
+                        stretch_free_edit->labelfont(0);
+                        stretch_free_edit->labelsize(14);
+                        stretch_free_edit->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
+                        stretch_free_edit->align(FL_ALIGN_CENTER);
+                        stretch_free_edit->when(FL_WHEN_RELEASE);
+                        o->init(&control.ppar.stretch_multiplier,&control);
+                    } // FreeEditUI* stretch_free_edit
+                    { FreeEditControls* o = stretch_multiplier_control = new FreeEditControls(15, 250, 85, 210);
+                        stretch_multiplier_control->box(FL_BORDER_FRAME);
+                        stretch_multiplier_control->color((Fl_Color)FL_FOREGROUND_COLOR);
+                        stretch_multiplier_control->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
+                        stretch_multiplier_control->labeltype(FL_NORMAL_LABEL);
+                        stretch_multiplier_control->labelfont(0);
+                        stretch_multiplier_control->labelsize(14);
+                        stretch_multiplier_control->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
+                        stretch_multiplier_control->align(192|FL_ALIGN_INSIDE);
+                        stretch_multiplier_control->when(FL_WHEN_RELEASE);
+                        o->init(stretch_free_edit,FE_LINEAR,0,100.0,FE_LOG,0.1,50.0,1.0);
+                        stretch_multiplier_control->end();
+                    } // FreeEditControls* stretch_multiplier_control
+                    o->end();
+                } // Fl_Group* o
+                { onset_slider = new Fl_Slider(135, 213, 140, 15, "Onset sensitivity:");
+                    onset_slider->type(5);
+                    onset_slider->box(FL_FLAT_BOX);
+                    onset_slider->callback((Fl_Callback*)cb_onset_slider);
+                    onset_slider->align(FL_ALIGN_LEFT);
+                } // Fl_Slider* onset_slider
+                o->end();
+            } // Fl_Group* o
+            { Fl_Group* o = new Fl_Group(5, 70, 985, 400, "Process");
+                o->hide();
+                { Fl_Group* o = new Fl_Group(165, 75, 105, 65);
+                    o->box(FL_BORDER_BOX);
+                    { pitch_shift_enabled = new Fl_Check_Button(170, 80, 90, 15, "Pitch Shift");
+                        pitch_shift_enabled->down_box(FL_DOWN_BOX);
+                        pitch_shift_enabled->labelfont(1);
+                        pitch_shift_enabled->callback((Fl_Callback*)cb_pitch_shift_enabled);
+                    } // Fl_Check_Button* pitch_shift_enabled
+                    { Fl_Counter* o = pitch_shift_cents = new Fl_Counter(170, 100, 90, 20, "cents");
+                        pitch_shift_cents->minimum(-3600);
+                        pitch_shift_cents->maximum(3600);
+                        pitch_shift_cents->step(1);
+                        pitch_shift_cents->callback((Fl_Callback*)cb_pitch_shift_cents);
+                        o->lstep(100);
+                    } // Fl_Counter* pitch_shift_cents
+                    o->end();
+                } // Fl_Group* o
+                { Fl_Group* o = new Fl_Group(275, 75, 135, 100);
+                    o->box(FL_BORDER_BOX);
+                    { octave_enabled = new Fl_Check_Button(280, 80, 110, 15, "Octave Mixer");
+                        octave_enabled->down_box(FL_DOWN_BOX);
+                        octave_enabled->labelfont(1);
+                        octave_enabled->callback((Fl_Callback*)cb_octave_enabled);
+                    } // Fl_Check_Button* octave_enabled
+                    { octave_om2 = new Fl_Slider(280, 100, 15, 55, "-2");
+                        octave_om2->tooltip("2 octaves below");
+                        octave_om2->type(4);
+                        octave_om2->minimum(1);
+                        octave_om2->maximum(0);
+                        octave_om2->callback((Fl_Callback*)cb_octave_om2);
+                    } // Fl_Slider* octave_om2
+                    { octave_om1 = new Fl_Slider(300, 100, 15, 55, "-1");
+                        octave_om1->tooltip("1 octave below");
+                        octave_om1->type(4);
+                        octave_om1->minimum(1);
+                        octave_om1->maximum(0);
+                        octave_om1->callback((Fl_Callback*)cb_octave_om1);
+                    } // Fl_Slider* octave_om1
+                    { octave_o0 = new Fl_Slider(320, 100, 15, 55, "0");
+                        octave_o0->tooltip("original (dry)");
+                        octave_o0->type(4);
+                        octave_o0->minimum(1);
+                        octave_o0->maximum(0);
+                        octave_o0->value(1);
+                        octave_o0->callback((Fl_Callback*)cb_octave_o0);
+                    } // Fl_Slider* octave_o0
+                    { octave_o1 = new Fl_Slider(340, 100, 15, 55, "1");
+                        octave_o1->tooltip("1 octave above");
+                        octave_o1->type(4);
+                        octave_o1->minimum(1);
+                        octave_o1->maximum(0);
+                        octave_o1->callback((Fl_Callback*)cb_octave_o1);
+                    } // Fl_Slider* octave_o1
+                    { octave_o15 = new Fl_Slider(360, 100, 15, 55, "1.5");
+                        octave_o15->tooltip("3rd harmonic");
+                        octave_o15->type(4);
+                        octave_o15->minimum(1);
+                        octave_o15->maximum(0);
+                        octave_o15->callback((Fl_Callback*)cb_octave_o15);
+                    } // Fl_Slider* octave_o15
+                    { octave_o2 = new Fl_Slider(380, 100, 15, 55, "2");
+                        octave_o2->tooltip("2 octaves above");
+                        octave_o2->type(4);
+                        octave_o2->minimum(1);
+                        octave_o2->maximum(0);
+                        octave_o2->callback((Fl_Callback*)cb_octave_o2);
+                    } // Fl_Slider* octave_o2
+                    o->end();
+                } // Fl_Group* o
+                { Fl_Group* o = new Fl_Group(165, 140, 105, 65);
+                    o->box(FL_BORDER_BOX);
+                    { freq_shift_enabled = new Fl_Check_Button(170, 145, 90, 15, "Freq Shift");
+                        freq_shift_enabled->down_box(FL_DOWN_BOX);
+                        freq_shift_enabled->labelfont(1);
+                        freq_shift_enabled->callback((Fl_Callback*)cb_freq_shift_enabled);
+                    } // Fl_Check_Button* freq_shift_enabled
+                    { Fl_Counter* o = freq_shift_Hz = new Fl_Counter(170, 165, 90, 20, "Hz");
+                        freq_shift_Hz->minimum(-10000);
+                        freq_shift_Hz->maximum(10000);
+                        freq_shift_Hz->step(1);
+                        freq_shift_Hz->callback((Fl_Callback*)cb_freq_shift_Hz);
+                        o->lstep(100);
+                    } // Fl_Counter* freq_shift_Hz
+                    o->end();
+                } // Fl_Group* o
+                { Fl_Group* o = new Fl_Group(750, 75, 120, 65);
+                    o->box(FL_BORDER_BOX);
+                    { compressor_enabled = new Fl_Check_Button(755, 80, 90, 15, "Compress");
+                        compressor_enabled->down_box(FL_DOWN_BOX);
+                        compressor_enabled->labelfont(1);
+                        compressor_enabled->callback((Fl_Callback*)cb_compressor_enabled);
+                    } // Fl_Check_Button* compressor_enabled
+                    { compressor_power = new Fl_Slider(755, 100, 110, 15, "Power");
+                        compressor_power->type(5);
+                        compressor_power->callback((Fl_Callback*)cb_compressor_power);
+                    } // Fl_Slider* compressor_power
+                    o->end();
+                } // Fl_Group* o
+                { Fl_Slider* o = new Fl_Slider(750, 155, 120, 40, "Volume");
+                    o->type(5);
+                    o->labelfont(1);
+                    o->minimum(0.3);
+                    o->maximum(1.6);
+                    o->value(1);
+                    o->callback((Fl_Callback*)cb_Volume);
+                } // Fl_Slider* o
+                { Fl_Group* o = new Fl_Group(415, 75, 185, 100);
+                    o->box(FL_BORDER_BOX);
+                    { filter_enabled = new Fl_Check_Button(420, 80, 70, 15, "Filter");
+                        filter_enabled->down_box(FL_DOWN_BOX);
+                        filter_enabled->labelfont(1);
+                        filter_enabled->callback((Fl_Callback*)cb_filter_enabled);
+                    } // Fl_Check_Button* filter_enabled
+                    { filter_low = new Fl_Value_Input(420, 101, 100, 24, "Freq1(Hz)");
+                        filter_low->maximum(10000);
+                        filter_low->callback((Fl_Callback*)cb_filter_low);
+                        filter_low->align(FL_ALIGN_RIGHT);
+                    } // Fl_Value_Input* filter_low
+                    { filter_high = new Fl_Value_Input(420, 126, 100, 24, "Freq2(Hz)");
+                        filter_high->maximum(25000);
+                        filter_high->value(22000);
+                        filter_high->callback((Fl_Callback*)cb_filter_high);
+                        filter_high->align(FL_ALIGN_RIGHT);
+                    } // Fl_Value_Input* filter_high
+                    { filter_stop = new Fl_Check_Button(500, 80, 90, 15, "BandStop");
+                        filter_stop->tooltip("band-stop filter");
+                        filter_stop->down_box(FL_DOWN_BOX);
+                        filter_stop->callback((Fl_Callback*)cb_filter_stop);
+                    } // Fl_Check_Button* filter_stop
+                    { filter_hdamp = new Fl_Slider(420, 155, 140, 15, "DHF");
+                        filter_hdamp->tooltip("Damp High Frequency");
+                        filter_hdamp->type(5);
+                        filter_hdamp->callback((Fl_Callback*)cb_filter_hdamp);
+                        filter_hdamp->align(FL_ALIGN_RIGHT);
+                    } // Fl_Slider* filter_hdamp
+                    o->end();
+                } // Fl_Group* o
+                { Fl_Group* o = new Fl_Group(10, 75, 150, 120);
+                    o->box(FL_BORDER_BOX);
+                    { harmonics_enabled = new Fl_Check_Button(15, 80, 95, 15, "Harmonics");
+                        harmonics_enabled->down_box(FL_DOWN_BOX);
+                        harmonics_enabled->labelfont(1);
+                        harmonics_enabled->callback((Fl_Callback*)cb_harmonics_enabled);
+                    } // Fl_Check_Button* harmonics_enabled
+                    { harmonics_freq = new Fl_Value_Input(15, 101, 65, 24, "F.Freq(Hz)");
+                        harmonics_freq->tooltip("fundamental frequency");
+                        harmonics_freq->minimum(1);
+                        harmonics_freq->maximum(20000);
+                        harmonics_freq->value(440);
+                        harmonics_freq->callback((Fl_Callback*)cb_harmonics_freq);
+                        harmonics_freq->align(FL_ALIGN_RIGHT);
+                    } // Fl_Value_Input* harmonics_freq
+                    { harmonics_bandwidth = new Fl_Value_Input(15, 126, 65, 24, "BW(cents)");
+                        harmonics_bandwidth->tooltip("bandwidth (cents)");
+                        harmonics_bandwidth->minimum(0.1);
+                        harmonics_bandwidth->maximum(200);
+                        harmonics_bandwidth->value(25);
+                        harmonics_bandwidth->callback((Fl_Callback*)cb_harmonics_bandwidth);
+                        harmonics_bandwidth->align(FL_ALIGN_RIGHT);
+                    } // Fl_Value_Input* harmonics_bandwidth
+                    { harmonics_gauss = new Fl_Check_Button(85, 155, 65, 15, "Gauss");
+                        harmonics_gauss->tooltip("smooth the harmonics");
+                        harmonics_gauss->down_box(FL_DOWN_BOX);
+                        harmonics_gauss->callback((Fl_Callback*)cb_harmonics_gauss);
+                    } // Fl_Check_Button* harmonics_gauss
+                    { harmonics_nharmonics = new Fl_Counter(15, 155, 56, 20, "no.hrm.");
+                        harmonics_nharmonics->tooltip("number of harmonics");
+                        harmonics_nharmonics->type(1);
+                        harmonics_nharmonics->minimum(1);
+                        harmonics_nharmonics->maximum(100);
+                        harmonics_nharmonics->step(1);
+                        harmonics_nharmonics->value(10);
+                        harmonics_nharmonics->callback((Fl_Callback*)cb_harmonics_nharmonics);
+                    } // Fl_Counter* harmonics_nharmonics
+                    o->end();
+                } // Fl_Group* o
+                { Fl_Group* o = new Fl_Group(275, 180, 325, 40);
+                    o->box(FL_BORDER_BOX);
+                    { spread_enabled = new Fl_Check_Button(280, 185, 90, 15, "Spread");
+                        spread_enabled->down_box(FL_DOWN_BOX);
+                        spread_enabled->labelfont(1);
+                        spread_enabled->callback((Fl_Callback*)cb_spread_enabled);
+                    } // Fl_Check_Button* spread_enabled
+                    { spread_bandwidth = new Fl_Slider(360, 185, 230, 15, "Bandwidth");
+                        spread_bandwidth->type(5);
+                        spread_bandwidth->value(0.3);
+                        spread_bandwidth->callback((Fl_Callback*)cb_spread_bandwidth);
+                    } // Fl_Slider* spread_bandwidth
+                    o->end();
+                } // Fl_Group* o
+                { Fl_Group* o = new Fl_Group(10, 245, 975, 220, "ArbitraryFilter");
+                    o->box(FL_THIN_UP_BOX);
+                    o->labeltype(FL_ENGRAVED_LABEL);
+                    { FreeEditUI* o = filter_free_edit = new FreeEditUI(105, 250, 875, 210, "Graph");
+                        filter_free_edit->box(FL_FLAT_BOX);
+                        filter_free_edit->color((Fl_Color)206);
+                        filter_free_edit->selection_color((Fl_Color)FL_FOREGROUND_COLOR);
+                        filter_free_edit->labeltype(FL_NORMAL_LABEL);
+                        filter_free_edit->labelfont(0);
+                        filter_free_edit->labelsize(14);
+                        filter_free_edit->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
+                        filter_free_edit->align(FL_ALIGN_CENTER);
+                        filter_free_edit->when(FL_WHEN_RELEASE);
+                        o->init(&control.ppar.free_filter,&control);
+                    } // FreeEditUI* filter_free_edit
+                    { FreeEditControls* o = arbitrary_filter_control = new FreeEditControls(15, 250, 85, 210);
+                        arbitrary_filter_control->box(FL_BORDER_FRAME);
+                        arbitrary_filter_control->color((Fl_Color)FL_FOREGROUND_COLOR);
+                        arbitrary_filter_control->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
+                        arbitrary_filter_control->labeltype(FL_NORMAL_LABEL);
+                        arbitrary_filter_control->labelfont(0);
+                        arbitrary_filter_control->labelsize(14);
+                        arbitrary_filter_control->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
+                        arbitrary_filter_control->align(192|FL_ALIGN_INSIDE);
+                        arbitrary_filter_control->when(FL_WHEN_RELEASE);
+                        o->init(filter_free_edit,FE_LOG,20.0,25000.0,FE_DB,-60,20,0.0);
+                        arbitrary_filter_control->end();
+                    } // FreeEditControls* arbitrary_filter_control
+                    o->end();
+                } // Fl_Group* o
+                { Fl_Group* o = new Fl_Group(605, 75, 140, 105);
+                    o->box(FL_BORDER_BOX);
+                    { tonal_vs_noise_enabled = new Fl_Check_Button(610, 80, 115, 20, "Tonal/Noise");
+                        tonal_vs_noise_enabled->down_box(FL_DOWN_BOX);
+                        tonal_vs_noise_enabled->labelfont(1);
+                        tonal_vs_noise_enabled->callback((Fl_Callback*)cb_tonal_vs_noise_enabled);
+                    } // Fl_Check_Button* tonal_vs_noise_enabled
+                    { tonal_vs_noise_bandwidth = new Fl_Slider(610, 141, 130, 15, "Bandwidth");
+                        tonal_vs_noise_bandwidth->type(5);
+                        tonal_vs_noise_bandwidth->minimum(0.75);
+                        tonal_vs_noise_bandwidth->value(0.9);
+                        tonal_vs_noise_bandwidth->callback((Fl_Callback*)cb_tonal_vs_noise_bandwidth);
+                    } // Fl_Slider* tonal_vs_noise_bandwidth
+                    { tonal_vs_noise_preserve = new Fl_Slider(610, 105, 130, 15, "noise <-->tonal");
+                        tonal_vs_noise_preserve->type(5);
+                        tonal_vs_noise_preserve->minimum(-1);
+                        tonal_vs_noise_preserve->value(0.5);
+                        tonal_vs_noise_preserve->callback((Fl_Callback*)cb_tonal_vs_noise_preserve);
+                    } // Fl_Slider* tonal_vs_noise_preserve
+                    o->end();
+                } // Fl_Group* o
+                o->end();
+            } // Fl_Group* o
+            { Fl_Group* o = new Fl_Group(5, 70, 985, 400, "Binaural beats");
+                o->box(FL_THIN_UP_BOX);
+                o->hide();
+                { FreeEditUI* o = binaural_free_edit = new FreeEditUI(135, 75, 845, 390, "Graph");
+                    binaural_free_edit->box(FL_FLAT_BOX);
+                    binaural_free_edit->color((Fl_Color)135);
+                    binaural_free_edit->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
+                    binaural_free_edit->labeltype(FL_NORMAL_LABEL);
+                    binaural_free_edit->labelfont(0);
+                    binaural_free_edit->labelsize(14);
+                    binaural_free_edit->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
+                    binaural_free_edit->align(FL_ALIGN_CENTER);
+                    binaural_free_edit->when(FL_WHEN_RELEASE);
+                    o->init(&control.bbpar.free_edit,&control);
+                } // FreeEditUI* binaural_free_edit
+                { bbpar_mono = new Fl_Slider(105, 75, 20, 190, "Pow");
+                    bbpar_mono->type(4);
+                    bbpar_mono->labelfont(1);
+                    bbpar_mono->minimum(1);
+                    bbpar_mono->maximum(0);
+                    bbpar_mono->value(0.5);
+                    bbpar_mono->callback((Fl_Callback*)cb_bbpar_mono);
+                } // Fl_Slider* bbpar_mono
+                { FreeEditControls* o = binaural_beats_control = new FreeEditControls(10, 75, 80, 205, "FreeEdit Controls");
+                    binaural_beats_control->box(FL_BORDER_FRAME);
+                    binaural_beats_control->color((Fl_Color)FL_DARK1);
+                    binaural_beats_control->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
+                    binaural_beats_control->labeltype(FL_NORMAL_LABEL);
+                    binaural_beats_control->labelfont(0);
+                    binaural_beats_control->labelsize(14);
+                    binaural_beats_control->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
+                    binaural_beats_control->align(192|FL_ALIGN_INSIDE);
+                    binaural_beats_control->when(FL_WHEN_RELEASE);
+                    o->init(binaural_free_edit,FE_LINEAR,0,100.0,FE_LOG,0.1,50.0,8.0);
+                    binaural_beats_control->end();
+                } // FreeEditControls* binaural_beats_control
+                { bbpar_stereo_mode = new Fl_Choice(10, 305, 110, 20, "Stereo Mode");
+                    bbpar_stereo_mode->down_box(FL_BORDER_BOX);
+                    bbpar_stereo_mode->callback((Fl_Callback*)cb_bbpar_stereo_mode);
+                    bbpar_stereo_mode->align(FL_ALIGN_TOP_LEFT);
+                    bbpar_stereo_mode->menu(menu_bbpar_stereo_mode);
+                } // Fl_Choice* bbpar_stereo_mode
+                o->end();
+            } // Fl_Group* o
+            { write_to_file_group = new Fl_Group(5, 70, 985, 400, "Write to file");
+                write_to_file_group->hide();
+                { render_button = new Fl_Button(250, 95, 320, 30, "Render selection...");
+                    render_button->labelfont(1);
+                    render_button->labelsize(22);
+                    render_button->callback((Fl_Callback*)cb_render_button);
+                } // Fl_Button* render_button
+                { render_percent_slider = new Fl_Value_Slider(15, 245, 970, 65, " ");
+                    render_percent_slider->type(3);
+                    render_percent_slider->selection_color((Fl_Color)4);
+                    render_percent_slider->maximum(100);
+                    render_percent_slider->step(0.1);
+                    render_percent_slider->textsize(14);
+                    render_percent_slider->align(70);
+                } // Fl_Value_Slider* render_percent_slider
+                { cancel_render_button = new Fl_Button(400, 365, 145, 25, "Cancel");
+                    cancel_render_button->callback((Fl_Callback*)cb_cancel_render_button);
+                    cancel_render_button->deactivate();
+                } // Fl_Button* cancel_render_button
+                { Fl_Button* o = new Fl_Button(20, 85, 110, 20, "selection pos1");
+                    o->tooltip("set selection start from Player\'s position");
+                    o->callback((Fl_Callback*)cb_selection);
+                    o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+                } // Fl_Button* o
+                { Fl_Button* o = new Fl_Button(20, 110, 110, 20, "selection pos2");
+                    o->tooltip("set selection end from Player\'s position");
+                    o->callback((Fl_Callback*)cb_selection1);
+                    o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+                } // Fl_Button* o
+                { Fl_Button* o = new Fl_Button(20, 135, 110, 20, "select all");
+                    o->tooltip("select the whole sound");
+                    o->callback((Fl_Callback*)cb_select);
+                } // Fl_Button* o
+                { selection_pos1 = new Fl_Value_Output(135, 85, 70, 20, "%");
+                    selection_pos1->maximum(100);
+                    selection_pos1->step(0.01);
+                    selection_pos1->textfont(1);
+                    selection_pos1->align(72);
+                } // Fl_Value_Output* selection_pos1
+                { selection_pos2 = new Fl_Value_Output(135, 111, 70, 18, "%");
+                    selection_pos2->maximum(100);
+                    selection_pos2->step(0.01);
+                    selection_pos2->value(100);
+                    selection_pos2->textfont(1);
+                    selection_pos2->align(72);
+                } // Fl_Value_Output* selection_pos2
+                { Fl_Check_Button* o = new Fl_Check_Button(250, 135, 100, 15, "32bit");
+                    o->down_box(FL_DOWN_BOX);
+                    o->callback((Fl_Callback*)cb_32bit);
+                } // Fl_Check_Button* o
+                write_to_file_group->end();
+            } // Fl_Group* write_to_file_group
+            tabs_widget->end();
+        } // Fl_Tabs* tabs_widget
+        { infilename_output = new DDBox(5, 24, 1005, 22);
+            infilename_output->tooltip("drag audio file here to open it");
+            infilename_output->box(FL_FLAT_BOX);
+            infilename_output->color((Fl_Color)17);
+            infilename_output->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
+            infilename_output->labeltype(FL_NORMAL_LABEL);
+            infilename_output->labelfont(0);
+            infilename_output->labelsize(14);
+            infilename_output->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
+            infilename_output->align(68|FL_ALIGN_INSIDE);
+            infilename_output->when(FL_WHEN_RELEASE);
+        } // DDBox* infilename_output
+        { Fl_Group* o = new Fl_Group(5, 475, 985, 70);
+            o->box(FL_BORDER_BOX);
+            { Fl_Group* o = new Fl_Group(10, 490, 190, 40);
+                o->box(FL_THIN_UP_BOX);
+                o->color((Fl_Color)16);
+                { play_button = new Fl_Button(20, 500, 40, 20, "@>");
+                    play_button->tooltip("Play - right click to play the original sound");
+                    play_button->box(FL_PLASTIC_UP_BOX);
+                    play_button->callback((Fl_Callback*)cb_play_button);
+                } // Fl_Button* play_button
+                { freeze_button = new Fl_Button(65, 500, 40, 20, "@<-> F");
+                    freeze_button->tooltip("Freeze");
+                    freeze_button->box(FL_PLASTIC_UP_BOX);
+                    freeze_button->callback((Fl_Callback*)cb_freeze_button);
+                } // Fl_Button* freeze_button
+                { Fl_Button* o = new Fl_Button(110, 500, 40, 20, "@||");
+                    o->tooltip("Pause");
+                    o->box(FL_PLASTIC_UP_BOX);
+                    o->callback((Fl_Callback*)cb_);
+                } // Fl_Button* o
+                { Fl_Button* o = new Fl_Button(155, 500, 40, 20, "@square");
+                    o->tooltip("Stop");
+                    o->box(FL_PLASTIC_UP_BOX);
+                    o->callback((Fl_Callback*)cb_square);
+                } // Fl_Button* o
+                o->end();
+            } // Fl_Group* o
+            { seek_slider = new Fl_Value_Slider(205, 490, 780, 20, "Percents");
+                seek_slider->type(5);
+                seek_slider->box(FL_THIN_UP_BOX);
+                seek_slider->color((Fl_Color)16);
+                seek_slider->selection_color((Fl_Color)4);
+                seek_slider->maximum(100);
+                seek_slider->textsize(14);
+                seek_slider->callback((Fl_Callback*)cb_seek_slider);
+                seek_slider->align(FL_ALIGN_BOTTOM_LEFT);
+            } // Fl_Value_Slider* seek_slider
+            o->end();
+        } // Fl_Group* o
+        if(strlen(VERSION)<2) {o->color(FL_BLUE); o->label("VERSION NOT SET!!!!!!!!!!!!");};
+        window->end();
+        window->resizable(window);
+    } // Fl_Double_Window* window
+    { aboutwindow = new Fl_Double_Window(300, 170, "About...");
+        aboutwindow->color((Fl_Color)FL_BACKGROUND2_COLOR);
+        aboutwindow->user_data((void*)(this));
+        { Fl_Button* o = new Fl_Button(110, 140, 64, 20, "OK");
+            o->callback((Fl_Callback*)cb_OK);
         } // Fl_Button* o
-        { resolution_box = new Fl_Box(10, 187, 790, 18);
-          resolution_box->box(FL_FLAT_BOX);
-          resolution_box->color((Fl_Color)FL_LIGHT2);
-          resolution_box->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-        } // Fl_Box* resolution_box
-        { Fl_Group* o = new Fl_Group(10, 245, 975, 220, "Stretch Multiplier");
-          o->box(FL_THIN_UP_BOX);
-          o->labeltype(FL_ENGRAVED_LABEL);
-          { FreeEditUI* o = stretch_free_edit = new FreeEditUI(105, 250, 875, 210, "Graph");
-            stretch_free_edit->box(FL_FLAT_BOX);
-            stretch_free_edit->color((Fl_Color)17);
-            stretch_free_edit->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
-            stretch_free_edit->labeltype(FL_NORMAL_LABEL);
-            stretch_free_edit->labelfont(0);
-            stretch_free_edit->labelsize(14);
-            stretch_free_edit->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
-            stretch_free_edit->align(FL_ALIGN_CENTER);
-            stretch_free_edit->when(FL_WHEN_RELEASE);
-            o->init(&control.ppar.stretch_multiplier,&control);
-          } // FreeEditUI* stretch_free_edit
-          { FreeEditControls* o = stretch_multiplier_control = new FreeEditControls(15, 250, 85, 210);
-            stretch_multiplier_control->box(FL_BORDER_FRAME);
-            stretch_multiplier_control->color((Fl_Color)FL_FOREGROUND_COLOR);
-            stretch_multiplier_control->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
-            stretch_multiplier_control->labeltype(FL_NORMAL_LABEL);
-            stretch_multiplier_control->labelfont(0);
-            stretch_multiplier_control->labelsize(14);
-            stretch_multiplier_control->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
-            stretch_multiplier_control->align(192|FL_ALIGN_INSIDE);
-            stretch_multiplier_control->when(FL_WHEN_RELEASE);
-            o->init(stretch_free_edit,FE_LINEAR,0,100.0,FE_LOG,0.1,50.0,1.0);
-            stretch_multiplier_control->end();
-          } // FreeEditControls* stretch_multiplier_control
-          o->end();
-        } // Fl_Group* o
-        { onset_slider = new Fl_Slider(135, 213, 140, 15, "Onset sensitivity:");
-          onset_slider->type(5);
-          onset_slider->box(FL_FLAT_BOX);
-          onset_slider->callback((Fl_Callback*)cb_onset_slider);
-          onset_slider->align(FL_ALIGN_LEFT);
-        } // Fl_Slider* onset_slider
-        o->end();
-      } // Fl_Group* o
-      { Fl_Group* o = new Fl_Group(5, 70, 985, 400, "Process");
-        o->hide();
-        { Fl_Group* o = new Fl_Group(165, 75, 105, 65);
-          o->box(FL_BORDER_BOX);
-          { pitch_shift_enabled = new Fl_Check_Button(170, 80, 90, 15, "Pitch Shift");
-            pitch_shift_enabled->down_box(FL_DOWN_BOX);
-            pitch_shift_enabled->labelfont(1);
-            pitch_shift_enabled->callback((Fl_Callback*)cb_pitch_shift_enabled);
-          } // Fl_Check_Button* pitch_shift_enabled
-          { Fl_Counter* o = pitch_shift_cents = new Fl_Counter(170, 100, 90, 20, "cents");
-            pitch_shift_cents->minimum(-3600);
-            pitch_shift_cents->maximum(3600);
-            pitch_shift_cents->step(1);
-            pitch_shift_cents->callback((Fl_Callback*)cb_pitch_shift_cents);
-            o->lstep(100);
-          } // Fl_Counter* pitch_shift_cents
-          o->end();
-        } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(275, 75, 135, 100);
-          o->box(FL_BORDER_BOX);
-          { octave_enabled = new Fl_Check_Button(280, 80, 110, 15, "Octave Mixer");
-            octave_enabled->down_box(FL_DOWN_BOX);
-            octave_enabled->labelfont(1);
-            octave_enabled->callback((Fl_Callback*)cb_octave_enabled);
-          } // Fl_Check_Button* octave_enabled
-          { octave_om2 = new Fl_Slider(280, 100, 15, 55, "-2");
-            octave_om2->tooltip("2 octaves below");
-            octave_om2->type(4);
-            octave_om2->minimum(1);
-            octave_om2->maximum(0);
-            octave_om2->callback((Fl_Callback*)cb_octave_om2);
-          } // Fl_Slider* octave_om2
-          { octave_om1 = new Fl_Slider(300, 100, 15, 55, "-1");
-            octave_om1->tooltip("1 octave below");
-            octave_om1->type(4);
-            octave_om1->minimum(1);
-            octave_om1->maximum(0);
-            octave_om1->callback((Fl_Callback*)cb_octave_om1);
-          } // Fl_Slider* octave_om1
-          { octave_o0 = new Fl_Slider(320, 100, 15, 55, "0");
-            octave_o0->tooltip("original (dry)");
-            octave_o0->type(4);
-            octave_o0->minimum(1);
-            octave_o0->maximum(0);
-            octave_o0->value(1);
-            octave_o0->callback((Fl_Callback*)cb_octave_o0);
-          } // Fl_Slider* octave_o0
-          { octave_o1 = new Fl_Slider(340, 100, 15, 55, "1");
-            octave_o1->tooltip("1 octave above");
-            octave_o1->type(4);
-            octave_o1->minimum(1);
-            octave_o1->maximum(0);
-            octave_o1->callback((Fl_Callback*)cb_octave_o1);
-          } // Fl_Slider* octave_o1
-          { octave_o15 = new Fl_Slider(360, 100, 15, 55, "1.5");
-            octave_o15->tooltip("3rd harmonic");
-            octave_o15->type(4);
-            octave_o15->minimum(1);
-            octave_o15->maximum(0);
-            octave_o15->callback((Fl_Callback*)cb_octave_o15);
-          } // Fl_Slider* octave_o15
-          { octave_o2 = new Fl_Slider(380, 100, 15, 55, "2");
-            octave_o2->tooltip("2 octaves above");
-            octave_o2->type(4);
-            octave_o2->minimum(1);
-            octave_o2->maximum(0);
-            octave_o2->callback((Fl_Callback*)cb_octave_o2);
-          } // Fl_Slider* octave_o2
-          o->end();
-        } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(165, 140, 105, 65);
-          o->box(FL_BORDER_BOX);
-          { freq_shift_enabled = new Fl_Check_Button(170, 145, 90, 15, "Freq Shift");
-            freq_shift_enabled->down_box(FL_DOWN_BOX);
-            freq_shift_enabled->labelfont(1);
-            freq_shift_enabled->callback((Fl_Callback*)cb_freq_shift_enabled);
-          } // Fl_Check_Button* freq_shift_enabled
-          { Fl_Counter* o = freq_shift_Hz = new Fl_Counter(170, 165, 90, 20, "Hz");
-            freq_shift_Hz->minimum(-10000);
-            freq_shift_Hz->maximum(10000);
-            freq_shift_Hz->step(1);
-            freq_shift_Hz->callback((Fl_Callback*)cb_freq_shift_Hz);
-            o->lstep(100);
-          } // Fl_Counter* freq_shift_Hz
-          o->end();
-        } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(750, 75, 120, 65);
-          o->box(FL_BORDER_BOX);
-          { compressor_enabled = new Fl_Check_Button(755, 80, 90, 15, "Compress");
-            compressor_enabled->down_box(FL_DOWN_BOX);
-            compressor_enabled->labelfont(1);
-            compressor_enabled->callback((Fl_Callback*)cb_compressor_enabled);
-          } // Fl_Check_Button* compressor_enabled
-          { compressor_power = new Fl_Slider(755, 100, 110, 15, "Power");
-            compressor_power->type(5);
-            compressor_power->callback((Fl_Callback*)cb_compressor_power);
-          } // Fl_Slider* compressor_power
-          o->end();
-        } // Fl_Group* o
-        { Fl_Slider* o = new Fl_Slider(750, 155, 120, 40, "Volume");
-          o->type(5);
-          o->labelfont(1);
-          o->minimum(0.3);
-          o->maximum(1.6);
-          o->value(1);
-          o->callback((Fl_Callback*)cb_Volume);
-        } // Fl_Slider* o
-        { Fl_Group* o = new Fl_Group(415, 75, 185, 100);
-          o->box(FL_BORDER_BOX);
-          { filter_enabled = new Fl_Check_Button(420, 80, 70, 15, "Filter");
-            filter_enabled->down_box(FL_DOWN_BOX);
-            filter_enabled->labelfont(1);
-            filter_enabled->callback((Fl_Callback*)cb_filter_enabled);
-          } // Fl_Check_Button* filter_enabled
-          { filter_low = new Fl_Value_Input(420, 101, 100, 24, "Freq1(Hz)");
-            filter_low->maximum(10000);
-            filter_low->callback((Fl_Callback*)cb_filter_low);
-            filter_low->align(FL_ALIGN_RIGHT);
-          } // Fl_Value_Input* filter_low
-          { filter_high = new Fl_Value_Input(420, 126, 100, 24, "Freq2(Hz)");
-            filter_high->maximum(25000);
-            filter_high->value(22000);
-            filter_high->callback((Fl_Callback*)cb_filter_high);
-            filter_high->align(FL_ALIGN_RIGHT);
-          } // Fl_Value_Input* filter_high
-          { filter_stop = new Fl_Check_Button(500, 80, 90, 15, "BandStop");
-            filter_stop->tooltip("band-stop filter");
-            filter_stop->down_box(FL_DOWN_BOX);
-            filter_stop->callback((Fl_Callback*)cb_filter_stop);
-          } // Fl_Check_Button* filter_stop
-          { filter_hdamp = new Fl_Slider(420, 155, 140, 15, "DHF");
-            filter_hdamp->tooltip("Damp High Frequency");
-            filter_hdamp->type(5);
-            filter_hdamp->callback((Fl_Callback*)cb_filter_hdamp);
-            filter_hdamp->align(FL_ALIGN_RIGHT);
-          } // Fl_Slider* filter_hdamp
-          o->end();
-        } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(10, 75, 150, 120);
-          o->box(FL_BORDER_BOX);
-          { harmonics_enabled = new Fl_Check_Button(15, 80, 95, 15, "Harmonics");
-            harmonics_enabled->down_box(FL_DOWN_BOX);
-            harmonics_enabled->labelfont(1);
-            harmonics_enabled->callback((Fl_Callback*)cb_harmonics_enabled);
-          } // Fl_Check_Button* harmonics_enabled
-          { harmonics_freq = new Fl_Value_Input(15, 101, 65, 24, "F.Freq(Hz)");
-            harmonics_freq->tooltip("fundamental frequency");
-            harmonics_freq->minimum(1);
-            harmonics_freq->maximum(20000);
-            harmonics_freq->value(440);
-            harmonics_freq->callback((Fl_Callback*)cb_harmonics_freq);
-            harmonics_freq->align(FL_ALIGN_RIGHT);
-          } // Fl_Value_Input* harmonics_freq
-          { harmonics_bandwidth = new Fl_Value_Input(15, 126, 65, 24, "BW(cents)");
-            harmonics_bandwidth->tooltip("bandwidth (cents)");
-            harmonics_bandwidth->minimum(0.1);
-            harmonics_bandwidth->maximum(200);
-            harmonics_bandwidth->value(25);
-            harmonics_bandwidth->callback((Fl_Callback*)cb_harmonics_bandwidth);
-            harmonics_bandwidth->align(FL_ALIGN_RIGHT);
-          } // Fl_Value_Input* harmonics_bandwidth
-          { harmonics_gauss = new Fl_Check_Button(85, 155, 65, 15, "Gauss");
-            harmonics_gauss->tooltip("smooth the harmonics");
-            harmonics_gauss->down_box(FL_DOWN_BOX);
-            harmonics_gauss->callback((Fl_Callback*)cb_harmonics_gauss);
-          } // Fl_Check_Button* harmonics_gauss
-          { harmonics_nharmonics = new Fl_Counter(15, 155, 56, 20, "no.hrm.");
-            harmonics_nharmonics->tooltip("number of harmonics");
-            harmonics_nharmonics->type(1);
-            harmonics_nharmonics->minimum(1);
-            harmonics_nharmonics->maximum(100);
-            harmonics_nharmonics->step(1);
-            harmonics_nharmonics->value(10);
-            harmonics_nharmonics->callback((Fl_Callback*)cb_harmonics_nharmonics);
-          } // Fl_Counter* harmonics_nharmonics
-          o->end();
-        } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(275, 180, 325, 40);
-          o->box(FL_BORDER_BOX);
-          { spread_enabled = new Fl_Check_Button(280, 185, 90, 15, "Spread");
-            spread_enabled->down_box(FL_DOWN_BOX);
-            spread_enabled->labelfont(1);
-            spread_enabled->callback((Fl_Callback*)cb_spread_enabled);
-          } // Fl_Check_Button* spread_enabled
-          { spread_bandwidth = new Fl_Slider(360, 185, 230, 15, "Bandwidth");
-            spread_bandwidth->type(5);
-            spread_bandwidth->value(0.3);
-            spread_bandwidth->callback((Fl_Callback*)cb_spread_bandwidth);
-          } // Fl_Slider* spread_bandwidth
-          o->end();
-        } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(10, 245, 975, 220, "ArbitraryFilter");
-          o->box(FL_THIN_UP_BOX);
-          o->labeltype(FL_ENGRAVED_LABEL);
-          { FreeEditUI* o = filter_free_edit = new FreeEditUI(105, 250, 875, 210, "Graph");
-            filter_free_edit->box(FL_FLAT_BOX);
-            filter_free_edit->color((Fl_Color)206);
-            filter_free_edit->selection_color((Fl_Color)FL_FOREGROUND_COLOR);
-            filter_free_edit->labeltype(FL_NORMAL_LABEL);
-            filter_free_edit->labelfont(0);
-            filter_free_edit->labelsize(14);
-            filter_free_edit->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
-            filter_free_edit->align(FL_ALIGN_CENTER);
-            filter_free_edit->when(FL_WHEN_RELEASE);
-            o->init(&control.ppar.free_filter,&control);
-          } // FreeEditUI* filter_free_edit
-          { FreeEditControls* o = arbitrary_filter_control = new FreeEditControls(15, 250, 85, 210);
-            arbitrary_filter_control->box(FL_BORDER_FRAME);
-            arbitrary_filter_control->color((Fl_Color)FL_FOREGROUND_COLOR);
-            arbitrary_filter_control->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
-            arbitrary_filter_control->labeltype(FL_NORMAL_LABEL);
-            arbitrary_filter_control->labelfont(0);
-            arbitrary_filter_control->labelsize(14);
-            arbitrary_filter_control->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
-            arbitrary_filter_control->align(192|FL_ALIGN_INSIDE);
-            arbitrary_filter_control->when(FL_WHEN_RELEASE);
-            o->init(filter_free_edit,FE_LOG,20.0,25000.0,FE_DB,-60,20,0.0);
-            arbitrary_filter_control->end();
-          } // FreeEditControls* arbitrary_filter_control
-          o->end();
-        } // Fl_Group* o
-        { Fl_Group* o = new Fl_Group(605, 75, 140, 105);
-          o->box(FL_BORDER_BOX);
-          { tonal_vs_noise_enabled = new Fl_Check_Button(610, 80, 115, 20, "Tonal/Noise");
-            tonal_vs_noise_enabled->down_box(FL_DOWN_BOX);
-            tonal_vs_noise_enabled->labelfont(1);
-            tonal_vs_noise_enabled->callback((Fl_Callback*)cb_tonal_vs_noise_enabled);
-          } // Fl_Check_Button* tonal_vs_noise_enabled
-          { tonal_vs_noise_bandwidth = new Fl_Slider(610, 141, 130, 15, "Bandwidth");
-            tonal_vs_noise_bandwidth->type(5);
-            tonal_vs_noise_bandwidth->minimum(0.75);
-            tonal_vs_noise_bandwidth->value(0.9);
-            tonal_vs_noise_bandwidth->callback((Fl_Callback*)cb_tonal_vs_noise_bandwidth);
-          } // Fl_Slider* tonal_vs_noise_bandwidth
-          { tonal_vs_noise_preserve = new Fl_Slider(610, 105, 130, 15, "noise <-->tonal");
-            tonal_vs_noise_preserve->type(5);
-            tonal_vs_noise_preserve->minimum(-1);
-            tonal_vs_noise_preserve->value(0.5);
-            tonal_vs_noise_preserve->callback((Fl_Callback*)cb_tonal_vs_noise_preserve);
-          } // Fl_Slider* tonal_vs_noise_preserve
-          o->end();
-        } // Fl_Group* o
-        o->end();
-      } // Fl_Group* o
-      { Fl_Group* o = new Fl_Group(5, 70, 985, 400, "Binaural beats");
-        o->box(FL_THIN_UP_BOX);
-        o->hide();
-        { FreeEditUI* o = binaural_free_edit = new FreeEditUI(135, 75, 845, 390, "Graph");
-          binaural_free_edit->box(FL_FLAT_BOX);
-          binaural_free_edit->color((Fl_Color)135);
-          binaural_free_edit->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
-          binaural_free_edit->labeltype(FL_NORMAL_LABEL);
-          binaural_free_edit->labelfont(0);
-          binaural_free_edit->labelsize(14);
-          binaural_free_edit->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
-          binaural_free_edit->align(FL_ALIGN_CENTER);
-          binaural_free_edit->when(FL_WHEN_RELEASE);
-          o->init(&control.bbpar.free_edit,&control);
-        } // FreeEditUI* binaural_free_edit
-        { bbpar_mono = new Fl_Slider(105, 75, 20, 190, "Pow");
-          bbpar_mono->type(4);
-          bbpar_mono->labelfont(1);
-          bbpar_mono->minimum(1);
-          bbpar_mono->maximum(0);
-          bbpar_mono->value(0.5);
-          bbpar_mono->callback((Fl_Callback*)cb_bbpar_mono);
-        } // Fl_Slider* bbpar_mono
-        { FreeEditControls* o = binaural_beats_control = new FreeEditControls(10, 75, 80, 205, "FreeEdit Controls");
-          binaural_beats_control->box(FL_BORDER_FRAME);
-          binaural_beats_control->color((Fl_Color)FL_DARK1);
-          binaural_beats_control->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
-          binaural_beats_control->labeltype(FL_NORMAL_LABEL);
-          binaural_beats_control->labelfont(0);
-          binaural_beats_control->labelsize(14);
-          binaural_beats_control->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
-          binaural_beats_control->align(192|FL_ALIGN_INSIDE);
-          binaural_beats_control->when(FL_WHEN_RELEASE);
-          o->init(binaural_free_edit,FE_LINEAR,0,100.0,FE_LOG,0.1,50.0,8.0);
-          binaural_beats_control->end();
-        } // FreeEditControls* binaural_beats_control
-        { bbpar_stereo_mode = new Fl_Choice(10, 305, 110, 20, "Stereo Mode");
-          bbpar_stereo_mode->down_box(FL_BORDER_BOX);
-          bbpar_stereo_mode->callback((Fl_Callback*)cb_bbpar_stereo_mode);
-          bbpar_stereo_mode->align(FL_ALIGN_TOP_LEFT);
-          bbpar_stereo_mode->menu(menu_bbpar_stereo_mode);
-        } // Fl_Choice* bbpar_stereo_mode
-        o->end();
-      } // Fl_Group* o
-      { write_to_file_group = new Fl_Group(5, 70, 985, 400, "Write to file");
-        write_to_file_group->hide();
-        { render_button = new Fl_Button(250, 95, 320, 30, "Render selection...");
-          render_button->labelfont(1);
-          render_button->labelsize(22);
-          render_button->callback((Fl_Callback*)cb_render_button);
-        } // Fl_Button* render_button
-        { render_percent_slider = new Fl_Value_Slider(15, 245, 970, 65, " ");
-          render_percent_slider->type(3);
-          render_percent_slider->selection_color((Fl_Color)4);
-          render_percent_slider->maximum(100);
-          render_percent_slider->step(0.1);
-          render_percent_slider->textsize(14);
-          render_percent_slider->align(70);
-        } // Fl_Value_Slider* render_percent_slider
-        { cancel_render_button = new Fl_Button(400, 365, 145, 25, "Cancel");
-          cancel_render_button->callback((Fl_Callback*)cb_cancel_render_button);
-          cancel_render_button->deactivate();
-        } // Fl_Button* cancel_render_button
-        { Fl_Button* o = new Fl_Button(20, 85, 110, 20, "selection pos1");
-          o->tooltip("set selection start from Player\'s position");
-          o->callback((Fl_Callback*)cb_selection);
-          o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-        } // Fl_Button* o
-        { Fl_Button* o = new Fl_Button(20, 110, 110, 20, "selection pos2");
-          o->tooltip("set selection end from Player\'s position");
-          o->callback((Fl_Callback*)cb_selection1);
-          o->align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-        } // Fl_Button* o
-        { Fl_Button* o = new Fl_Button(20, 135, 110, 20, "select all");
-          o->tooltip("select the whole sound");
-          o->callback((Fl_Callback*)cb_select);
-        } // Fl_Button* o
-        { selection_pos1 = new Fl_Value_Output(135, 85, 70, 20, "%");
-          selection_pos1->maximum(100);
-          selection_pos1->step(0.01);
-          selection_pos1->textfont(1);
-          selection_pos1->align(72);
-        } // Fl_Value_Output* selection_pos1
-        { selection_pos2 = new Fl_Value_Output(135, 111, 70, 18, "%");
-          selection_pos2->maximum(100);
-          selection_pos2->step(0.01);
-          selection_pos2->value(100);
-          selection_pos2->textfont(1);
-          selection_pos2->align(72);
-        } // Fl_Value_Output* selection_pos2
-        { Fl_Check_Button* o = new Fl_Check_Button(250, 135, 100, 15, "32bit");
-          o->down_box(FL_DOWN_BOX);
-          o->callback((Fl_Callback*)cb_32bit);
-        } // Fl_Check_Button* o
-        write_to_file_group->end();
-      } // Fl_Group* write_to_file_group
-      tabs_widget->end();
-    } // Fl_Tabs* tabs_widget
-    { infilename_output = new DDBox(5, 24, 1005, 22);
-      infilename_output->tooltip("drag audio file here to open it");
-      infilename_output->box(FL_FLAT_BOX);
-      infilename_output->color((Fl_Color)17);
-      infilename_output->selection_color((Fl_Color)FL_BACKGROUND_COLOR);
-      infilename_output->labeltype(FL_NORMAL_LABEL);
-      infilename_output->labelfont(0);
-      infilename_output->labelsize(14);
-      infilename_output->labelcolor((Fl_Color)FL_FOREGROUND_COLOR);
-      infilename_output->align(68|FL_ALIGN_INSIDE);
-      infilename_output->when(FL_WHEN_RELEASE);
-    } // DDBox* infilename_output
-    { Fl_Group* o = new Fl_Group(5, 475, 985, 70);
-      o->box(FL_BORDER_BOX);
-      { Fl_Group* o = new Fl_Group(10, 490, 190, 40);
-        o->box(FL_THIN_UP_BOX);
-        o->color((Fl_Color)16);
-        { play_button = new Fl_Button(20, 500, 40, 20, "@>");
-          play_button->tooltip("Play - right click to play the original sound");
-          play_button->box(FL_PLASTIC_UP_BOX);
-          play_button->callback((Fl_Callback*)cb_play_button);
-        } // Fl_Button* play_button
-        { freeze_button = new Fl_Button(65, 500, 40, 20, "@<-> F");
-          freeze_button->tooltip("Freeze");
-          freeze_button->box(FL_PLASTIC_UP_BOX);
-          freeze_button->callback((Fl_Callback*)cb_freeze_button);
-        } // Fl_Button* freeze_button
-        { Fl_Button* o = new Fl_Button(110, 500, 40, 20, "@||");
-          o->tooltip("Pause");
-          o->box(FL_PLASTIC_UP_BOX);
-          o->callback((Fl_Callback*)cb_);
-        } // Fl_Button* o
-        { Fl_Button* o = new Fl_Button(155, 500, 40, 20, "@square");
-          o->tooltip("Stop");
-          o->box(FL_PLASTIC_UP_BOX);
-          o->callback((Fl_Callback*)cb_square);
-        } // Fl_Button* o
-        o->end();
-      } // Fl_Group* o
-      { seek_slider = new Fl_Value_Slider(205, 490, 780, 20, "Percents");
-        seek_slider->type(5);
-        seek_slider->box(FL_THIN_UP_BOX);
-        seek_slider->color((Fl_Color)16);
-        seek_slider->selection_color((Fl_Color)4);
-        seek_slider->maximum(100);
-        seek_slider->textsize(14);
-        seek_slider->callback((Fl_Callback*)cb_seek_slider);
-        seek_slider->align(FL_ALIGN_BOTTOM_LEFT);
-      } // Fl_Value_Slider* seek_slider
-      o->end();
-    } // Fl_Group* o
-    if(strlen(VERSION)<2) {o->color(FL_BLUE); o->label("VERSION NOT SET!!!!!!!!!!!!");};
-    window->end();
-    window->resizable(window);
-  } // Fl_Double_Window* window
-  { aboutwindow = new Fl_Double_Window(300, 170, "About...");
-    aboutwindow->color((Fl_Color)FL_BACKGROUND2_COLOR);
-    aboutwindow->user_data((void*)(this));
-    { Fl_Button* o = new Fl_Button(110, 140, 64, 20, "OK");
-      o->callback((Fl_Callback*)cb_OK);
-    } // Fl_Button* o
-    { Fl_Box* o = new Fl_Box(10, 93, 280, 37, "Copyright (c) 2006-2011 Nasca Octavian PAUL, Tg. Mures, Romania");
-      o->align(FL_ALIGN_WRAP);
-    } // Fl_Box* o
-    { Fl_Box* o = new Fl_Box(5, 53, 290, 32, "This is a software for extreme time stretching of the audio.");
-      o->align(FL_ALIGN_WRAP);
-    } // Fl_Box* o
-    { Fl_Box* o = new Fl_Box(20, 6, 255, 21, "Paul\'s Extreme Sound Stretch");
-      o->labelfont(1);
-      o->align(FL_ALIGN_WRAP);
-    } // Fl_Box* o
-    { Fl_Box* o = new Fl_Box(20, 26, 255, 19, "version");
-      o->labelfont(1);
-      o->align(FL_ALIGN_WRAP);
-      o->label(VERSION);
-    } // Fl_Box* o
-    aboutwindow->set_modal();
-    aboutwindow->end();
-  } // Fl_Double_Window* aboutwindow
-  return aboutwindow;
+        { Fl_Box* o = new Fl_Box(10, 93, 280, 37, "Copyright (c) 2006-2011 Nasca Octavian PAUL, Tg. Mures, Romania");
+            o->align(FL_ALIGN_WRAP);
+        } // Fl_Box* o
+        { Fl_Box* o = new Fl_Box(5, 53, 290, 32, "This is a software for extreme time stretching of the audio.");
+            o->align(FL_ALIGN_WRAP);
+        } // Fl_Box* o
+        { Fl_Box* o = new Fl_Box(20, 6, 255, 21, "Paul\'s Extreme Sound Stretch");
+            o->labelfont(1);
+            o->align(FL_ALIGN_WRAP);
+        } // Fl_Box* o
+        { Fl_Box* o = new Fl_Box(20, 26, 255, 19, "version");
+            o->labelfont(1);
+            o->align(FL_ALIGN_WRAP);
+            o->label(VERSION);
+        } // Fl_Box* o
+        aboutwindow->set_modal();
+        aboutwindow->end();
+    } // Fl_Double_Window* aboutwindow
+    return aboutwindow;
 }
 
 void GUI::set_mode(Mode mode) {
-  switch (mode){
-	case STOP:
-		play_button->labelcolor(FL_BLACK);
-		//mode_choice->activate();
-		freeze_button->deactivate();
-	break;
-
-	case PAUSE:
-		play_button->labelcolor(FL_BLACK);
-		//mode_choice->activate();
-	break;
-	
-	case PLAY:
-		play_button->labelcolor(FL_RED);
-		//mode_choice->deactivate();
-		fftsize_slider->labelcolor(FL_BLACK);
-		freeze_button->activate();
-	break;
-	
-	case FREEZE:
-		if (control.is_freeze()) freeze_button->labelcolor(FL_GREEN);
+    switch (mode){
+        case STOP:
+            play_button->labelcolor(FL_BLACK);
+            //mode_choice->activate();
+            freeze_button->deactivate();
+            break;
+            
+        case PAUSE:
+            play_button->labelcolor(FL_BLACK);
+            //mode_choice->activate();
+            break;
+            
+        case PLAY:
+            play_button->labelcolor(FL_RED);
+            //mode_choice->deactivate();
+            fftsize_slider->labelcolor(FL_BLACK);
+            freeze_button->activate();
+            break;
+            
+        case FREEZE:
+            if (control.is_freeze()) freeze_button->labelcolor(FL_GREEN);
 			else freeze_button->labelcolor(FL_BLACK);
-	break;
-};
-window->redraw();
+            break;
+    };
+    window->redraw();
 }
 
 void GUI::refresh() {
-  double stretch_s=stretch_slider->value()/stretch_slider->maximum();
-
-int mode=mode_choice->value();
-double resolution_s=fftsize_slider->value()/fftsize_slider->maximum();
-
-double onset=onset_slider->value();
-control.set_stretch_controls(stretch_s,mode,resolution_s,onset);
-
-stretch_slider->copy_label(control.get_stretch_info().c_str());
-fftsize_slider->copy_label(control.get_fftsize_info().c_str());
-resolution_box->copy_label(control.get_fftresolution_info().c_str());
-
-bool may_render=false;
-if (infilename_output->label()!=NULL){
-	if (strlen(infilename_output->label())!=0)  
-	  may_render=true;
-};
-if (!rendering){//do not change the status of render button while rendering
-	if (may_render) {
-		render_button->activate();
-		render_menu->activate();
-	} else {
-		render_button->deactivate();
-		render_menu->deactivate();
-	};
-};
+    double stretch_s=stretch_slider->value()/stretch_slider->maximum();
+    
+    int mode=mode_choice->value();
+    double resolution_s=fftsize_slider->value()/fftsize_slider->maximum();
+    
+    double onset=onset_slider->value();
+    control.set_stretch_controls(stretch_s,mode,resolution_s,onset);
+    
+    stretch_slider->copy_label(control.get_stretch_info().c_str());
+    fftsize_slider->copy_label(control.get_fftsize_info().c_str());
+    resolution_box->copy_label(control.get_fftresolution_info().c_str());
+    
+    bool may_render=false;
+    if (infilename_output->label()!=NULL){
+        if (strlen(infilename_output->label())!=0)  
+            may_render=true;
+    };
+    if (!rendering){//do not change the status of render button while rendering
+        if (may_render) {
+            render_button->activate();
+            render_menu->activate();
+        } else {
+            render_button->deactivate();
+            render_menu->deactivate();
+        };
+    };
 }
 
 void GUI::refreshgui() {
-  stretch_slider->value(control.gui_sliders.stretch_s);
-fftsize_slider->value(control.gui_sliders.fftsize_s);
-mode_choice->value(control.gui_sliders.mode_s);
-window_choice->value(control.window_type);
-onset_slider->value(control.get_onset_detection_sensitivity());
-
-
-pitch_shift_enabled->value(control.ppar.pitch_shift.enabled);
-pitch_shift_cents->value(control.ppar.pitch_shift.cents);
-
-octave_enabled->value(control.ppar.octave.enabled);
-octave_om2->value(control.ppar.octave.om2);
-octave_om1->value(control.ppar.octave.om1);
-octave_o0->value(control.ppar.octave.o0);
-octave_o1->value(control.ppar.octave.o1);
-octave_o15->value(control.ppar.octave.o15);
-octave_o2->value(control.ppar.octave.o2);
-
-freq_shift_enabled->value(control.ppar.freq_shift.enabled);
-freq_shift_Hz->value(control.ppar.freq_shift.Hz);
-
-compressor_enabled->value(control.ppar.compressor.enabled);
-compressor_power->value(control.ppar.compressor.power);
-
-filter_enabled->value(control.ppar.filter.enabled);
-filter_stop->value(control.ppar.filter.stop);
-filter_low->value(control.ppar.filter.low);
-filter_high->value(control.ppar.filter.high);
-filter_hdamp->value(control.ppar.filter.hdamp);
-
-harmonics_enabled->value(control.ppar.harmonics.enabled);
-harmonics_freq->value(control.ppar.harmonics.freq);
-harmonics_bandwidth->value(control.ppar.harmonics.bandwidth);
-harmonics_nharmonics->value(control.ppar.harmonics.nharmonics);
-harmonics_gauss->value(control.ppar.harmonics.gauss);
-
-spread_enabled->value(control.ppar.spread.enabled);
-spread_bandwidth->value(control.ppar.spread.bandwidth);
-
-
-tonal_vs_noise_enabled->value(control.ppar.tonal_vs_noise.enabled);
-tonal_vs_noise_preserve->value(control.ppar.tonal_vs_noise.preserve);
-tonal_vs_noise_bandwidth->value(control.ppar.tonal_vs_noise.bandwidth);
-
-bbpar_mono->value(control.bbpar.mono);
-bbpar_stereo_mode->value(control.bbpar.stereo_mode);
-
-
-stretch_multiplier_control->refresh();
-arbitrary_filter_control->refresh();
-binaural_beats_control->refresh();
+    stretch_slider->value(control.gui_sliders.stretch_s);
+    fftsize_slider->value(control.gui_sliders.fftsize_s);
+    mode_choice->value(control.gui_sliders.mode_s);
+    window_choice->value(control.window_type);
+    onset_slider->value(control.get_onset_detection_sensitivity());
+    
+    
+    pitch_shift_enabled->value(control.ppar.pitch_shift.enabled);
+    pitch_shift_cents->value(control.ppar.pitch_shift.cents);
+    
+    octave_enabled->value(control.ppar.octave.enabled);
+    octave_om2->value(control.ppar.octave.om2);
+    octave_om1->value(control.ppar.octave.om1);
+    octave_o0->value(control.ppar.octave.o0);
+    octave_o1->value(control.ppar.octave.o1);
+    octave_o15->value(control.ppar.octave.o15);
+    octave_o2->value(control.ppar.octave.o2);
+    
+    freq_shift_enabled->value(control.ppar.freq_shift.enabled);
+    freq_shift_Hz->value(control.ppar.freq_shift.Hz);
+    
+    compressor_enabled->value(control.ppar.compressor.enabled);
+    compressor_power->value(control.ppar.compressor.power);
+    
+    filter_enabled->value(control.ppar.filter.enabled);
+    filter_stop->value(control.ppar.filter.stop);
+    filter_low->value(control.ppar.filter.low);
+    filter_high->value(control.ppar.filter.high);
+    filter_hdamp->value(control.ppar.filter.hdamp);
+    
+    harmonics_enabled->value(control.ppar.harmonics.enabled);
+    harmonics_freq->value(control.ppar.harmonics.freq);
+    harmonics_bandwidth->value(control.ppar.harmonics.bandwidth);
+    harmonics_nharmonics->value(control.ppar.harmonics.nharmonics);
+    harmonics_gauss->value(control.ppar.harmonics.gauss);
+    
+    spread_enabled->value(control.ppar.spread.enabled);
+    spread_bandwidth->value(control.ppar.spread.bandwidth);
+    
+    
+    tonal_vs_noise_enabled->value(control.ppar.tonal_vs_noise.enabled);
+    tonal_vs_noise_preserve->value(control.ppar.tonal_vs_noise.preserve);
+    tonal_vs_noise_bandwidth->value(control.ppar.tonal_vs_noise.bandwidth);
+    
+    bbpar_mono->value(control.bbpar.mono);
+    bbpar_stereo_mode->value(control.bbpar.stereo_mode);
+    
+    
+    stretch_multiplier_control->refresh();
+    arbitrary_filter_control->refresh();
+    binaural_beats_control->refresh();
 }
 
 void GUI::tickrefresh() {
-  seek_slider->value(seek_slider->maximum()*control.get_seek_pos());
-
-if (playing_for_button&&control.playing()){
-	play_button->labelcolor(FL_GREEN);
-	window->redraw();
-	playing_for_button=false;
-};
-if (eof_for_button&&control.playing_eof()){
-	play_button->labelcolor(FL_BLACK);
-	window->redraw();
-	eof_for_button=false;
-};
-
-if (control.info.render_percent>0.0){
-	render_percent_slider->value(control.info.render_percent);
-};
-if (infilename_output->new_drag_file){
-    open_input_file(infilename_output->drag_file.c_str());
-    infilename_output->new_drag_file=false;
-};
+    seek_slider->value(seek_slider->maximum()*control.get_seek_pos());
+    
+    if (playing_for_button&&control.playing()){
+        play_button->labelcolor(FL_GREEN);
+        window->redraw();
+        playing_for_button=false;
+    };
+    if (eof_for_button&&control.playing_eof()){
+        play_button->labelcolor(FL_BLACK);
+        window->redraw();
+        eof_for_button=false;
+    };
+    
+    if (control.info.render_percent>0.0){
+        render_percent_slider->value(control.info.render_percent);
+    };
+    if (infilename_output->new_drag_file){
+        open_input_file(infilename_output->drag_file.c_str());
+        infilename_output->new_drag_file=false;
+    };
 }
 
 void GUI::tickdraw(GUI *o) {
-  o->tickrefresh();
+    o->tickrefresh();
 }
 
 void GUI::tick(void *v) {
-  tickdraw((GUI *) v);
-Fl::add_timeout(1.0/3.0,tick,v);//3 fps
+    tickdraw((GUI *) v);
+    Fl::add_timeout(1.0/3.0,tick,v);//3 fps
 }
 
 bool file_exists(const char *filename) {
-  struct stat buf;
-int i = stat ( filename, &buf );
-// File exists
-if ( i == 0 ) return true;
-  else  return false;
+    struct stat buf;
+    int i = stat ( filename, &buf );
+    // File exists
+    if ( i == 0 ) return true;
+    else  return false;
 }
 
 int main(int argc, char *argv[]) {
-  GUI *gui=new GUI();
-
-
-if (argc>1){
-	const char *filename=argv[1];
-	if (filename[0]=='-'){
-		if (argc>2) filename=argv[2];
-		else filename=NULL;
-	};
-	if (filename) gui->open_input_file(filename);
-};
-gui->window->show();
-
-
-Fl::run();
-
-delete gui;
-
-return 0;
+    GUI *gui=new GUI();
+    
+    
+    if (argc>1){
+        const char *filename=argv[1];
+        if (filename[0]=='-'){
+            if (argc>2) filename=argv[2];
+            else filename=NULL;
+        };
+        if (filename) gui->open_input_file(filename);
+    };
+    gui->window->show();
+    
+    
+    Fl::run();
+    
+    delete gui;
+    
+    return 0;
 }
