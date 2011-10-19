@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63C6C5B9144E74060028CF05 /* libmxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C6C5B8144E74060028CF05 /* libmxml.a */; };
+		63C6C5BA144E74620028CF05 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = FF4576BA144E0C0200C765B4 /* COPYING */; };
+		63C6C5BC144E74FB0028CF05 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63C6C5BB144E74FB0028CF05 /* icon.icns */; };
 		FF1F28F3144E2E6E00860684 /* BinauralBeats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576B1144E0C0200C765B4 /* BinauralBeats.cpp */; };
 		FF1F28F4144E2E6E00860684 /* Control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576B8144E0C0200C765B4 /* Control.cpp */; };
 		FF1F28F5144E2E6E00860684 /* FreeEdit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576BB144E0C0200C765B4 /* FreeEdit.cpp */; };
@@ -26,7 +29,6 @@
 		FF1F2903144E2E7F00860684 /* VorbisInputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457763144E274700C765B4 /* VorbisInputS.cpp */; };
 		FF1F2904144E2E9F00860684 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF45770F144E1CD300C765B4 /* ApplicationServices.framework */; };
 		FF1F2905144E2E9F00860684 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457708144E1C0400C765B4 /* Quartz.framework */; };
-		FF1F2906144E2E9F00860684 /* libmxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457705144E1B8900C765B4 /* libmxml.a */; };
 		FF1F2907144E2E9F00860684 /* libfftw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576EF144E0DF400C765B4 /* libfftw3.dylib */; };
 		FF1F2908144E2E9F00860684 /* libfftw3f.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF45771C144E1D9E00C765B4 /* libfftw3f.dylib */; };
 		FF1F2909144E2E9F00860684 /* libfltk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576EC144E0DA600C765B4 /* libfltk.a */; };
@@ -42,10 +44,11 @@
 		FF1F2913144E2EC000860684 /* GUI.cxx in Sources */ = {isa = PBXBuildFile; fileRef = FF457738144E215900C765B4 /* GUI.cxx */; };
 		FF1F2914144E2EF000860684 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457716144E1D2B00C765B4 /* Cocoa.framework */; };
 		FF1F293C144E2FC600860684 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF1F2938144E2FC600860684 /* InfoPlist.strings */; };
-		FF1F293D144E2FC600860684 /* psx-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF1F293A144E2FC600860684 /* psx-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63C6C5B8144E74060028CF05 /* libmxml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmxml.a; path = /usr/local/Cellar/libmxml/2.6/lib/libmxml.a; sourceTree = "<absolute>"; };
+		63C6C5BB144E74FB0028CF05 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		FF1F28D4144E2E4400860684 /* psx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = psx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF1F291C144E2F2C00860684 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF1F291F144E2F2C00860684 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -93,7 +96,6 @@
 		FF457700144E174A00C765B4 /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = kiss_fftr.c; path = contrib/kiss_fftr.c; sourceTree = "<group>"; };
 		FF457703144E175100C765B4 /* kiss_fft.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = kiss_fft.c; path = contrib/kiss_fft.c; sourceTree = "<group>"; };
 		FF457704144E175100C765B4 /* kiss_fftr.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = kiss_fftr.c; path = contrib/kiss_fftr.c; sourceTree = "<group>"; };
-		FF457705144E1B8900C765B4 /* libmxml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmxml.a; path = /usr/local/Cellar/mxml/2.6/lib/libmxml.a; sourceTree = "<absolute>"; };
 		FF457708144E1C0400C765B4 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Quartz.framework; sourceTree = DEVELOPER_DIR; };
 		FF45770F144E1CD300C765B4 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework; sourceTree = DEVELOPER_DIR; };
 		FF457716144E1D2B00C765B4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -130,10 +132,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C6C5B9144E74060028CF05 /* libmxml.a in Frameworks */,
 				FF1F2914144E2EF000860684 /* Cocoa.framework in Frameworks */,
 				FF1F2904144E2E9F00860684 /* ApplicationServices.framework in Frameworks */,
 				FF1F2905144E2E9F00860684 /* Quartz.framework in Frameworks */,
-				FF1F2906144E2E9F00860684 /* libmxml.a in Frameworks */,
 				FF1F2907144E2E9F00860684 /* libfftw3.dylib in Frameworks */,
 				FF1F2908144E2E9F00860684 /* libfftw3f.dylib in Frameworks */,
 				FF1F2909144E2E9F00860684 /* libfltk.a in Frameworks */,
@@ -203,12 +205,12 @@
 				FF45770F144E1CD300C765B4 /* ApplicationServices.framework */,
 				FF457716144E1D2B00C765B4 /* Cocoa.framework */,
 				FF457708144E1C0400C765B4 /* Quartz.framework */,
-				FF457705144E1B8900C765B4 /* libmxml.a */,
 				FF4576EF144E0DF400C765B4 /* libfftw3.dylib */,
 				FF45771C144E1D9E00C765B4 /* libfftw3f.dylib */,
 				FF4576EC144E0DA600C765B4 /* libfltk.a */,
 				FF4576EA144E0D5500C765B4 /* libaudiofile.dylib */,
 				FF4576E8144E0D4F00C765B4 /* libmad.dylib */,
+				63C6C5B8144E74060028CF05 /* libmxml.a */,
 				FF4576E6144E0D4900C765B4 /* libogg.dylib */,
 				FF457735144E1F5700C765B4 /* libportaudio.2.0.0.dylib */,
 				FF4576E4144E0D4200C765B4 /* libvorbis.dylib */,
@@ -308,6 +310,7 @@
 			children = (
 				FF1F2937144E2FC600860684 /* en.lproj */,
 				FF1F293A144E2FC600860684 /* psx-Info.plist */,
+				63C6C5BB144E74FB0028CF05 /* icon.icns */,
 				FF1F293B144E2FC600860684 /* psx-Prefix.pch */,
 				FF4576BA144E0C0200C765B4 /* COPYING */,
 			);
@@ -364,8 +367,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C6C5BA144E74620028CF05 /* COPYING in Resources */,
 				FF1F293C144E2FC600860684 /* InfoPlist.strings in Resources */,
-				FF1F293D144E2FC600860684 /* psx-Info.plist in Resources */,
+				63C6C5BC144E74FB0028CF05 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,16 +434,8 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "psx-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/mxml/2.6/lib,
-					/usr/local/Cellar/fltk/1.3.0/lib,
-					/usr/local/Cellar/portaudio/19.20071207/lib,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -460,16 +456,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "psx-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "psx-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/mxml/2.6/lib,
-					/usr/local/Cellar/fltk/1.3.0/lib,
-					/usr/local/Cellar/portaudio/19.20071207/lib,
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -480,14 +468,12 @@
 		FF4576AF144E08CA00C765B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 			};
 			name = Debug;
 		};
 		FF4576B0144E08CA00C765B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 			};
 			name = Release;
 		};
@@ -501,6 +487,7 @@
 				FF1F28F0144E2E4400860684 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF4576AD144E08C800C765B4 /* Build configuration list for PBXProject "paulstretch" */ = {
 			isa = XCConfigurationList;
