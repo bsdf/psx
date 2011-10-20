@@ -17,6 +17,36 @@
 {
 }
 
+-(IBAction)position_slider_changed:(id)sender
+{
+    float seek_pos = [ position_slider floatValue ] / [position_slider maxValue];
+    control.set_seek_pos( seek_pos );
+}
+
+-(IBAction)stretch_slider_changed:(id)sender {}
+-(IBAction)resolution_slider_changed:(id)sender {}
+-(IBAction)onset_slider_changed:(id)sender {}
+
+-(IBAction)press_play:(id)sender
+{
+    if ( !currently_playing ) {
+        [play_button setTitle:@"◼"];
+        
+        bool bypass = false;
+        if ( [[ NSApp currentEvent ] modifierFlags ] & NSAlternateKeyMask )
+            bypass = true;
+        
+        control.startplay( bypass );
+    }
+    else {
+        [play_button setTitle:@"▶"];
+        
+        control.stopplay();
+    }
+    
+    currently_playing = !currently_playing;
+}
+
 -(IBAction)open_file:(id)sender
 {
     NSOpenPanel *dlg = [NSOpenPanel openPanel];
@@ -44,8 +74,8 @@
     else
         intype = FILE_WAV;
     
-    if ( control.set_input_filename( [[filename resourceSpecifier] UTF8String], intype ) ) {
-
+    if ( control.set_input_filename( [[ filename path ] UTF8String ], intype )) {
+        
     }
     else {
         NSAlert *err = [NSAlert alertWithMessageText:@"ERROR"

@@ -12,9 +12,22 @@
 @interface psx2AppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *_window;
     Control   control;
+    
+    BOOL      currently_playing;
+    
+    IBOutlet NSSlider *position_slider;
+    IBOutlet NSSlider *stretch_slider;
+    IBOutlet NSSlider *resolution_slider;
+    IBOutlet NSSlider *onset_slider;
+    IBOutlet NSButton *play_button;
 }
 
 -(IBAction)open_file:(id)sender;
+-(IBAction)press_play:(id)sender;
+-(IBAction)position_slider_changed:(id)sender;
+-(IBAction)stretch_slider_changed:(id)sender;
+-(IBAction)resolution_slider_changed:(id)sender;
+-(IBAction)onset_slider_changed:(id)sender;
 
 -(void)open_input_file:(NSURL *)filename;
 
