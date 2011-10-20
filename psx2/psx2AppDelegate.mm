@@ -30,21 +30,41 @@
 -(IBAction)press_play:(id)sender
 {
     if ( !currently_playing ) {
-        [play_button setTitle:@"◼"];
+        [ play_button setTitle:@"❚❚" ];
         
         bool bypass = false;
         if ( [[ NSApp currentEvent ] modifierFlags ] & NSAlternateKeyMask )
             bypass = true;
         
         control.startplay( bypass );
+        playback_timer = [ NSTimer scheduledTimerWithTimeInterval:1
+                                                           target:self
+                                                         selector:@selector(playback_tick:) 
+                                                         userInfo:nil
+                                                          repeats:YES ];
     }
     else {
-        [play_button setTitle:@"▶"];
+        [ play_button setTitle:@"▶" ];
         
-        control.stopplay();
+        // alt key turns button into stop
+        if ( [[ NSApp currentEvent ] modifierFlags ] & NSAlternateKeyMask ) {
+            control.stopplay();
+        }
+        else {
+            control.pauseplay();
+        }
+        
+        [ playback_timer invalidate ];
+        playback_timer = nil;
     }
     
     currently_playing = !currently_playing;
+}
+
+-(void)playback_tick:(NSTimer *)sender
+{
+    double pos = [ position_slider maxValue ] * control.get_seek_pos();
+    [ position_slider setFloatValue:[ position_slider maxValue ] * control.get_seek_pos() ];
 }
 
 -(IBAction)open_file:(id)sender
@@ -86,6 +106,22 @@
         
         [err setAlertStyle:NSWarningAlertStyle];
         [err runModal];
+    }
+}
+
+- (void)handle_modifier_key_press:(NSEvent *)theEvent
+{
+    if ([theEvent modifierFlags] & NSAlternateKeyMask) {
+        if ( currently_playing ) {
+            [ play_button setTitle:@"◼" ];
+        }
+    } else {
+        if ( currently_playing ) {
+            [ play_button setTitle:@"❚❚" ];
+        }
+        else {
+            [ play_button setTitle:@"▶" ];
+        }
     }
 }
 

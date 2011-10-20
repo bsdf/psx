@@ -14,6 +14,7 @@
     Control   control;
     
     BOOL      currently_playing;
+    NSTimer  *playback_timer;
     
     IBOutlet NSSlider *position_slider;
     IBOutlet NSSlider *stretch_slider;
@@ -30,6 +31,8 @@
 -(IBAction)onset_slider_changed:(id)sender;
 
 -(void)open_input_file:(NSURL *)filename;
+
+-(void)playback_tick:(NSTimer *)sender;
 
 @property (strong) IBOutlet NSWindow *window;
 
