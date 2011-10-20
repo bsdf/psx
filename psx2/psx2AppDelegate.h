@@ -15,12 +15,13 @@
     
     BOOL      currently_playing;
     NSTimer  *playback_timer;
-    
-    IBOutlet NSSlider *position_slider;
-    IBOutlet NSSlider *stretch_slider;
-    IBOutlet NSSlider *resolution_slider;
-    IBOutlet NSSlider *onset_slider;
-    IBOutlet NSButton *play_button;
+
+    IBOutlet NSSlider      *position_slider;
+    IBOutlet NSSlider      *stretch_slider;
+    IBOutlet NSSlider      *resolution_slider;
+    IBOutlet NSSlider      *onset_slider;
+    IBOutlet NSButton      *play_button;
+    IBOutlet NSPopUpButton *window_type;
 }
 
 -(IBAction)open_file:(id)sender;
@@ -30,9 +31,10 @@
 -(IBAction)resolution_slider_changed:(id)sender;
 -(IBAction)onset_slider_changed:(id)sender;
 
--(void)open_input_file:(NSURL *)filename;
+-(IBAction)stretch_parameters_changed:(id)sender;
+-(IBAction)window_type_changed:(id)sender;
 
--(void)playback_tick:(NSTimer *)sender;
+-(void)open_input_file:(NSURL *)filename;
 
 @property (strong) IBOutlet NSWindow *window;
 

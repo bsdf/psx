@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63C6C5BA144E74620028CF05 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = FF4576BA144E0C0200C765B4 /* COPYING */; };
-		63C6C5BC144E74FB0028CF05 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63C6C5BB144E74FB0028CF05 /* icon.icns */; };
-		FF16D29D144F233600B9B1E6 /* libmxml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF16D29C144F233600B9B1E6 /* libmxml.a */; };
 		FF16D2B1144F26EA00B9B1E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF16D2AF144F26EA00B9B1E6 /* InfoPlist.strings */; };
 		FF16D2B3144F26EA00B9B1E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16D2B2144F26EA00B9B1E6 /* main.m */; };
 		FF16D2B7144F26EA00B9B1E6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF16D2B5144F26EA00B9B1E6 /* Credits.rtf */; };
@@ -49,46 +46,12 @@
 		FF16D2E1144F48F200B9B1E6 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576D0144E0C0200C765B4 /* Thread.cpp */; };
 		FF16D2E2144F48F200B9B1E6 /* XMLwrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576D3144E0C0200C765B4 /* XMLwrapper.cpp */; };
 		FF16D2E4144F491900B9B1E6 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576C9144E0C0200C765B4 /* Player.cpp */; };
-		FF1F28F3144E2E6E00860684 /* BinauralBeats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576B1144E0C0200C765B4 /* BinauralBeats.cpp */; };
-		FF1F28F4144E2E6E00860684 /* Control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576B8144E0C0200C765B4 /* Control.cpp */; };
-		FF1F28F5144E2E6E00860684 /* FreeEdit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576BB144E0C0200C765B4 /* FreeEdit.cpp */; };
-		FF1F28F6144E2E6E00860684 /* globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576BE144E0C0200C765B4 /* globals.cpp */; };
-		FF1F28F7144E2E6E00860684 /* JAaudiooutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576C2144E0C0200C765B4 /* JAaudiooutput.cpp */; };
-		FF1F28F8144E2E6E00860684 /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576C4144E0C0200C765B4 /* Mutex.cpp */; };
-		FF1F28F9144E2E6E00860684 /* PAaudiooutput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576C7144E0C0200C765B4 /* PAaudiooutput.cpp */; };
-		FF1F28FA144E2E6E00860684 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576C9144E0C0200C765B4 /* Player.cpp */; };
-		FF1F28FB144E2E6E00860684 /* ProcessedStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576CB144E0C0200C765B4 /* ProcessedStretch.cpp */; };
-		FF1F28FC144E2E6E00860684 /* Stretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576CE144E0C0200C765B4 /* Stretch.cpp */; };
-		FF1F28FD144E2E6E00860684 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576D0144E0C0200C765B4 /* Thread.cpp */; };
-		FF1F28FE144E2E6E00860684 /* XMLwrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF4576D3144E0C0200C765B4 /* XMLwrapper.cpp */; };
-		FF1F28FF144E2E7800860684 /* AOutputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457769144E275A00C765B4 /* AOutputS.cpp */; };
-		FF1F2900144E2E7800860684 /* VorbisOutputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45776B144E275A00C765B4 /* VorbisOutputS.cpp */; };
-		FF1F2901144E2E7F00860684 /* AInputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF45775E144E274700C765B4 /* AInputS.cpp */; };
-		FF1F2902144E2E7F00860684 /* MP3InputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457761144E274700C765B4 /* MP3InputS.cpp */; };
-		FF1F2903144E2E7F00860684 /* VorbisInputS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF457763144E274700C765B4 /* VorbisInputS.cpp */; };
-		FF1F2904144E2E9F00860684 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF45770F144E1CD300C765B4 /* ApplicationServices.framework */; };
-		FF1F2905144E2E9F00860684 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457708144E1C0400C765B4 /* Quartz.framework */; };
-		FF1F2907144E2E9F00860684 /* libfftw3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576EF144E0DF400C765B4 /* libfftw3.dylib */; };
-		FF1F2908144E2E9F00860684 /* libfftw3f.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF45771C144E1D9E00C765B4 /* libfftw3f.dylib */; };
-		FF1F2909144E2E9F00860684 /* libfltk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576EC144E0DA600C765B4 /* libfltk.a */; };
-		FF1F290A144E2E9F00860684 /* libaudiofile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576EA144E0D5500C765B4 /* libaudiofile.dylib */; };
-		FF1F290B144E2E9F00860684 /* libmad.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576E8144E0D4F00C765B4 /* libmad.dylib */; };
-		FF1F290C144E2E9F00860684 /* libogg.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576E6144E0D4900C765B4 /* libogg.dylib */; };
-		FF1F290D144E2E9F00860684 /* libportaudio.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457735144E1F5700C765B4 /* libportaudio.2.0.0.dylib */; };
-		FF1F290E144E2E9F00860684 /* libvorbis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4576E4144E0D4200C765B4 /* libvorbis.dylib */; };
-		FF1F290F144E2E9F00860684 /* libvorbisenc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457730144E1EB700C765B4 /* libvorbisenc.dylib */; };
-		FF1F2910144E2E9F00860684 /* libvorbisfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF45772D144E1E9C00C765B4 /* libvorbisfile.dylib */; };
-		FF1F2911144E2E9F00860684 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457719144E1D6600C765B4 /* libz.dylib */; };
-		FF1F2912144E2EC000860684 /* FreeEditUI.cxx in Sources */ = {isa = PBXBuildFile; fileRef = FF45773B144E216100C765B4 /* FreeEditUI.cxx */; };
-		FF1F2913144E2EC000860684 /* GUI.cxx in Sources */ = {isa = PBXBuildFile; fileRef = FF457738144E215900C765B4 /* GUI.cxx */; };
-		FF1F2914144E2EF000860684 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF457716144E1D2B00C765B4 /* Cocoa.framework */; };
-		FF1F293C144E2FC600860684 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF1F2938144E2FC600860684 /* InfoPlist.strings */; };
+		FFC8A5111450ACC200361F34 /* PSXWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC8A5101450ACC200361F34 /* PSXWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		63C6C5BB144E74FB0028CF05 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		FF16D29C144F233600B9B1E6 /* libmxml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmxml.a; path = /usr/local/Cellar/mxml/2.6/lib/libmxml.a; sourceTree = "<absolute>"; };
-		FF16D2A3144F26EA00B9B1E6 /* psx2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = psx2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF16D2AE144F26EA00B9B1E6 /* psx2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "psx2-Info.plist"; path = "psx2/psx2-Info.plist"; sourceTree = "<group>"; };
 		FF16D2B0144F26EA00B9B1E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF16D2B2144F26EA00B9B1E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,7 +60,6 @@
 		FF16D2B8144F26EA00B9B1E6 /* psx2AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = psx2AppDelegate.h; sourceTree = "<group>"; };
 		FF16D2B9144F26EA00B9B1E6 /* psx2AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = psx2AppDelegate.mm; sourceTree = "<group>"; };
 		FF16D2BC144F26EA00B9B1E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		FF1F28D4144E2E4400860684 /* psx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = psx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF1F2939144E2FC600860684 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		FF1F293A144E2FC600860684 /* psx-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "psx-Info.plist"; sourceTree = "<group>"; };
 		FF1F293B144E2FC600860684 /* psx-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "psx-Prefix.pch"; sourceTree = "<group>"; };
@@ -165,6 +127,9 @@
 		FF45776A144E275A00C765B4 /* AOutputS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AOutputS.h; path = Output/AOutputS.h; sourceTree = "<group>"; };
 		FF45776B144E275A00C765B4 /* VorbisOutputS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VorbisOutputS.cpp; path = Output/VorbisOutputS.cpp; sourceTree = "<group>"; };
 		FF45776C144E275A00C765B4 /* VorbisOutputS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VorbisOutputS.h; path = Output/VorbisOutputS.h; sourceTree = "<group>"; };
+		FFC8A50D1450AA8800361F34 /* psx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = psx.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFC8A50F1450ACC200361F34 /* PSXWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSXWindow.h; sourceTree = "<group>"; };
+		FFC8A5101450ACC200361F34 /* PSXWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSXWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,40 +155,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF1F28D1144E2E4400860684 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF1F2914144E2EF000860684 /* Cocoa.framework in Frameworks */,
-				FF1F2904144E2E9F00860684 /* ApplicationServices.framework in Frameworks */,
-				FF1F2905144E2E9F00860684 /* Quartz.framework in Frameworks */,
-				FF1F2907144E2E9F00860684 /* libfftw3.dylib in Frameworks */,
-				FF1F2908144E2E9F00860684 /* libfftw3f.dylib in Frameworks */,
-				FF1F2909144E2E9F00860684 /* libfltk.a in Frameworks */,
-				FF1F290A144E2E9F00860684 /* libaudiofile.dylib in Frameworks */,
-				FF16D29D144F233600B9B1E6 /* libmxml.a in Frameworks */,
-				FF1F290B144E2E9F00860684 /* libmad.dylib in Frameworks */,
-				FF1F290C144E2E9F00860684 /* libogg.dylib in Frameworks */,
-				FF1F290D144E2E9F00860684 /* libportaudio.2.0.0.dylib in Frameworks */,
-				FF1F290E144E2E9F00860684 /* libvorbis.dylib in Frameworks */,
-				FF1F290F144E2E9F00860684 /* libvorbisenc.dylib in Frameworks */,
-				FF1F2910144E2E9F00860684 /* libvorbisfile.dylib in Frameworks */,
-				FF1F2911144E2E9F00860684 /* libz.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF16D2AC144F26EA00B9B1E6 /* psx2 */ = {
+		FF16D2AC144F26EA00B9B1E6 /* psx */ = {
 			isa = PBXGroup;
 			children = (
 				FF457770144E27A700C765B4 /* paulstretch */,
 				FF16D2B8144F26EA00B9B1E6 /* psx2AppDelegate.h */,
 				FF16D2B9144F26EA00B9B1E6 /* psx2AppDelegate.mm */,
+				FFC8A50F1450ACC200361F34 /* PSXWindow.h */,
+				FFC8A5101450ACC200361F34 /* PSXWindow.m */,
 				FF16D2BB144F26EA00B9B1E6 /* MainMenu.xib */,
 				FF16D2B2144F26EA00B9B1E6 /* main.m */,
 			);
+			name = psx;
 			path = psx2;
 			sourceTree = "<group>";
 		};
@@ -238,7 +184,7 @@
 		FF4576A8144E08C800C765B4 = {
 			isa = PBXGroup;
 			children = (
-				FF16D2AC144F26EA00B9B1E6 /* psx2 */,
+				FF16D2AC144F26EA00B9B1E6 /* psx */,
 				FF457771144E28DB00C765B4 /* share */,
 				FF4576EE144E0DBD00C765B4 /* lib */,
 				FF4576DA144E0D3000C765B4 /* bin */,
@@ -248,8 +194,7 @@
 		FF4576DA144E0D3000C765B4 /* bin */ = {
 			isa = PBXGroup;
 			children = (
-				FF1F28D4144E2E4400860684 /* psx.app */,
-				FF16D2A3144F26EA00B9B1E6 /* psx2.app */,
+				FFC8A50D1450AA8800361F34 /* psx.app */,
 			);
 			name = bin;
 			sourceTree = "<group>";
@@ -376,9 +321,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF16D2A2144F26EA00B9B1E6 /* psx2 */ = {
+		FF16D2A2144F26EA00B9B1E6 /* psx */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF16D2BE144F26EA00B9B1E6 /* Build configuration list for PBXNativeTarget "psx2" */;
+			buildConfigurationList = FF16D2BE144F26EA00B9B1E6 /* Build configuration list for PBXNativeTarget "psx" */;
 			buildPhases = (
 				FF16D29F144F26EA00B9B1E6 /* Sources */,
 				FF16D2A0144F26EA00B9B1E6 /* Frameworks */,
@@ -388,26 +333,9 @@
 			);
 			dependencies = (
 			);
-			name = psx2;
-			productName = psx2;
-			productReference = FF16D2A3144F26EA00B9B1E6 /* psx2.app */;
-			productType = "com.apple.product-type.application";
-		};
-		FF1F28D3144E2E4400860684 /* psx */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FF1F28F1144E2E4500860684 /* Build configuration list for PBXNativeTarget "psx" */;
-			buildPhases = (
-				FF1F28D0144E2E4400860684 /* Sources */,
-				FF1F28D1144E2E4400860684 /* Frameworks */,
-				FF1F28D2144E2E4400860684 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
 			name = psx;
 			productName = psx2;
-			productReference = FF1F28D4144E2E4400860684 /* psx.app */;
+			productReference = FFC8A50D1450AA8800361F34 /* psx.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -430,8 +358,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF1F28D3144E2E4400860684 /* psx */,
-				FF16D2A2144F26EA00B9B1E6 /* psx2 */,
+				FF16D2A2144F26EA00B9B1E6 /* psx */,
 			);
 		};
 /* End PBXProject section */
@@ -445,16 +372,6 @@
 				FF16D2D0144F47A400B9B1E6 /* icon.icns in Resources */,
 				FF16D2B7144F26EA00B9B1E6 /* Credits.rtf in Resources */,
 				FF16D2BD144F26EA00B9B1E6 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF1F28D2144E2E4400860684 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				63C6C5BA144E74620028CF05 /* COPYING in Resources */,
-				FF1F293C144E2FC600860684 /* InfoPlist.strings in Resources */,
-				63C6C5BC144E74FB0028CF05 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,32 +402,7 @@
 				FF16D2E0144F48F200B9B1E6 /* Stretch.cpp in Sources */,
 				FF16D2E1144F48F200B9B1E6 /* Thread.cpp in Sources */,
 				FF16D2E2144F48F200B9B1E6 /* XMLwrapper.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF1F28D0144E2E4400860684 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF1F28F3144E2E6E00860684 /* BinauralBeats.cpp in Sources */,
-				FF1F28F4144E2E6E00860684 /* Control.cpp in Sources */,
-				FF1F28F5144E2E6E00860684 /* FreeEdit.cpp in Sources */,
-				FF1F28F6144E2E6E00860684 /* globals.cpp in Sources */,
-				FF1F28F7144E2E6E00860684 /* JAaudiooutput.cpp in Sources */,
-				FF1F28FF144E2E7800860684 /* AOutputS.cpp in Sources */,
-				FF1F2901144E2E7F00860684 /* AInputS.cpp in Sources */,
-				FF1F2902144E2E7F00860684 /* MP3InputS.cpp in Sources */,
-				FF1F2903144E2E7F00860684 /* VorbisInputS.cpp in Sources */,
-				FF1F2900144E2E7800860684 /* VorbisOutputS.cpp in Sources */,
-				FF1F28F8144E2E6E00860684 /* Mutex.cpp in Sources */,
-				FF1F2912144E2EC000860684 /* FreeEditUI.cxx in Sources */,
-				FF1F2913144E2EC000860684 /* GUI.cxx in Sources */,
-				FF1F28F9144E2E6E00860684 /* PAaudiooutput.cpp in Sources */,
-				FF1F28FA144E2E6E00860684 /* Player.cpp in Sources */,
-				FF1F28FB144E2E6E00860684 /* ProcessedStretch.cpp in Sources */,
-				FF1F28FC144E2E6E00860684 /* Stretch.cpp in Sources */,
-				FF1F28FD144E2E6E00860684 /* Thread.cpp in Sources */,
-				FF1F28FE144E2E6E00860684 /* XMLwrapper.cpp in Sources */,
+				FFC8A5111450ACC200361F34 /* PSXWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,55 +495,6 @@
 			};
 			name = Release;
 		};
-		FF1F28EF144E2E4400860684 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "psx-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "psx-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		FF1F28F0144E2E4400860684 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "psx-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "psx-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 		FF4576AF144E08CA00C765B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -667,20 +510,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF16D2BE144F26EA00B9B1E6 /* Build configuration list for PBXNativeTarget "psx2" */ = {
+		FF16D2BE144F26EA00B9B1E6 /* Build configuration list for PBXNativeTarget "psx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF16D2BF144F26EA00B9B1E6 /* Debug */,
 				FF16D2C0144F26EA00B9B1E6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF1F28F1144E2E4500860684 /* Build configuration list for PBXNativeTarget "psx" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FF1F28EF144E2E4400860684 /* Debug */,
-				FF1F28F0144E2E4400860684 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

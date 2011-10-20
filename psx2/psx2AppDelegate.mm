@@ -27,6 +27,22 @@
 -(IBAction)resolution_slider_changed:(id)sender {}
 -(IBAction)onset_slider_changed:(id)sender {}
 
+-(IBAction)stretch_parameters_changed:(id)sender
+{
+    double stretch    = [ stretch_slider doubleValue ] / [ stretch_slider maxValue ];
+    double resolution = [ resolution_slider doubleValue ] / [ resolution_slider maxValue ];
+    double onset      = [ onset_slider doubleValue ] / [ onset_slider maxValue ];
+    int    mode       = 1;
+
+    control.set_stretch_controls( stretch, mode, resolution, onset );
+}
+
+-(IBAction)window_type_changed:(id)sender
+{
+    FFTWindow type = (FFTWindow)[[ sender selectedItem ] tag ];
+    control.set_window_type( type );
+}
+
 -(IBAction)press_play:(id)sender
 {
     if ( !currently_playing ) {
@@ -48,6 +64,7 @@
         
         // alt key turns button into stop
         if ( [[ NSApp currentEvent ] modifierFlags ] & NSAlternateKeyMask ) {
+            [ position_slider setIntValue:0 ];
             control.stopplay();
         }
         else {
