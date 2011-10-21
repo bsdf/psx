@@ -45,6 +45,8 @@
 
 -(void)open_input_file:(NSURL *)filename;
 
+-(FILE_TYPE)get_filetype:(NSString *)ext;
+
 @property (strong) IBOutlet NSWindow *window;
 
 @end

@@ -101,14 +101,9 @@
 
 -(void)open_input_file:(NSURL *)filename
 {
-    NSString *extension = [[ filename pathExtension ] lowercaseString ];
+    NSString *extension = [ filename pathExtension ];
     
-    if ( [ extension isEqualToString:@"ogg" ] )
-        input_type = FILE_VORBIS;
-    else if ( [ extension isEqualToString:@"mp3" ] )
-        input_type = FILE_MP3;
-    else
-        input_type = FILE_WAV;
+    input_type = [ self get_filetype:extension ];
     
     if ( control.set_input_filename( [[ filename path ] UTF8String ], input_type )) {
         
@@ -125,15 +120,25 @@
     }
 }
 
+-(FILE_TYPE)get_filetype:(NSString *)ext
+{
+    ext = [ ext lowercaseString ];
+    if ( [ ext isEqualToString:@"ogg" ] )
+        return FILE_VORBIS;
+    else if ( [ ext isEqualToString:@"mp3" ] )
+        return FILE_MP3;
+    else
+        return FILE_WAV;
+}
+
 -(IBAction)render_audio:(id)sender
 {
     NSSavePanel *panel = [ NSSavePanel savePanel ];
     
     if ( [ panel runModal ] == NSOKButton ) {
         NSURL *url = [ panel URL ];
-                
-        FILE_TYPE type = FILE_WAV;
-//        if (fc->filter_value()==1)  type=FILE_VORBIS;
+
+        FILE_TYPE type = [ self get_filetype:[ url pathExtension ]];
 
         std::string outfilename = [[ url path ] UTF8String ];
 
