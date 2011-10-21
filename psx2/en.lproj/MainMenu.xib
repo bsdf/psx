@@ -1305,7 +1305,7 @@
 				<string key="NSWindowClass">PSXWindow</string>
 				<nil key="NSViewClass"/>
 				<object class="NSView" key="NSWindowView" id="439893737">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1372,6 +1372,7 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{472, 12}, {40, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="686975319">
 								<int key="NSCellFlags">67239424</int>
@@ -1414,7 +1415,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{108, 179}, {249, 21}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSNextKeyView" ref="20216857"/>
+							<reference key="NSNextKeyView" ref="261097809"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSliderCell" key="NSCell" id="6276187">
 								<int key="NSCellFlags">-2080244224</int>
@@ -1736,7 +1737,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{14, 229}, {40, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSNextKeyView" ref="371064253"/>
+							<reference key="NSNextKeyView" ref="308477086"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="442520638">
 								<int key="NSCellFlags">67239424</int>
@@ -1757,6 +1758,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{46, 229}, {40, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSNextKeyView" ref="288635741"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="34724988">
 								<int key="NSCellFlags">67239424</int>
@@ -1777,6 +1779,7 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{472, 229}, {40, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSNextKeyView" ref="432865055"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="219558740">
 								<int key="NSCellFlags">67239424</int>
@@ -1819,6 +1822,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{78, 229}, {40, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSNextKeyView" ref="371064253"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="807484289">
 								<int key="NSCellFlags">67239424</int>
@@ -1834,9 +1838,27 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
+						<object class="NSTextField" id="261097809">
+							<reference key="NSNextResponder" ref="439893737"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{364, 181}, {38, 17}}</string>
+							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSNextKeyView" ref="20216857"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="275973680">
+								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags2">272630784</int>
+								<string key="NSContents">Label</string>
+								<reference key="NSSupport" ref="178223441"/>
+								<reference key="NSControlView" ref="261097809"/>
+								<reference key="NSBackgroundColor" ref="929774980"/>
+								<reference key="NSTextColor" ref="435276816"/>
+							</object>
+						</object>
 					</object>
 					<string key="NSFrameSize">{526, 277}</string>
-					<reference key="NSNextKeyView" ref="432865055"/>
+					<reference key="NSSuperview"/>
+					<reference key="NSNextKeyView" ref="114390781"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMaxSize">{1e+13, 1e+13}</string>
@@ -1860,7 +1882,6 @@
 							<object class="NSPSMatrix" key="NSDrawMatrix"/>
 							<string key="NSFrame">{{18, 56}, {354, 20}}</string>
 							<reference key="NSSuperview" ref="234832560"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="245188528"/>
 							<int key="NSpiFlags">16394</int>
 							<double key="NSMaxValue">100</double>
@@ -1870,7 +1891,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{296, 12}, {80, 32}}</string>
 							<reference key="NSSuperview" ref="234832560"/>
-							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="242945884">
 								<int key="NSCellFlags">67239424</int>
@@ -1889,7 +1910,6 @@
 					</object>
 					<string key="NSFrameSize">{390, 96}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="307655871"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
@@ -3275,6 +3295,7 @@
 							<reference ref="490785218"/>
 							<reference ref="371064253"/>
 							<reference ref="288635741"/>
+							<reference ref="261097809"/>
 						</object>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -4169,6 +4190,20 @@
 						<reference key="object" ref="242945884"/>
 						<reference key="parent" ref="245188528"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">688</int>
+						<reference key="object" ref="261097809"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="275973680"/>
+						</object>
+						<reference key="parent" ref="439893737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">689</int>
+						<reference key="object" ref="275973680"/>
+						<reference key="parent" ref="261097809"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -4375,6 +4410,8 @@
 					<string>682.IBPluginDependency</string>
 					<string>685.IBPluginDependency</string>
 					<string>686.IBPluginDependency</string>
+					<string>688.IBPluginDependency</string>
+					<string>689.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
 					<string>75.IBPluginDependency</string>
 					<string>79.IBPluginDependency</string>
@@ -4594,6 +4631,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -4608,198 +4647,9 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">687</int>
+			<int key="maxID">707</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBPartialClassDescription">
-					<string key="className">PSXWindow</string>
-					<string key="superclassName">NSWindow</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PSXWindow.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">psx2AppDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>close_render_sheet:</string>
-							<string>onset_slider_changed:</string>
-							<string>open_file:</string>
-							<string>position_slider_changed:</string>
-							<string>press_play:</string>
-							<string>render_audio:</string>
-							<string>resolution_slider_changed:</string>
-							<string>stretch_parameters_changed:</string>
-							<string>stretch_slider_changed:</string>
-							<string>window_type_changed:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>close_render_sheet:</string>
-							<string>onset_slider_changed:</string>
-							<string>open_file:</string>
-							<string>position_slider_changed:</string>
-							<string>press_play:</string>
-							<string>render_audio:</string>
-							<string>resolution_slider_changed:</string>
-							<string>stretch_parameters_changed:</string>
-							<string>stretch_slider_changed:</string>
-							<string>window_type_changed:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">close_render_sheet:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">onset_slider_changed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">open_file:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">position_slider_changed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">press_play:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">render_audio:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">resolution_slider_changed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">stretch_parameters_changed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">stretch_slider_changed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">window_type_changed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>onset_slider</string>
-							<string>play_button</string>
-							<string>position_slider</string>
-							<string>render_progressbar</string>
-							<string>resolution_slider</string>
-							<string>sheet</string>
-							<string>stretch_slider</string>
-							<string>window</string>
-							<string>window_type</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSSlider</string>
-							<string>NSButton</string>
-							<string>NSSlider</string>
-							<string>NSProgressIndicator</string>
-							<string>NSSlider</string>
-							<string>NSPanel</string>
-							<string>NSSlider</string>
-							<string>NSWindow</string>
-							<string>NSPopUpButton</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>onset_slider</string>
-							<string>play_button</string>
-							<string>position_slider</string>
-							<string>render_progressbar</string>
-							<string>resolution_slider</string>
-							<string>sheet</string>
-							<string>stretch_slider</string>
-							<string>window</string>
-							<string>window_type</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">onset_slider</string>
-								<string key="candidateClassName">NSSlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">play_button</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">position_slider</string>
-								<string key="candidateClassName">NSSlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">render_progressbar</string>
-								<string key="candidateClassName">NSProgressIndicator</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">resolution_slider</string>
-								<string key="candidateClassName">NSSlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">sheet</string>
-								<string key="candidateClassName">NSPanel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">stretch_slider</string>
-								<string key="candidateClassName">NSSlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">window</string>
-								<string key="candidateClassName">NSWindow</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">window_type</string>
-								<string key="candidateClassName">NSPopUpButton</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/psx2AppDelegate.h</string>
-					</object>
-				</object>
-			</object>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
