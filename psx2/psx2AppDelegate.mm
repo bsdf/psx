@@ -15,6 +15,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [ _window center ];
 }
 
 -(IBAction)position_slider_changed:(id)sender
@@ -136,7 +137,7 @@
 {
     NSSavePanel *panel = [ NSSavePanel savePanel ];
     [ panel beginSheetModalForWindow:_window completionHandler:^(NSInteger result) {
-        if ( result ) {
+        if ( result == NSFileHandlingPanelOKButton ) {
             NSURL *url = [ panel URL ];
             
             FILE_TYPE type = [ self get_filetype:[ url pathExtension ]];
@@ -186,6 +187,10 @@
 
 -(IBAction)close_render_sheet:(id)sender
 {
+    // if this is coming from the UI, the user clicked cancel
+    if ( sender != nil )
+        control.info.cancel_render = true;
+
     [ render_progressbar stopAnimation:self ];
     [ sheet orderOut:nil ];
     [ NSApp endSheet:sheet ];

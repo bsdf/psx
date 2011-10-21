@@ -1305,7 +1305,7 @@
 				<string key="NSWindowClass">PSXWindow</string>
 				<nil key="NSViewClass"/>
 				<object class="NSView" key="NSWindowView" id="439893737">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1836,7 +1836,6 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{526, 277}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="432865055"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
@@ -1845,7 +1844,7 @@
 			<object class="NSWindowTemplate" id="122445847">
 				<int key="NSWindowStyleMask">23</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{272, 172}, {390, 184}}</string>
+				<string key="NSWindowRect">{{272, 172}, {390, 96}}</string>
 				<int key="NSWTFlags">-1535638528</int>
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">NSPanel</string>
@@ -1869,10 +1868,9 @@
 						<object class="NSButton" id="245188528">
 							<reference key="NSNextResponder" ref="234832560"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{299, 12}, {80, 32}}</string>
+							<string key="NSFrame">{{296, 12}, {80, 32}}</string>
 							<reference key="NSSuperview" ref="234832560"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="242945884">
 								<int key="NSCellFlags">67239424</int>
@@ -1889,7 +1887,7 @@
 							</object>
 						</object>
 					</object>
-					<string key="NSFrameSize">{390, 184}</string>
+					<string key="NSFrameSize">{390, 96}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="307655871"/>
@@ -4147,8 +4145,8 @@
 						<reference key="object" ref="234832560"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="245188528"/>
 							<reference ref="307655871"/>
+							<reference ref="245188528"/>
 						</object>
 						<reference key="parent" ref="122445847"/>
 					</object>
