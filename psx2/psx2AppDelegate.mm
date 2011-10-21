@@ -86,47 +86,92 @@
 
 -(IBAction)open_file:(id)sender
 {
-    NSOpenPanel *dlg = [NSOpenPanel openPanel];
+    NSOpenPanel *dlg = [ NSOpenPanel openPanel ];
 
-    [dlg setCanChooseFiles:YES];
-    [dlg setCanChooseDirectories:NO];
-    [dlg setAllowsMultipleSelection:NO];
+    [ dlg setCanChooseFiles:YES ];
+    [ dlg setCanChooseDirectories:NO ];
+    [ dlg setAllowsMultipleSelection:NO ];
     
-    if ( [dlg runModalForDirectory:nil file:nil] == NSOKButton )
+    if ( [ dlg runModal ] == NSOKButton )
     {
-        NSURL *filename = [[dlg URLs] objectAtIndex:0];
-        [self open_input_file:filename];
+        NSURL *filename = [[ dlg URLs ] objectAtIndex:0 ];
+        [ self open_input_file:filename ];
     }
 }
 
 -(void)open_input_file:(NSURL *)filename
 {
-    FILE_TYPE intype;
-    NSString *extension = [[filename pathExtension] lowercaseString];
+    NSString *extension = [[ filename pathExtension ] lowercaseString ];
     
-    if ( [extension isEqualToString:@"ogg"] )
-        intype = FILE_VORBIS;
-    else if ( [extension isEqualToString:@"mp3"] )
-        intype = FILE_MP3;
+    if ( [ extension isEqualToString:@"ogg" ] )
+        input_type = FILE_VORBIS;
+    else if ( [ extension isEqualToString:@"mp3" ] )
+        input_type = FILE_MP3;
     else
-        intype = FILE_WAV;
+        input_type = FILE_WAV;
     
-    if ( control.set_input_filename( [[ filename path ] UTF8String ], intype )) {
+    if ( control.set_input_filename( [[ filename path ] UTF8String ], input_type )) {
         
     }
     else {
-        NSAlert *err = [NSAlert alertWithMessageText:@"ERROR"
-                                       defaultButton:@"OK" 
-                                     alternateButton:nil
-                                         otherButton:nil
-                           informativeTextWithFormat:@""];
-        
-        [err setAlertStyle:NSWarningAlertStyle];
-        [err runModal];
+        NSAlert *err = [ NSAlert alertWithMessageText:@"ERROR"
+                                        defaultButton:@"OK" 
+                                      alternateButton:nil
+                                          otherButton:nil
+                            informativeTextWithFormat:@"" ];
+
+        [ err setAlertStyle:NSWarningAlertStyle ];
+        [ err runModal ];
     }
 }
 
-- (void)handle_modifier_key_press:(NSEvent *)theEvent
+-(IBAction)render_audio:(id)sender
+{
+    NSSavePanel *panel = [ NSSavePanel savePanel ];
+    
+    if ( [ panel runModal ] == NSOKButton ) {
+        NSURL *url = [ panel URL ];
+                
+        FILE_TYPE type = FILE_WAV;
+//        if (fc->filter_value()==1)  type=FILE_VORBIS;
+
+        std::string outfilename = [[ url path ] UTF8String ];
+
+        [ NSApp beginSheet:sheet modalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil ];
+        [ render_progressbar setIndeterminate:NO ];
+        [ render_progressbar startAnimation:self ];
+        render_timer = [ NSTimer scheduledTimerWithTimeInterval:1.0/10.0
+                                                         target:self
+                                                       selector:@selector(render_tick:) 
+                                                       userInfo:nil
+                                                        repeats:YES ];
+
+        const char *outstr = control.Render( control.get_input_filename(), outfilename, type, input_type, 0, 1).c_str();
+    }
+}
+
+-(void)render_tick:(NSTimer *)sender
+{
+    double percent = control.info.render_percent;
+    if ( percent != -1 ) {
+        [ render_progressbar setDoubleValue:percent ];
+    }
+    else {
+        [ render_timer invalidate ];
+        render_timer = nil;
+        
+        [ self close_render_sheet:nil ];
+    }
+}
+
+-(IBAction)close_render_sheet:(id)sender
+{
+    [ render_progressbar stopAnimation:self ];
+    [ sheet orderOut:nil ];
+    [ NSApp endSheet:sheet ];
+}
+
+-(void)handle_modifier_key_press:(NSEvent *)theEvent
 {
     if ([theEvent modifierFlags] & NSAlternateKeyMask) {
         if ( currently_playing ) {
