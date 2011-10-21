@@ -92,11 +92,12 @@
     [ dlg setCanChooseDirectories:NO ];
     [ dlg setAllowsMultipleSelection:NO ];
     
-    if ( [ dlg runModal ] == NSOKButton )
-    {
-        NSURL *filename = [[ dlg URLs ] objectAtIndex:0 ];
-        [ self open_input_file:filename ];
-    }
+    [ dlg beginSheetModalForWindow:_window completionHandler:^(NSInteger result) {
+        if ( result == NSFileHandlingPanelOKButton ) {
+            NSURL *filename = [[ dlg URLs ] objectAtIndex:0 ];
+            [ self open_input_file:filename ];
+        }
+    } ];
 }
 
 -(void)open_input_file:(NSURL *)filename
@@ -134,25 +135,36 @@
 -(IBAction)render_audio:(id)sender
 {
     NSSavePanel *panel = [ NSSavePanel savePanel ];
-    
-    if ( [ panel runModal ] == NSOKButton ) {
-        NSURL *url = [ panel URL ];
-
-        FILE_TYPE type = [ self get_filetype:[ url pathExtension ]];
-
-        std::string outfilename = [[ url path ] UTF8String ];
-
-        [ NSApp beginSheet:sheet modalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil ];
-        [ render_progressbar setIndeterminate:NO ];
-        [ render_progressbar startAnimation:self ];
-        render_timer = [ NSTimer scheduledTimerWithTimeInterval:1.0/10.0
-                                                         target:self
-                                                       selector:@selector(render_tick:) 
-                                                       userInfo:nil
-                                                        repeats:YES ];
-
-        const char *outstr = control.Render( control.get_input_filename(), outfilename, type, input_type, 0, 1).c_str();
-    }
+    [ panel beginSheetModalForWindow:_window completionHandler:^(NSInteger result) {
+        if ( result ) {
+            NSURL *url = [ panel URL ];
+            
+            FILE_TYPE type = [ self get_filetype:[ url pathExtension ]];
+            
+            std::string outfilename = [[ url path ] UTF8String ];
+            
+            // remove save sheet
+            [ panel orderOut:nil ];
+            [ NSApp endSheet:panel ];
+            
+            [ NSApp beginSheet:sheet modalForWindow:_window modalDelegate:self didEndSelector:nil contextInfo:nil ];
+            [ render_progressbar setIndeterminate:NO ];
+            [ render_progressbar startAnimation:self ];
+            
+            render_timer = [ NSTimer scheduledTimerWithTimeInterval:1.0/10.0
+                                                             target:self
+                                                           selector:@selector(render_tick:) 
+                                                           userInfo:nil
+                                                            repeats:YES ];
+            
+            const char *outstr = control.Render( control.get_input_filename(), outfilename, type, input_type, 0, 1).c_str();
+        }
+        else {
+            // remove save sheet
+            [ panel orderOut:nil ];
+            [ NSApp endSheet:panel ];
+        }
+    } ];
 }
 
 -(void)render_tick:(NSTimer *)sender
@@ -162,10 +174,13 @@
         [ render_progressbar setDoubleValue:percent ];
     }
     else {
+        [ render_progressbar setDoubleValue:0.0 ];
+        [ render_progressbar setIndeterminate:YES ];
+        [ render_progressbar startAnimation:self ];
         [ render_timer invalidate ];
         render_timer = nil;
         
-        [ self close_render_sheet:nil ];
+        [ self performSelector:@selector(close_render_sheet:) withObject:nil afterDelay:2 ];
     }
 }
 
