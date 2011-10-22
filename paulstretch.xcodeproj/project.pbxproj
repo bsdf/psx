@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		637219FF1453433600475791 /* PSXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 637219FE1453433600475791 /* PSXSlider.m */; };
 		FF16D2B1144F26EA00B9B1E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF16D2AF144F26EA00B9B1E6 /* InfoPlist.strings */; };
 		FF16D2B3144F26EA00B9B1E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16D2B2144F26EA00B9B1E6 /* main.m */; };
 		FF16D2B7144F26EA00B9B1E6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF16D2B5144F26EA00B9B1E6 /* Credits.rtf */; };
@@ -50,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		637219FD1453433600475791 /* PSXSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSXSlider.h; sourceTree = "<group>"; };
+		637219FE1453433600475791 /* PSXSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSXSlider.m; sourceTree = "<group>"; };
 		63C6C5BB144E74FB0028CF05 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		FF16D29C144F233600B9B1E6 /* libmxml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmxml.a; path = /usr/local/Cellar/mxml/2.6/lib/libmxml.a; sourceTree = "<absolute>"; };
 		FF16D2AE144F26EA00B9B1E6 /* psx2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "psx2-Info.plist"; path = "psx2/psx2-Info.plist"; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 				FFC8A50F1450ACC200361F34 /* PSXWindow.h */,
 				FFC8A5101450ACC200361F34 /* PSXWindow.m */,
 				FF16D2BB144F26EA00B9B1E6 /* MainMenu.xib */,
+				637219FD1453433600475791 /* PSXSlider.h */,
+				637219FE1453433600475791 /* PSXSlider.m */,
 				FF16D2B2144F26EA00B9B1E6 /* main.m */,
 			);
 			name = psx;
@@ -403,6 +408,7 @@
 				FF16D2E1144F48F200B9B1E6 /* Thread.cpp in Sources */,
 				FF16D2E2144F48F200B9B1E6 /* XMLwrapper.cpp in Sources */,
 				FFC8A5111450ACC200361F34 /* PSXWindow.m in Sources */,
+				637219FF1453433600475791 /* PSXSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

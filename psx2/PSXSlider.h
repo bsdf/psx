@@ -1,4 +1,4 @@
-/*  main.m  */
+/*  PSXSlider.h  */
 
 /*  Copyright (C) 2011 bsdf
 
@@ -16,9 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
 
-int main(int argc, char *argv[])
-{
-    return NSApplicationMain(argc, (const char **)argv);
-}
+@interface PSXSlider : NSSlider
+
+@end
