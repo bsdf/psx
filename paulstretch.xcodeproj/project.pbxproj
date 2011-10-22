@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		637219FF1453433600475791 /* PSXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 637219FE1453433600475791 /* PSXSlider.m */; };
+		63721A0414534C4C00475791 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 63721A0314534C4C00475791 /* COPYING */; };
 		FF16D2B1144F26EA00B9B1E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF16D2AF144F26EA00B9B1E6 /* InfoPlist.strings */; };
 		FF16D2B3144F26EA00B9B1E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16D2B2144F26EA00B9B1E6 /* main.m */; };
 		FF16D2B7144F26EA00B9B1E6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF16D2B5144F26EA00B9B1E6 /* Credits.rtf */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		637219FD1453433600475791 /* PSXSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSXSlider.h; sourceTree = "<group>"; };
 		637219FE1453433600475791 /* PSXSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSXSlider.m; sourceTree = "<group>"; };
+		63721A0314534C4C00475791 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		63C6C5BB144E74FB0028CF05 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		FF16D29C144F233600B9B1E6 /* libmxml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmxml.a; path = /usr/local/Cellar/mxml/2.6/lib/libmxml.a; sourceTree = "<absolute>"; };
 		FF16D2AE144F26EA00B9B1E6 /* psx2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "psx2-Info.plist"; path = "psx2/psx2-Info.plist"; sourceTree = "<group>"; };
@@ -70,7 +72,7 @@
 		FF4576B2144E0C0200C765B4 /* BinauralBeats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinauralBeats.h; sourceTree = "<group>"; };
 		FF4576B8144E0C0200C765B4 /* Control.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Control.cpp; sourceTree = "<group>"; };
 		FF4576B9144E0C0200C765B4 /* Control.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Control.h; sourceTree = "<group>"; };
-		FF4576BA144E0C0200C765B4 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		FF4576BA144E0C0200C765B4 /* COPYING-paulstretch */ = {isa = PBXFileReference; lastKnownFileType = text; path = "COPYING-paulstretch"; sourceTree = "<group>"; };
 		FF4576BB144E0C0200C765B4 /* FreeEdit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FreeEdit.cpp; sourceTree = "<group>"; };
 		FF4576BC144E0C0200C765B4 /* FreeEdit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeEdit.h; sourceTree = "<group>"; };
 		FF4576BD144E0C0200C765B4 /* FreeEditUI.fl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FreeEditUI.fl; sourceTree = "<group>"; };
@@ -311,7 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				FF1F2937144E2FC600860684 /* en.lproj */,
-				FF4576BA144E0C0200C765B4 /* COPYING */,
+				63721A0314534C4C00475791 /* COPYING */,
+				FF4576BA144E0C0200C765B4 /* COPYING-paulstretch */,
 				FF1F293A144E2FC600860684 /* psx-Info.plist */,
 				63C6C5BB144E74FB0028CF05 /* icon.icns */,
 				FF1F293B144E2FC600860684 /* psx-Prefix.pch */,
@@ -377,6 +380,7 @@
 				FF16D2D0144F47A400B9B1E6 /* icon.icns in Resources */,
 				FF16D2B7144F26EA00B9B1E6 /* Credits.rtf in Resources */,
 				FF16D2BD144F26EA00B9B1E6 /* MainMenu.xib in Resources */,
+				63721A0414534C4C00475791 /* COPYING in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
