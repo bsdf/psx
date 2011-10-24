@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		637219FF1453433600475791 /* PSXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 637219FE1453433600475791 /* PSXSlider.m */; };
 		63721A0414534C4C00475791 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 63721A0314534C4C00475791 /* COPYING */; };
+		63721A181453720100475791 /* operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63721A171453720100475791 /* operations.cpp */; };
 		FF16D2B1144F26EA00B9B1E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF16D2AF144F26EA00B9B1E6 /* InfoPlist.strings */; };
 		FF16D2B3144F26EA00B9B1E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16D2B2144F26EA00B9B1E6 /* main.m */; };
 		FF16D2B7144F26EA00B9B1E6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF16D2B5144F26EA00B9B1E6 /* Credits.rtf */; };
@@ -55,6 +56,8 @@
 		637219FD1453433600475791 /* PSXSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSXSlider.h; sourceTree = "<group>"; };
 		637219FE1453433600475791 /* PSXSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSXSlider.m; sourceTree = "<group>"; };
 		63721A0314534C4C00475791 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		63721A16145371F400475791 /* operations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = operations.h; path = ../operations.h; sourceTree = "<group>"; };
+		63721A171453720100475791 /* operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = operations.cpp; path = ../operations.cpp; sourceTree = "<group>"; };
 		63C6C5BB144E74FB0028CF05 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		FF16D29C144F233600B9B1E6 /* libmxml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmxml.a; path = /usr/local/Cellar/mxml/2.6/lib/libmxml.a; sourceTree = "<absolute>"; };
 		FF16D2AE144F26EA00B9B1E6 /* psx2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "psx2-Info.plist"; path = "psx2/psx2-Info.plist"; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 				637219FD1453433600475791 /* PSXSlider.h */,
 				637219FE1453433600475791 /* PSXSlider.m */,
 				FF16D2B2144F26EA00B9B1E6 /* main.m */,
+				63721A171453720100475791 /* operations.cpp */,
+				63721A16145371F400475791 /* operations.h */,
 			);
 			name = psx;
 			path = psx2;
@@ -354,7 +359,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = FF4576AD144E08C800C765B4 /* Build configuration list for PBXProject "paulstretch" */;
+			buildConfigurationList = FF4576AD144E08C800C765B4 /* Build configuration list for PBXProject "psx" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -413,6 +418,7 @@
 				FF16D2E2144F48F200B9B1E6 /* XMLwrapper.cpp in Sources */,
 				FFC8A5111450ACC200361F34 /* PSXWindow.m in Sources */,
 				637219FF1453433600475791 /* PSXSlider.m in Sources */,
+				63721A181453720100475791 /* operations.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF4576AD144E08C800C765B4 /* Build configuration list for PBXProject "paulstretch" */ = {
+		FF4576AD144E08C800C765B4 /* Build configuration list for PBXProject "psx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF4576AF144E08CA00C765B4 /* Debug */,

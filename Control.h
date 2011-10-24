@@ -98,7 +98,18 @@ class Control{
 			int mode_s;
 		}gui_sliders;	   
 		FFTWindow window_type;
-
+        struct {
+            int samplerate;
+            int nsamples;
+            std::string filename;
+            FILE_TYPE intype;
+        }wavinfo;//input
+        struct {
+            int bufsize;
+            double stretch;
+            double onset_detection_sensitivity;
+        }process;
+    
 	private:
 		REALTYPE volume;
 
@@ -106,18 +117,6 @@ class Control{
 		int optimizebufsize(int bufsize);
 		std::string getfftsizestr(int fftsize);
 
-		struct {
-			int bufsize;
-			double stretch;
-			double onset_detection_sensitivity;
-		}process;
-
-		struct {
-			int samplerate;
-			int nsamples;
-			std::string filename;
-			FILE_TYPE intype;
-		}wavinfo;//input
 		REALTYPE seek_pos;
 
 		Player *player;

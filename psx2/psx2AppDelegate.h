@@ -36,12 +36,16 @@
     IBOutlet NSSlider      *onset_slider;
     IBOutlet NSButton      *play_button;
     IBOutlet NSPopUpButton *window_type;
+    IBOutlet NSTextField   *stretch_label;
+    IBOutlet NSTextField   *resolution_label;
+    IBOutlet NSTextField   *onset_label;
     
     IBOutlet NSProgressIndicator *render_progressbar;
 }
 
 -(IBAction)open_file:(id)sender;
 -(IBAction)press_play:(id)sender;
+
 -(IBAction)position_slider_changed:(id)sender;
 -(IBAction)stretch_slider_changed:(id)sender;
 -(IBAction)resolution_slider_changed:(id)sender;
@@ -56,6 +60,9 @@
 -(void)open_input_file:(NSURL *)filename;
 
 -(FILE_TYPE)get_filetype:(NSString *)ext;
+
+-(NSString *)get_stretch_label;
+-(NSString *)get_resolution_label;
 
 @property (strong) IBOutlet NSWindow *window;
 

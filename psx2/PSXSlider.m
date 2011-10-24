@@ -22,22 +22,22 @@
 
 -(void)mouseDown:(NSEvent *)event
 {
-    [super mouseDown:event];
-    NSEvent *upEvent = [NSEvent mouseEventWithType:NSLeftMouseUp
-                                          location:[ NSEvent mouseLocation ]
-                                     modifierFlags:[ event modifierFlags ]
-                                         timestamp:[ event timestamp ]
-                                      windowNumber:[ event windowNumber ]
-                                           context:[ event context ]
-                                       eventNumber:[ event eventNumber ]
-                                        clickCount:[ event clickCount ]
-                                          pressure:[ event pressure ]];
+    [ super mouseDown:event ];
+    NSEvent *upEvent = [ NSEvent mouseEventWithType:NSLeftMouseUp
+                                           location:[ NSEvent mouseLocation ]
+                                      modifierFlags:[ event modifierFlags ]
+                                          timestamp:[ event timestamp ]
+                                       windowNumber:[ event windowNumber ]
+                                            context:[ event context ]
+                                        eventNumber:[ event eventNumber ]
+                                         clickCount:[ event clickCount ]
+                                           pressure:[ event pressure ]];
     [NSApp sendEvent:upEvent];
 }
 -(void)mouseUp:(NSEvent *)event
 {
-        NSLog(@"MOUSEUP");
-    [super mouseUp:event];
+    [ NSApp sendAction:@selector(stretch_parameters_changed:) to:nil from:event ];
+    [ super mouseUp:event ];
 }
 
 - (BOOL)acceptsFirstResponder {

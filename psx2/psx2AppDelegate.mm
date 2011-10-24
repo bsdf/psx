@@ -18,6 +18,7 @@
 
 #import "psx2AppDelegate.h"
 #import "globals.h"
+#import "operations.h"
 
 @implementation psx2AppDelegate
 
@@ -34,16 +35,62 @@
     control.set_seek_pos( seek_pos );
 }
 
--(IBAction)stretch_slider_changed:(id)sender {}
--(IBAction)resolution_slider_changed:(id)sender {}
--(IBAction)onset_slider_changed:(id)sender {}
+-(IBAction)stretch_slider_changed:(id)sender
+{
+    [ stretch_label setStringValue:[ self get_stretch_label ]];
+}
+
+-(NSString *)get_stretch_label
+{
+    double stretch_s = [ stretch_slider doubleValue ] / [ stretch_slider maxValue ];
+    double stretch   = pow( 10.0, stretch_s * 4.0 );
+    NSString *out    = [ NSString stringWithFormat:@"%.3fx", stretch, nil ];
+
+    return out;
+}
+
+-(IBAction)resolution_slider_changed:(id)sender
+{
+    [ resolution_label setStringValue:[ self get_resolution_label ]];
+}
+
+-(NSString *)get_resolution_label
+{
+    NSString *out;
+    
+    double fftsize_s = [ resolution_slider doubleValue ];
+    fftsize_s = pow( fftsize_s, 1.5 );
+    
+	int fftsize = (int)( pow( 2.0, fftsize_s * 12.0 ) * 512.0 );
+	fftsize = optimizebufsize( fftsize );
+	
+    if ( fftsize < 1024.0 ) {
+        out = [ NSString stringWithFormat:@"%d", fftsize, nil ];
+    }
+	else if ( fftsize < ( 1024.0 * 1024.0 ) ) {
+        out = [ NSString stringWithFormat:@"%.4gK", fftsize/1024.0, nil ];
+    }
+	else if (fftsize < ( 1024.0 * 1024.0 * 1024.0 ) ) {
+        out = [ NSString stringWithFormat:@"%.4gM", fftsize/(1024.0 * 1024.0), nil ];
+    }
+	else {
+        out = [ NSString stringWithFormat:@"%.7gG", fftsize/(1024.0 * 1024.0 * 1024.0), nil ];
+    }
+
+	return out;
+}
+
+-(IBAction)onset_slider_changed:(id)sender
+{	
+    [ onset_label setStringValue:[ NSString stringWithFormat:@"%f", [ onset_slider doubleValue ], nil ]];
+}
 
 -(IBAction)stretch_parameters_changed:(id)sender
 {
     double stretch    = [ stretch_slider doubleValue ] / [ stretch_slider maxValue ];
     double resolution = [ resolution_slider doubleValue ] / [ resolution_slider maxValue ];
     double onset      = [ onset_slider doubleValue ] / [ onset_slider maxValue ];
-    int    mode       = 1;
+    int    mode       = 0;
 
     control.set_stretch_controls( stretch, mode, resolution, onset );
 }
